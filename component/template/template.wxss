@@ -1,0 +1,74 @@
+@import "../../app.wxss";
+/* 顶部导航栏 */
+.nav{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 66666;
+  background: rgba(255, 255, 255, 1);
+  box-shadow:0rpx -2rpx 0rpx 0rpx rgba(237,237,237,1);
+}
+.nav_top{
+  width: 100%;
+  height: 88rpx;
+}
+.nav_bot{
+  width: 100%;
+  position: relative;
+}
+.nav_bot_text{
+  font-size:36rpx;
+  font-weight:bold;
+  color:rgba(74,74,74,1);
+  line-height:50rpx;
+}
+.nav_bot_left{
+  width: 120rpx;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.nav_bot_left_img{
+  margin-left: 32rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+/* 底部导航栏 */
+.bar{
+  width: 100%;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 66666;
+  box-shadow:0rpx -8rpx 22rpx 0rpx rgba(187,189,191,0.2);
+  background: rgba(255, 255, 255, 1);
+}
+.bar_top{
+  width: 100%;
+  height: 98rpx;
+}
+.bart_model{
+  width: 50%;
+  height: 100%;
+  font-size:20rpx;
+  line-height:28rpx;
+}
+.bart_model_img{
+  width: 48rpx;
+  height: 48rpx;
+}
+.bart_model_text{
+  margin-top: 8rpx;
+  color: #1296db;
+}
+.bart_model_textOne{
+  margin-top: 8rpx;
+  color: #bfbfbf;
+}
+.bar_bot{
+  width: 100%;
+  height: 68rpx;
+}

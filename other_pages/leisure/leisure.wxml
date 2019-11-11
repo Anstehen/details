@@ -1,0 +1,9 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<view class="ordinary">
+    <view class="pages box_twelve">
+        <view class="default box_twelve">已经是最后一张了哦~</view>
+        <view class="cards box_twelve" style="z-index:{{cardArr.length-index}}" wx:for="{{cardArr}}" wx:for-index="index" wx:for-item="item" wx:key="card" data-info="{{item}}" data-number="{{index}}" bindtouchstart='touchstart' bindtouchend="touchend" animation="{{index==currentCardIndex?animationData:''}}">
+            <text>{{item.words}}</text>
+        </view>
+    </view>
+</view>

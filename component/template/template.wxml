@@ -1,0 +1,37 @@
+<!-- 顶部导航栏---无返回按钮 -->
+<template name="nothing">
+    <view class="nav box_eight" style="height:{{topHeight+44}}px;">
+        <view class="nav_top"></view>
+        <view class="nav_bot box_twelve" style="height:{{topHeight}}px;">
+            <text class="nav_bot_text">{{title}}</text>
+        </view>
+    </view>
+</template>
+<!-- 顶部导航栏---有返回按钮 -->
+<template name="exist">
+    <view class="nav box_eight" style="height:{{topHeight+44}}px;">
+        <view class="nav_top"></view>
+        <view class="nav_bot box_twelve" style="height:{{topHeight}}px;">
+            <text class="nav_bot_text">{{title}}</text>
+            <view class="nav_bot_left box_three">
+                <image class="nav_bot_left_img" src="../../image/201911082034back.png"></image>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- 底部导航栏 -->
+<template name="bar">
+    <view class="bar box_eight">
+        <view class="bar_top box_one">
+            <view class="bart_model box_eleven" bindtap="indexClick">
+                <image class="bart_model_img" src="{{page==1?'../../image/201911082005homeSelect.png':'../../image/201911082050home.png'}}"></image>
+                <text class="{{page==1?'bart_model_text':'bart_model_textOne'}}">首 页</text>
+            </view>
+            <view class="bart_model box_eleven" bindtap="minelick">
+                <image class="bart_model_img" src="{{page==2?'../../image/201911082059mineSelect.png':'../../image/201911082059mine.png'}}"></image>
+                <text class="{{page==2?'bart_model_text':'bart_model_textOne'}}">我 的</text>
+            </view>
+        </view>
+        <view class="bar_bot"></view>
+    </view>
+</template>

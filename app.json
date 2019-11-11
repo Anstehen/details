@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/transition/transition",
+    "pages/ordinary/ordinary",
+    "pages/mine/mine",
+    "pages/desigener/desigener",
+    "pages/own/own"
+  ],
+  "subPackages": [
+    {
+      "root": "other_pages",
+      "pages": [
+        "error/error",
+        "authorize/authorize",
+        "leisure/leisure"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 100,
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap10.json"
+}

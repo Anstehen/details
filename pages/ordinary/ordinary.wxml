@@ -1,0 +1,10 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="nothing" data="{{title:'首 页',topHeight:statusBarHeight}}"/>
+<!-- 内容区域 -->
+<view class="ordinary">
+    
+</view>
+<!-- 底部导航栏 -->
+<template is="bar" data="{{page:1}}"/>

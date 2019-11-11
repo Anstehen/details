@@ -1,0 +1,14 @@
+// 判断值是否是 null、undefined 或 ''
+var processingValue = function(val){
+  var processOne = val;
+  var processTwo = '';
+  if(processOne == undefined || processOne == null || processOne == ''){
+    processTwo = '';
+  }else{
+    processTwo = processOne;
+  }
+  return processTwo
+}
+module.exports = {
+  processingValue: processingValue
+}

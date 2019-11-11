@@ -1,0 +1,16 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<view class="trans box_eight">
+    <view class="trans_page">
+      <view class="substance">
+          <image class="logo" src="../../image/logo.png"></image>
+          <image class="wave" src="../../image/wave.png" mode="aspectFill"></image>
+          <image class="wave wave-bg" src="../../image/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="words">
+          <image class="words_img" src="../../image/words.png" mode="widthFix"></image>
+      </view>
+    </view>
+</view>
+<view class="empower">
+    <button class="empower_btn box_twelve" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击授权进入</button>
+</view>

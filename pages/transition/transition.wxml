@@ -1,0 +1,9 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<view class="trans box_eleven">
+    <view class="loadding box_twelve">
+        <image class="loadding_img" src="../../image/loading.gif" mode="widthFix"></image>
+    </view>
+    <view class="words box_twelve">
+        <text class="words_text">正在获取必要的信息，请稍等</text>
+    </view>
+</view>

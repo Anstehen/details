@@ -1,0 +1,45 @@
+@import "../../app.wxss";
+page{
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 1);
+  overflow: hidden;
+}
+.ordinary{
+  width: 100%;
+  height: 100%;
+}
+.pages{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.default{
+  width: 66%;
+  height: 606rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 0rpx 12rpx 0rpx rgba(99,107,112,0.24);
+  border-radius:8rpx;
+  font-size:30rpx;
+  color:rgba(132,132,132,1);
+  line-height:36rpx;
+}
+.cards{
+  width: 66%;
+  height: 606rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 0rpx 12rpx 0rpx rgba(99,107,112,0.24);
+  border-radius:8rpx;
+  font-size:30rpx;
+  color:rgba(132,132,132,1);
+  line-height:36rpx;
+  position: absolute;
+}
+.cards:nth-child(1){
+  z-index: 6;
+  transform: translateX(-2%) translateY(2%);
+}
+.cards:nth-child(2){
+  z-index: 5;
+  transform: translateX(-1%) translateY(1%);
+}
