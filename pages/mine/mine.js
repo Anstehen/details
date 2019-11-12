@@ -14,13 +14,6 @@ Page({
   indexClick: function (e) {
     let _this = this;
     wx.reLaunch({
-      url: '../ordinary/ordinary',
-    })
-  },
-  // 我的点击
-  minelick: function (e) {
-    let _this = this;
-    wx.reLaunch({
       url: '../desigener/desigener',
     })
   },

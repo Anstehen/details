@@ -10,13 +10,6 @@ Page({
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
   },
-  // 首页点击
-  indexClick: function (e) {
-    let _this = this;
-    wx.reLaunch({
-      url: '../ordinary/ordinary',
-    })
-  },
   // 我的点击
   minelick: function (e) {
     let _this = this;
@@ -29,7 +22,7 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    
+
   },
 
   /**
