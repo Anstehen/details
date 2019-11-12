@@ -19,10 +19,24 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "细节至上",
     "navigationBarTextStyle": "black",
     "onReachBottomDistance": 100,
     "navigationStyle": "custom"
   },
-  "sitemapLocation": "sitemap10.json"
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 500000,
+    "connectSocket": 500000,
+    "uploadFile": 500000,
+    "downloadFile": 500000
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxd4917ad382a97591"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "需授权后才能获取您的地理位置"
+    }
+  }
 }
