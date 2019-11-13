@@ -1,12 +1,40 @@
 @import "../../app.wxss";
 @import "../../component/template/template.wxss";
 page{
-  width: 100%;
-  height: 100%;
-  background: rgba(247, 248, 252, 1);
-  overflow: hidden;
+  background: rgba(245, 246, 250, 1);
 }
 .desigener{
   width: 100%;
   height: auto;
+}
+.card{
+  width: 100%;
+  height: 360rpx;
+  background:linear-gradient(180deg,rgba(44, 43, 43, 1) 0%,rgba(53, 50, 49, 1) 100%);
+}
+.card_picture{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2rpx solid rgba(233, 190, 136, 1);
+}
+.card_picture_img{
+  width: 100rpx;
+  height: auto;
+}
+.card_words{
+  margin-left: 26rpx;
+}
+.card_words_textOne{
+  font-size:26rpx;
+  color:rgba(255,224,187,1);
+  text-shadow:0rpx 4rpx 6rpx rgba(0,0,0,0.27);
+}
+.card_words_textTwo{
+  margin-top: 16rpx;
+  font-size:36rpx;
+  font-weight:bold;
+  color:rgba(255,217,172,1);
+  text-shadow:0rpx 4rpx 8rpx rgba(0,0,0,0.27);
 }

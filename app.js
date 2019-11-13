@@ -41,6 +41,8 @@ App({
         _this.globalData.systemInfo = res;
       }
     })
+    // 清除缓存
+    wx.clearStorageSync('userInformation');
   },
   onError(Error) {
     let title = "系统通知";

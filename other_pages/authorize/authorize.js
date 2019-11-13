@@ -9,12 +9,16 @@ Page({
   data: {
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
     statusHeight: app.globalData.systemInfo.statusBarHeight,//状态高度
+    acceptPath:'',
   },
-  // 授权按钮点击
-  onGotUserInfo: function (e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.userInfo)
-    console.log(e.detail.rawData)
+  // 点击授权进入
+  onGotUserInfo:function(e){
+    let _this = this;
+    // console.log(e);
+    wx.reLaunch({
+      url: `../../${_this.data.acceptPath}`,
+    })
+    wx.setStorageSync('userInformation', e)
   },
   // 页面加载数据展示
   pageLoading: function () {
@@ -52,6 +56,11 @@ Page({
   onLoad: function (options) {
     let _this = this;
     // console.log(app.globalData.systemInfo);
+    if (options && options.afferentPath && existence(options.afferentPath)){
+      _this.setData({
+        acceptPath: options.afferentPath
+      })
+    }
   },
 
   /**
