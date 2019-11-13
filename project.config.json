@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -58,6 +58,19 @@
 					"name": "卡片",
 					"pathName": "other_pages/leisure/leisure",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "设计师---我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我服务过的用户",
+					"pathName": "other_pages/service/service",
 					"scene": null
 				}
 			]

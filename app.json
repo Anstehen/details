@@ -12,7 +12,9 @@
       "pages": [
         "error/error",
         "authorize/authorize",
-        "leisure/leisure"
+        "leisure/leisure",
+        "report/report",
+        "service/service"
       ]
     }
   ],

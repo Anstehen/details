@@ -13,7 +13,7 @@
         <view class="nav_top"></view>
         <view class="nav_bot box_twelve" style="height:{{topHeight}}px;">
             <text class="nav_bot_text">{{title}}</text>
-            <view class="nav_bot_left box_three">
+            <view class="nav_bot_left box_three" bindtap="goBackClick">
                 <image class="nav_bot_left_img" src="../../image/201911082034back.png"></image>
             </view>
         </view>

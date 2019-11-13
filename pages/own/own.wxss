@@ -38,3 +38,35 @@ page{
   color:rgba(255,217,172,1);
   text-shadow:0rpx 4rpx 8rpx rgba(0,0,0,0.27);
 }
+.count{
+  width: 100%;
+  height: auto;
+}
+.count_setting{
+  width: 100%;
+  height: auto;
+  border-bottom: 1rpx solid lightgray;
+}
+.cose{
+  width: 91.47%;
+  height: 116rpx;
+}
+.cose_left{
+  width: auto;
+  height: 100%;
+}
+.cose_left_img{
+  width: 32rpx;
+  height: 32rpx;
+}
+.cose_right_text{
+  margin-left: 36rpx;
+  font-size:32rpx;
+  font-weight:500;
+  color:rgba(94,94,94,1);
+  line-height:44rpx;
+}
+.cose_right_img{
+  width: 32rpx;
+  height: 32rpx;
+}

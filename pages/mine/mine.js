@@ -9,6 +9,11 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    defaultNeme: '昵称~',
+    defaultLevel: '登录',
+    identity: '官方认证设计师',
+    personInfo: {},
+    loginWhether: false,
   },
   // 首页点击
   indexClick: function (e) {
@@ -17,12 +22,42 @@ Page({
       url: '../desigener/desigener',
     })
   },
+  // 获取用户信息
+  onGotUserInfo: function (e) {
+    let _this = this;
+    wx.navigateTo({
+      url: `../../other_pages/authorize/authorize?afferentPath=${'pages/mine/mine'}`,
+    })
+  },
+  // 设置点击
+  settingClick: function (e) {
+    let _this = this;
+    wx.openSetting();
+  },
+  // 我的服务过的用户点击
+  serviceClick: function (e) {
+    let _this = this;
+    wx.navigateTo({
+      url: '../../other_pages/service/service',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let _this = this;
-
+    // console.log(wx.getStorageSync('userInformation'));
+    let whetherLogin = false;
+    let userInfoObj = {};
+    let getUserInfo = wx.getStorageSync('userInformation');
+    if (getUserInfo && existence(getUserInfo)) {
+      whetherLogin = true;
+      userInfoObj = getUserInfo;
+    }
+    _this.setData({
+      personInfo: userInfoObj,
+      loginWhether: whetherLogin
+    })
   },
 
   /**

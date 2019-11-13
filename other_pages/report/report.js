@@ -9,36 +9,12 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
-    defaultNeme:'昵称~',
-    defaultLevel:'登录',
-    identity:'普通用户',
-    personInfo: {},
-    loginWhether: false,
   },
-  // 首页点击
-  indexClick: function (e) {
+  // 顶部返回按钮点击
+  goBackClick: function (e) {
     let _this = this;
-    wx.reLaunch({
-      url: '../ordinary/ordinary',
-    })
-  },
-  // 获取用户信息
-  onGotUserInfo:function(e){
-    let _this = this;
-    wx.navigateTo({
-      url: `../../other_pages/authorize/authorize?afferentPath=${'pages/own/own'}`,
-    })
-  },
-  // 设置点击
-  settingClick:function(e){
-    let _this = this;
-    wx.openSetting();
-  },
-  // 我的报告点击
-  reportClick:function(e){
-    let _this = this;
-    wx.navigateTo({
-      url: '../../other_pages/report/report',
+    wx.navigateBack({
+      delta:1
     })
   },
   /**
@@ -46,18 +22,7 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    // console.log(wx.getStorageSync('userInformation'));
-    let whetherLogin = false;
-    let userInfoObj = {};
-    let getUserInfo = wx.getStorageSync('userInformation');
-    if (getUserInfo && existence(getUserInfo)){
-      whetherLogin = true;
-      userInfoObj = getUserInfo;
-    }
-    _this.setData({
-      personInfo: userInfoObj,
-      loginWhether: whetherLogin
-    })
+    
   },
 
   /**
