@@ -9,42 +9,12 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
-    stateChioce:1,
-    orderArr: [{}, {}, {}, {}, {}, {}]
   },
-  // 我的点击
-  minelick: function (e) {
+  // 顶部返回按钮点击
+  goBackClick: function (e) {
     let _this = this;
-    wx.reLaunch({
-      url: '../mine/mine',
-    })
-  },
-  // 未设计
-  designNoneClick:function(e){
-    let _this = this;
-    _this.setData({
-      stateChioce: 1,
-    })
-  },
-  // 已设计
-  designDoingClick: function (e) {
-    let _this = this;
-    _this.setData({
-      stateChioce: 2,
-    })
-  },
-  // 已完成
-  designFinishClick: function (e) {
-    let _this = this;
-    _this.setData({
-      stateChioce: 3,
-    })
-  },
-  // 订单详情
-  orderClick:function(e){
-    let _this = this;
-    wx.navigateTo({
-      url: '../../other_pages/order/order',
+    wx.navigateBack({
+      delta: 1
     })
   },
   /**

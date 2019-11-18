@@ -1,0 +1,7 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'我的报告',topHeight:statusBarHeight}}"/>
+<view class="order box_eight" style="margin-top:{{statusBarHeight+44}}px">
+
+</view>

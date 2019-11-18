@@ -14,7 +14,8 @@
         "authorize/authorize",
         "leisure/leisure",
         "report/report",
-        "service/service"
+        "service/service",
+        "order/order"
       ]
     }
   ],
