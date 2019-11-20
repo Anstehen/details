@@ -15,7 +15,8 @@
         "leisure/leisure",
         "report/report",
         "service/service",
-        "order/order"
+        "order/order",
+        "edit/edit"
       ]
     }
   ],

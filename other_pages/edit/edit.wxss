@@ -1,0 +1,9 @@
+@import "../../app.wxss";
+@import "../../component/template/template.wxss";
+page{
+  background: rgba(245, 246, 250, 1);
+}
+.order{
+  width: 100%;
+  height: auto;
+}

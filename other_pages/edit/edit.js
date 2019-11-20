@@ -9,7 +9,6 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
-    swiperArr:[{},{},{}]
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -18,18 +17,10 @@ Page({
       delta: 1
     })
   },
-  // 编辑点击
-  editClick:function(e){
-    let _this = this;
-    wx.navigateTo({
-      url: '../../other_pages/edit/edit',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
 
   },
 
