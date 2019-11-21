@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -78,6 +78,20 @@
 					"id": -1,
 					"name": "设计师---首页",
 					"pathName": "pages/desigener/desigener",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "普通---首页",
+					"pathName": "pages/ordinary/ordinary",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "下单页面",
+					"pathName": "pages/purchase/purchase",
 					"scene": null
 				}
 			]

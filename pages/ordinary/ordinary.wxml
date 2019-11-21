@@ -3,8 +3,13 @@
 <import src="../../component/template/template.wxml"/>
 <template is="nothing" data="{{title:'首 页',topHeight:statusBarHeight}}"/>
 <!-- 内容区域 -->
-<view class="ordinary">
-    
+<view class="ordinary" style="margin-top:{{statusBarHeight}}px">
+    <view class="placeAnOrder box_twelve">
+        <view class="placeAnOrder_page box_five" bindtap="placeAnOrderClick">
+            <image class="placeAnOrder_page_img" src="../../image/201911212218placeAnOrder.png"></image>
+            <text class="placeAnOrder_page_text">立即去下单</text>
+        </view>
+    </view>
 </view>
 <!-- 底部导航栏 -->
 <template is="bar" data="{{page:1}}"/>

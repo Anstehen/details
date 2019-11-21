@@ -9,26 +9,19 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    swiperArr: [{}, {}, {}]
   },
-  // 我的点击
-  minelick: function (e) {
+  // 顶部返回按钮点击
+  goBackClick: function (e) {
     let _this = this;
-    wx.reLaunch({
-      url: '../own/own',
-    })
-  },
-  // 立即去下单点击
-  placeAnOrderClick:function(e){
-    let _this = this;
-    wx.navigateTo({
-      url: '../../pages/purchase/purchase',
+    wx.navigateBack({
+      delta: 1
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
 
   },
 

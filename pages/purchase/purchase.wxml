@@ -1,0 +1,89 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'发型侦探~阿静',topHeight:statusBarHeight}}"/>
+<view class="purchase box_eight" style="margin-top:{{statusBarHeight+44}}px">
+  <view class="swiper">
+        <swiper indicator-dots="{{true}}"
+        autoplay="{{true}}" interval="5000" duration="500" class="swiper_swiper">
+          <block wx:for="{{swiperArr}}" wx:key="info">
+            <swiper-item>
+              <view class="swiper_page"></view>
+            </swiper-item>
+          </block>
+        </swiper>
+    </view>
+    <view class="desigenre box_twelve">
+        <view class="desigenre_page box_one">
+            <view class="depa_left box_twelve">
+                <view class="depa_left_page box_twelve">
+                    <image class="depa_left_page_img" src="../../image/201911212245designer.jpg" mode="widthFix"></image>
+                </view>
+            </view>
+            <view class="depa_right box_ten">
+                <text class="depa_right_textOne">一、设计适合您的发型</text>
+                <text class="depa_right_textTwo">二、帮您找到合适的发型店</text>
+                <text class="depa_right_textThree">三、设计 + 造型 完美实现</text>
+            </view>
+        </view>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <text class="service_page_text">我们的服务</text>
+        </view>
+    </view>
+    <view class="term box_two">
+        <image class="term_img" src="../../image/201911212337flower.png"></image>
+        <text class="term_text">1、发行分析</text>
+    </view>
+    <view class="term box_two">
+        <image class="term_img" src="../../image/201911212337flower.png"></image>
+        <text class="term_text">2、脸型分析</text>
+    </view>
+    <view class="term box_two">
+        <image class="term_img" src="../../image/201911212337flower.png"></image>
+        <text class="term_text">3、为您精心筛选当地的优质店铺</text>
+    </view>
+    <view class="term box_two">
+        <image class="term_img" src="../../image/201911212337flower.png"></image>
+        <text class="term_text">4、免费给您提供打理教程</text>
+    </view>
+    <view class="term box_two">
+        <image class="term_img" src="../../image/201911212337flower.png"></image>
+        <text class="term_text">5、告诉您去店前的准备</text>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <text class="service_page_text">我们要的是</text>
+        </view>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <text class="service_page_text">我们想知道的是</text>
+        </view>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <text class="service_page_text">我们的经历</text>
+        </view>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <text class="service_page_text">我们的不想再经历</text>
+        </view>
+    </view>
+
+
+    <view class="message"></view>
+</view>
+<view class="buy box_twelve">
+    <view class="buy_page box_five">
+        <image class="buy_page_img" src="../../image/201911212218placeAnOrder.png"></image>
+        <text class="buy_page_text">立即下单</text>
+    </view>
+</view>
