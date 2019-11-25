@@ -145,3 +145,7 @@ page{
   color:rgba(121,152,184,1);
   line-height:36rpx;
 }
+.message{
+  width: 100%;
+  height: 366rpx;
+}

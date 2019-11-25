@@ -17,7 +17,8 @@
         "report/report",
         "service/service",
         "order/order",
-        "edit/edit"
+        "edit/edit",
+        "material/material"
       ]
     }
   ],

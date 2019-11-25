@@ -9,6 +9,7 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    orderArr:[{},{},{}]
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {

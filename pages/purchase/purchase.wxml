@@ -55,34 +55,146 @@
     </view>
     <view class="service box_twelve">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911212308service.png"></image>
-            <text class="service_page_text">我们要的是</text>
+            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
+            <text class="service_page_text">我们经常做的是</text>
+        </view>
+    </view>
+    <view class="piece box_twelve">
+        <view class="piece_page box_twelve">
+            <text class="piece_page_text">每次剪发都像是在做选择题一样，选对了，美丽动人，仪态万方；选错了，只想闭门不出，把自己的造型藏起来。其实，每一寸头发都有它自己的想法，懂它，将会焕然一新；不懂，就会怪模怪样</text>
         </view>
     </view>
     <view class="service box_twelve">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911212308service.png"></image>
-            <text class="service_page_text">我们想知道的是</text>
-        </view>
-    </view>
-    <view class="service box_twelve">
-        <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
             <text class="service_page_text">我们的经历</text>
         </view>
     </view>
+    <view class="piece box_twelve">
+        <view class="piece_page box_twelve">
+            <text class="piece_page_text">我常常会遇到这种问题：和朋友去的是同一家店，找的是同一个发型师。然而，效果确实一个天上一个地下，朋友的就像是量身定制的一样，而自己却好像是学徒剪的。其实并不一定是发型师没有用心给你剪，只是发型师刚好擅长的发型与你朋友的相匹配，而与你适合的发型却擦肩而过。</text>
+        </view>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
+            <text class="service_page_text">我们纠结的问题</text>
+        </view>
+    </view>
+    <view class="piece box_twelve">
+        <view class="piece_page box_twelve">
+            <text class="piece_page_text">有很多朋友问我：我是长型脸，有哪些发型适合我呢？其实，你对脸型并不是很了解，脸型分为很多种：长型、方型、菱型、圆型、椭圆型等等，在大多数时候我们对自己的脸型有一些认知上的偏差，所以为我们自己选择发型就增添了一些麻烦。</text>
+        </view>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
+            <text class="service_page_text">我们不想再经历的是</text>
+        </view>
+    </view>
+    <view class="piece box_twelve">
+        <view class="piece_page box_twelve">
+            <text class="piece_page_text">因为我们的熟知性，我们经常会去一个我们自己相信的发型店去剪发、塑造发型之类的，在某天一直给自己剪的不错的发型师给自己推荐了一个他认为不错的发型，自己也欣然应允，但最后的效果却太差人强意了。所以说，并不是所有的好看的发型都适合你，只有适合的发型，没有最好的发型。</text>
+        </view>
+    </view>
     <view class="service box_twelve">
         <view class="service_page box_two">
             <image class="service_page_img" src="../../image/201911212308service.png"></image>
-            <text class="service_page_text">我们的不想再经历</text>
+            <text class="service_page_text">服务详情</text>
         </view>
     </view>
-
+    <view class="detail box_twelve">
+        <view class="detail_page box_eleven">
+            <view class="detail_page_bac"></view>
+            <view class="detail_page_one"></view>
+            <view class="detail_page_two">1、脸型分析：</view>
+            <view class="detail_page_two">根据你的三庭、五眼、五官、量感、轮廓来确定脸型，并分析出脸型的亮点和瑕疵。</view>
+            <view class="detail_page_one"></view>
+        </view>
+    </view>
+    <view class="detail box_twelve">
+        <view class="detail_page box_eleven">
+            <view class="detail_page_bac"></view>
+            <view class="detail_page_one"></view>
+            <view class="detail_page_two">2、发型设计：</view>
+            <view class="detail_page_two">根据分析的结果，找出突出您的外表的亮点，和补足不足之处的发型。</view>
+            <view class="detail_page_one"></view>
+        </view>
+    </view>
+    <view class="detail box_twelve">
+        <view class="detail_page box_eleven">
+            <view class="detail_page_bac"></view>
+            <view class="detail_page_one"></view>
+            <view class="detail_page_two">3、精心为您筛选当地的优质店铺：</view>
+            <view class="detail_page_two">从专业的角度结合当地所有的店铺，为您选择出适合您发型的店铺以及发型师。</view>
+            <view class="detail_page_one"></view>
+        </view>
+    </view>
+    <view class="detail box_twelve">
+        <view class="detail_page box_eleven">
+            <view class="detail_page_bac"></view>
+            <view class="detail_page_one"></view>
+            <view class="detail_page_two">4、免费为您提供打理教程：</view>
+            <view class="detail_page_two">我们专业的发型师会根据您的发行效果来为您推送相应的打理教程。</view>
+            <view class="detail_page_one"></view>
+        </view>
+    </view>
+    <view class="detail box_twelve">
+        <view class="detail_page box_eleven">
+            <view class="detail_page_bac"></view>
+            <view class="detail_page_one"></view>
+            <view class="detail_page_two">5、告知您到店前的准备</view>
+            <view class="detail_page_two">根据不同的地区、不同的服务，来给您到店前的准备方案。比如：如何跟发型师沟通，做出贼鸡想要的效果、需要跟发型师确认的问题等。</view>
+            <view class="detail_page_one"></view>
+        </view>
+    </view>
+    <view class="detail box_twelve">
+        <view class="detail_page box_eleven">
+            <view class="detail_page_bac"></view>
+            <view class="detail_page_one"></view>
+            <view class="detail_page_two">6、专业咨询</view>
+            <view class="detail_page_two">您遇到的所有关于美发或者是相关的问题，都可以和我们联系，我们最专业的发型师会给您最专业的见解。</view>
+            <view class="detail_page_one"></view>
+        </view>
+    </view>
+    <view class="service box_twelve">
+        <view class="service_page box_two">
+            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <text class="service_page_text">金牌发型师为您服务</text>
+        </view>
+    </view>
+    <view class="calling box_twelve">
+        <view class="calling_page box_eight">
+            <view class="calling_page_bac"></view>
+            <view class="calling_page_one"></view>
+            <view class="calling_page_two box_two">
+              <view class="cpt_left box_twelve">
+                  <image class="ctp_left_img" src="../../image/logo.png" mode="widthFix"></image>
+              </view>
+              <view class="cpt_center">发型侦探 ~ 阿静</view>
+            </view>
+            <view class="calling_page_three box_eight">
+                <view class="capt_words">我的领域：</view>
+                <view class="capt_page box_eight">日系、韩系、创意裁剪、发型设计、潮色、侦察店铺</view>
+            </view>
+            <view class="calling_page_three box_eight">
+                <view class="capt_words">服务特色：</view>
+                <view class="capt_page box_eight">从专业角度给有需求的用户和专业的、适合的发型师牵线。</view>
+            </view>
+            <view class="calling_page_four box_six">
+                <view class="capafo_left">添加微信免费咨询：</view>
+                <view class="capafo_right box_twelve">
+                    <image class="capafo_right_img" src="../../image/201911212245designer.jpg" mode="widthFix"></image>
+                </view>
+            </view>
+            <view class="calling_page_one"></view>
+        </view>
+    </view>
 
     <view class="message"></view>
 </view>
 <view class="buy box_twelve">
-    <view class="buy_page box_five">
+    <view class="buy_page box_five" bindtap="immediatelyClick">
         <image class="buy_page_img" src="../../image/201911212218placeAnOrder.png"></image>
         <text class="buy_page_text">立即下单</text>
     </view>

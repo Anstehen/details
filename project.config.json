@@ -92,6 +92,13 @@
 					"id": -1,
 					"name": "下单页面",
 					"pathName": "pages/purchase/purchase",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "普通~我的报告",
+					"pathName": "other_pages/report/report",
 					"scene": null
 				}
 			]
