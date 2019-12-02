@@ -99,10 +99,61 @@ const existence = function(val){
   }
   return existTwo
 }
+//页面跳转
+const G = (_url, _reviewPage) => {
+  var _uArr = _url.split("://");
+  if (_uArr.length > 1) {
+    switch (_uArr[0]) {
+      case "navigateTo":
+        wx.navigateTo({
+          url: _uArr[1]
+        });
+        break;
+      case "redirectTo":
+        wx.redirectTo({
+          url: _uArr[1]
+        });
+        break;
+      case "switchTab":
+        wx.switchTab({
+          url: _uArr[1]
+        });
+        break;
+      case "reLaunch":
+        wx.reLaunch({
+          url: _uArr[1]
+        });
+        break;
+      case "navigateBack":
+        // 获取打开中的所有页面
+        let pages = getCurrentPages();
+        if (pages.length > 1) {
+          if (_reviewPage) {
+            pages[pages.length - 2].setData({
+              ReviewPage: true
+            });
+          }
+        }
+        wx.navigateBack({
+          delta: _uArr[1]
+        });
+        break;
+      default:
+        wx.redirectTo({
+          url: _uArr[1]
+        });
+    }
+  } else {
+    wx.navigateTo({
+      url: _uArr[0]
+    })
+  }
+}
 module.exports = {
   pagesPath: pagesPath,
   request: request,
   requestError: requestError,
   currentTime: currentTime,
-  existence: existence
+  existence: existence,
+  G,
 }

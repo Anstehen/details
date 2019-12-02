@@ -1,5 +1,5 @@
 <import src="../../component/template/template.wxml"/>
 <template is="exist" data="{{title:'您的资料',topHeight:statusBarHeight}}"/>
 <view class="purchase box_eight" style="margin-top:{{statusBarHeight+44}}px">
-
+  
 </view>

@@ -1,5 +1,5 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
+import { currentTime, existence, pagesPath, request, requestError, G} from '../../utils/util.js';
 import { edition, version, platform, smallRoutione } from '../../config.js';
 Page({
 

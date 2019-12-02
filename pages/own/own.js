@@ -26,7 +26,7 @@ Page({
   onGotUserInfo:function(e){
     let _this = this;
     wx.navigateTo({
-      url: `../../other_pages/authorize/authorize?afferentPath=${'pages/own/own'}`,
+      url: `/other_pages/authorize/authorize?afferentPath=${'pages/own/own'}`,
     })
   },
   // 设置点击
@@ -38,7 +38,7 @@ Page({
   reportClick:function(e){
     let _this = this;
     wx.navigateTo({
-      url: '../../other_pages/report/report',
+      url: '/other_pages/report/report',
     })
   },
   /**
