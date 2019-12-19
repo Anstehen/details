@@ -25,7 +25,13 @@ Page({
     let _this = this;
     
   },
-
+//页面跳转
+  goPage(e){
+    const path = e.currentTarget.dataset.path;
+    wx.navigateTo({
+      url: path,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

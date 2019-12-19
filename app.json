@@ -15,6 +15,7 @@
         "authorize/authorize",
         "leisure/leisure",
         "report/report",
+        "reportDetail/reportDetail",
         "service/service",
         "order/order",
         "edit/edit",

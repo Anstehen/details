@@ -9,7 +9,7 @@ Page({
   data: {
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
     statusHeight: app.globalData.systemInfo.statusBarHeight,//状态高度
-    identity:2,//1:普通身份；2:设计师身份
+    identity:1,//1:普通身份；2:设计师身份
   },
   // 页面加载数据展示
   pageLoading:function(){
