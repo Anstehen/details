@@ -18,7 +18,8 @@
         "service/service",
         "order/order",
         "edit/edit",
-        "material/material"
+        "material/material",
+        "material_news/material_news"
       ]
     }
   ],

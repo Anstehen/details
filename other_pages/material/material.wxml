@@ -1,5 +1,69 @@
 <import src="../../component/template/template.wxml"/>
 <template is="exist" data="{{title:'您的资料',topHeight:statusBarHeight}}"/>
 <view class="purchase box_eight" style="margin-top:{{statusBarHeight+44}}px">
-
+    <view class="words box_twelve">
+        <view class="words_pages">为了更好的根据您的五官与脸型为您设计专属发型，请您认真的上传您的图片</view>
+    </view>
+    <view class="cards">
+        <view class="model box_five">
+            <view class="model_left box_twelve">
+                <image class="model_left_img" src="../../image/logo.png"></image>
+            </view>
+            <view class="model_right box_twelve">
+                <view class="model_right_page box_twelve" bindtap="choicePicture">
+                    <view class="model_right_text">请上传正面照</view>
+                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                </view>
+                <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
+            </view>
+        </view>
+    </view>
+    <view class="cards">
+        <view class="model box_five">
+            <view class="model_left box_twelve">
+                <image class="model_left_img" src="../../image/logo.png"></image>
+            </view>
+            <view class="model_right box_twelve">
+                <view class="model_right_page box_twelve" bindtap="choicePicture">
+                    <view class="model_right_text">请上传侧面照</view>
+                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                </view>
+                <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
+            </view>
+        </view>
+    </view>
+    <view class="cards">
+        <view class="model box_five">
+            <view class="model_left box_twelve">
+                <image class="model_left_img" src="../../image/logo.png"></image>
+            </view>
+            <view class="model_right box_twelve">
+                <view class="model_right_page box_twelve" bindtap="choicePicture">
+                    <view class="model_right_text">请上传发长照</view>
+                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                </view>
+                <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
+            </view>
+        </view>
+    </view>
+    <view class="cards">
+        <view class="model box_five">
+            <view class="model_left box_twelve">
+                <image class="model_left_img" src="../../image/logo.png"></image>
+            </view>
+            <view class="model_right box_twelve">
+                <view class="model_right_page box_twelve" bindtap="choicePicture">
+                    <view class="model_right_text">请上传全身照</view>
+                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                </view>
+                <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="message"></view>
+<view class="buy box_twelve">
+    <view class="buy_page box_five" bindtap="nextStep">
+        <text class="buy_page_text">下一步</text>
+    </view>
 </view>

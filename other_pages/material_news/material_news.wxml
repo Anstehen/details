@@ -1,0 +1,12 @@
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'您的资料',topHeight:statusBarHeight}}"/>
+<view class="purchase box_eight" style="margin-top:{{statusBarHeight+44}}px">
+    <view class="cards">
+    
+    </view>
+</view>
+<view class="buy box_twelve">
+    <view class="buy_page box_five" bindtap="immediatelyClick">
+        <text class="buy_page_text">确 认</text>
+    </view>
+</view>

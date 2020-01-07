@@ -9,59 +9,13 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    swiperArr: [{}, {}, {}]
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
     let _this = this;
     wx.navigateBack({
       delta: 1
-    })
-  },
-  // 正面照图片
-  choicePicture:function(){
-    let _this = this;
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
-      success(res) {
-        // console.log(res.tapIndex)
-        if (!res.cancel) {
-          if (res.tapIndex == 0) {//从相册中选择
-            wx.chooseImage({
-              count: 1,
-              sizeType: ['original', 'compressed'],
-              sourceType: ['album'],
-              success: function (res) {
-                // console.log(res);
-
-              }
-            })
-          } else {
-            // console.log('拍照');
-            wx.chooseImage({
-              count: 1,
-              sizeType: ['original', 'compressed'],
-              sourceType: ['camera'],
-              success: function (res) {
-                // console.log(res);
-
-              }
-            })
-          }
-        }
-      },
-      fail(res) {
-        // console.log(res.errMsg)
-      }
-    })
-  },
-  // 下一步点击
-  nextStep:function(){
-    let _this = this;
-    wx.navigateTo({
-      url: '../material_news/material_news',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
     })
   },
   /**

@@ -1,10 +1,99 @@
 @import "../../app.wxss";
 @import "../../component/template/template.wxss";
 page{
-  /* background: rgba(245, 246, 250, 1); */
-  background: rgba(255, 255, 255, 1);
+  background: rgba(241, 242, 245, 1);
 }
 .purchase{
   width: 100%;
   height: auto;
+}
+.words{
+  width: 100%;
+  height: auto;
+  margin-top: 36rpx;
+}
+.words_pages{
+  width: 91.47%;
+  height: auto;
+  font-size:32rpx;
+  font-weight:600;
+  color:rgba(74,74,74,1);
+  line-height:44rpx;
+}
+.cards{
+  width: 100%;
+  height: auto;
+}
+.model{
+  width: 100%;
+  height: auto;
+  margin-top: 48rpx; 
+}
+.model_left{
+  width: 186rpx;
+  height: 236rpx;
+  border-radius: 8rpx;
+}
+.model_left_img{
+  width: 186rpx;
+  height: 236rpx;
+}
+.model_right{
+  width: 186rpx;
+  height: 236rpx;
+  margin-left: 188rpx;
+  position: relative;
+}
+.model_right_page{
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+  overflow: hidden;
+  border:1rpx solid rgba(255, 164, 164, 1);
+}
+.model_right_text{
+  font-size:24rpx;
+  font-weight:500;
+  color:rgba(111,119,146,1);
+  line-height:34rpx;
+}
+.model_right_img{
+  width: 169rpx;
+  height: auto;
+}
+.model_right_imgOne{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  bottom: -30rpx;
+}
+.message{
+  width: 100%;
+  height: 186rpx;
+}
+.buy{
+  width: 100%;
+  height:128rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx -6rpx 6rpx 0rpx rgba(167,167,167,0.09);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.buy_page{
+  width: 77.6%;
+  height: 92rpx;
+  background:linear-gradient(90deg,rgba(254,42,111,1) 0%,rgba(255,81,76,1) 100%);
+  border-radius:4rpx;
+}
+.buy_page_img{
+  width: 48rpx;
+  height: 48rpx;
+}
+.buy_page_text{
+  margin-left: 18rpx;
+  font-size:40rpx;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  line-height:56rpx;
 }
