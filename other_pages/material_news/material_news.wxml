@@ -2,9 +2,134 @@
 <template is="exist" data="{{title:'您的资料',topHeight:statusBarHeight}}"/>
 <view class="purchase box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="cards">
-    
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">性别：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="sexChange" value="{{selecSex}}" range="{{sexArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{sexArr[selecSex]}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">出生年月：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" 
+                        mode="date"
+                        value="1996-08"
+                        start="1000-09"
+                        end="3030-09"
+                        bindchange="ageChange"
+                        fields="month">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{selectAge}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">身高：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="heightChange" value="{{selecheight}}" range="{{heightArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{heightArr[selecheight]}}/cm</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">体重：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="weightChange" value="{{selecweight}}" range="{{weightArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{weightArr[selecweight]}}/kg</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">您的位置是：</view>
+            <view class="mould_pages_right">
+                <view class="mprp_pages box_fifteen" bindtap="getLocation">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">请选择您的位置</view>
+                </view>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">您的职业：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="occupationChange" value="{{selectoccupation}}" range="{{occupationArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{occupationArr[selectoccupation]}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">改变发型的程度：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="changeChange" value="{{selectchange}}" range="{{changeArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{changeArr[selectchange]}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">改长度的要求：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="lengthChange" value="{{lengthchange}}" range="{{lengthArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{lengthArr[lengthchange]}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">改烫发的要求：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="permChange" value="{{permchange}}" range="{{permArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{permArr[permchange]}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">着装风格：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="styleChange" value="{{stylechange}}" range="{{styleArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{styleArr[stylechange]}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
+        <view class="mould_pages box_thirteen">
+            <view class="mould_pages_left box_three">打理习惯：</view>
+            <view class="mould_pages_right">
+                <picker class="mpr_picker" bindchange="takeChange" value="{{takechange}}" range="{{takeArr}}">
+                <view class="mprp_pages box_fifteen">
+                    <image class="mprpp_img" src=""></image>
+                    <view class="mprpp_words">{{takeArr[takechange]}}</view>
+                </view>
+                </picker>
+            </view>
+        </view>
     </view>
 </view>
+<view class="message"></view>
 <view class="buy box_twelve">
     <view class="buy_page box_five" bindtap="immediatelyClick">
         <text class="buy_page_text">确 认</text>
