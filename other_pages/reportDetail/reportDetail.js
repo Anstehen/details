@@ -1,3 +1,4 @@
+// other_pages/reportDetail/reportDetail.js
 const app = getApp();
 import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
 import { edition, version, platform, smallRoutione } from '../../config.js';
@@ -9,55 +10,19 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
-    defaultNeme:'昵称~',
-    defaultLevel:'登录',
-    identity:'普通用户',
-    personInfo: {},
-    loginWhether: false,
+    reportInfo:{
+      text1:`1.方形脸，脸型宽且角多，整体上看脸型较宽 
+      2.颞骨和颧骨还有腮骨宽度差不多，下巴较短且扁平，.脸部整体轮廓呈直线型且质感硬朗 
+      3.耳朵下方的腮部比较方且轮廓分明 
+      4。下巴不突出和腮骨融为一体。`
+    }
   },
-  // 首页点击
-  indexClick: function (e) {
-    let _this = this;
-    wx.reLaunch({
-      url: '../ordinary/ordinary',
-    })
-  },
-  // 获取用户信息
-  onGotUserInfo:function(e){
-    let _this = this;
-    wx.navigateTo({
-      url: `/other_pages/authorize/authorize?afferentPath=${'pages/own/own'}`,
-    })
-  },
-  // 设置点击
-  settingClick:function(e){
-    let _this = this;
-    wx.openSetting();
-  },
-  // 我的报告点击
-  reportClick:function(e){
-    let _this = this;
-    wx.navigateTo({
-      url: '/other_pages/report/report',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
-    // console.log(wx.getStorageSync('userInformation'));
-    let whetherLogin = false;
-    let userInfoObj = {};
-    let getUserInfo = wx.getStorageSync('userInformation');
-    if (getUserInfo && existence(getUserInfo)){
-      whetherLogin = true;
-      userInfoObj = getUserInfo;
-    }
-    _this.setData({
-      personInfo: userInfoObj,
-      loginWhether: whetherLogin
-    })
+
   },
 
   /**

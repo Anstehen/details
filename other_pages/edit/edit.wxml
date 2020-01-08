@@ -1,7 +1,55 @@
-<wxs src="../../app.wxs" module="gloval"/>
+<wxs src="../../app.wxs" module="gloval" />
 <!-- 顶部导航栏 -->
-<import src="../../component/template/template.wxml"/>
-<template is="exist" data="{{title:'报告编辑',topHeight:statusBarHeight}}"/>
+<import src="../../component/template/template.wxml" />
+<template is="exist" data="{{title:'报告编辑',topHeight:statusBarHeight}}" />
 <view class="order box_eight" style="margin-top:{{statusBarHeight+44}}px">
-    
+  <view class="orderInfoTit">
+    脸型分析结果
+  </view>
+
+
+
+
+  <view class="textBox">
+    <view class="faceType">
+      <view class="faceTypeLabel">脸型：</view>
+      <picker bindchange="bindPickerChange" data-field="form.faceType" value="{{form.faceType}}" range="{{faceTypeArr}}">
+        <view class="faceTypeCont">
+          {{faceTypeArr[form.faceType]}}>
+        </view>
+      </picker>
+
+
+    </view>
+    <!-- <view class="textTitle"></view> -->
+    <view class="textArea">
+      <textarea class="textCont" value="{{form.faceText}}" auto-height="true" bindinput="bindinput" data-field="form.faceText"></textarea>
+    </view>
+  </view>
+
+  <view class="textBox">
+    <view class="textTitle">性格描述</view>
+    <view class="textArea">
+      <textarea class="textCont" value="{{form.disposition}}" auto-height="true" bindinput="bindinput" data-field="form.disposition"></textarea>
+    </view>
+  </view>
+
+  <view class="textBox">
+    <view class="faceType">
+      <view class="faceTypeLabel">上庭：</view>
+      <picker bindchange="bindPickerChange" data-field="form.browType" value="{{form.browType}}" range="{{browTypeArr}}">
+        <view class="faceTypeCont">
+          {{browTypeArr[form.browType]}}>
+        </view>
+      </picker>
+
+
+    </view>
+    <!-- <view class="textTitle"></view> -->
+    <view class="textArea">
+      <textarea class="textCont" value="{{form.faceText}}" auto-height="true" bindinput="bindinput" data-field="form.faceText"></textarea>
+    </view>
+  </view>
+
+
 </view>
