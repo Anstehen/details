@@ -1,7 +1,7 @@
 const edition = 0;
-let master = '';//环境配置
+let master = 'https://www.hzweirui.com/hairstyle';//环境配置
 if (edition == 1){
-  master = '';
+  master = 'https://www.hzweirui.com/hairstyle';
 }
 const version = '1.0.0';
 const platform = 1;//平台区分
@@ -13,9 +13,13 @@ var config = {
   platform,
   smallRoutione,
   // 接口处理
-  login: `${master}/wechat/getUserInfoForAssistant`,
-  loginTitle: `getUserInfo接口出错`,
+  // 获取用户openid
+  openid: `${master}/get/openid`,
+  openidTitle: `获取用户 openid 出错`,
   // 请求出错
-  uploadErrorInfo: `${master}/wechat/getUserInfoForAssistant`,
+  insertErrorInfo: `${master}/error/insert`,
+  // 根据openid查询用户信息
+  selectByOpenid: `${master}/user/selectByOpenid`,
+  selectByOpenidTitle: `根据 openid 查询用户信息出错`,
 }
 module.exports = config;

@@ -20,7 +20,8 @@
         "order/order",
         "edit/edit",
         "material/material",
-        "material_news/material_news"
+        "material_news/material_news",
+        "map/map"
       ]
     }
   ],

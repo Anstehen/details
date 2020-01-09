@@ -7,57 +7,6 @@ const pagesPath = function(){
   let url = currentPage.route; //当前页面url
   return url;
 }
-// 请求封装
-const request = function (paraPath, para, paraRequest){
-  para['pagePath'] = pagesPath();
-  return new Promise((resolve, reject) => {
-    tt.request({
-      url: paraPath,
-      data: para,
-      method: paraRequest,
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function (res) {
-        // console.log(res)
-        resolve(res.data);
-      },
-      fail(error) {
-        reject(error);
-        var title = "出错啦";
-        var notice = "呀，网络出了问题";
-        var btntitle = '重新连接网络';
-        wx.navigateTo({
-          url: `../other_pages/error/error?title=${title}&notice=${notice}&btntitle=${btntitle}`,
-        })
-      },
-    })
-  })
-}
-// 请求出错封装
-const requestError = function(paraUserid,paraTitle,paraContent){
-  tt.request({
-    url: uploadErrorInfo,
-    data: {
-      userId: paraUserid,
-      smallRoutione: smallRoutione,
-      version: version,
-      pagePath: pagesPath(),
-      title: paraTitle,
-      content: paraContent
-    },
-    method: 'post',
-    header: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    success: function (res) {
-
-    },
-    fail(error) {
-
-    },
-  })
-}
 // 获取当前的时间
 const currentTime = function(val){
   let current = val;
@@ -87,17 +36,6 @@ const currentTime = function(val){
       returnStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
   }
   return returnStr
-}
-// 判断值是否存在
-const existence = function(val){
-  let existOne = val;
-  let existTwo = true;
-  if (existOne == undefined || existOne == null || existOne == ''){
-    existTwo = false;
-  }else{
-    existTwo = true;
-  }
-  return existTwo
 }
 //页面跳转
 const G = (_url, _reviewPage) => {
@@ -150,10 +88,6 @@ const G = (_url, _reviewPage) => {
   }
 }
 module.exports = {
-  pagesPath: pagesPath,
-  request: request,
-  requestError: requestError,
   currentTime: currentTime,
-  existence: existence,
   G,
 }

@@ -1,0 +1,57 @@
+@import "../../app.wxss";
+@import "../../component/template/template.wxss";
+.shutter{
+  width: 100%;
+  height:166rpx;
+  background:rgba(255,255,255,1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.shutter_page{
+  width: 91.47%;
+  height: 100%;
+}
+.shutter_left{
+  width: 76%;
+  height: 100%;
+}
+.shle_circle{
+  width: 10%;
+  height: 100%;
+}
+.shle_circle_content{
+  width:16rpx;
+  height:16rpx;
+  border-radius: 50%;
+  background:rgba(38,180,146,1);
+}
+.shle_words{
+  width: 90%;
+  height: 100%;
+  font-size:36rpx;
+  font-weight:500;
+  color:rgba(9,40,68,1);
+  line-height:50rpx;
+}
+.shutter_right{
+  width: 20%;
+  height: 100%;
+}
+.shri{
+  width:108rpx;
+  height:64rpx;
+  background:rgba(0,122,255,1);
+  border-radius:8px;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:40rpx;
+}
+.map_img{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 36rpx;
+  height: 58rpx;
+}

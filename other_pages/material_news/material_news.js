@@ -4,10 +4,11 @@ import { gender, stature, heavy } from "../../utils/materal.js";
 import { existence } from "../../utils/tools.js";
 import { currentTime, pagesPath, request, requestError } from '../../utils/util.js';
 import { edition, version, platform, smallRoutione } from '../../config.js';
+var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
 // 实例化API核心类
-// const qqmapsdk = new QQMapWX({
-//   key: 'ZC5BZ-V4DWU-XRMVI-2EMGE-A7B3V-BDFVA' // 必填
-// });
+const qqmapsdk = new QQMapWX({
+  key: 'YIJBZ-M2VWF-X54J5-NITUC-YM6BQ-6EBYA' // 必填
+});
 Page({
 
   /**
@@ -26,7 +27,7 @@ Page({
     longitudeNumber:0,
     dimensionNumber:0,
     locationWether:false,
-    locationWords:"",
+    locationWords:"请选择您的位置",
     occupationArr:['学生','教师','程序员'],
     selectoccupation:0,
     changeArr:['尽可能少的改变','接受适当的改变','是要适合，非常愿意改变'],
@@ -101,6 +102,10 @@ Page({
                 let logNumber = 0;
                 let latNumber = 0;
                 let locationStr = "";
+                wx.showLoading({
+                  mask:true,
+                  title: '数据加载中...',
+                })
                 geo();//获取位置信息
                 let numberFour = 0;
                 let placeHandel = setInterval(function () {
@@ -109,10 +114,14 @@ Page({
                     clearInterval(placeHandel);
                     logNumber = app.globalData.locationObject.location.lng;
                     latNumber = app.globalData.locationObject.location.lat;
-                    if (app.globalData.locationObjec.address && existence(app.globalData.locationObjec.address)) {
-                      locationStr = app.globalData.locationObjec.address;
+                    if (app.globalData.locationObject.address && existence(app.globalData.locationObject.address)) {
+                      locationStr = app.globalData.locationObject.address;
                     }
                   }
+                  wx.hideLoading({});
+                  wx.navigateTo({
+                    url: '../map/map',
+                  })
                 }, 100)
                 _this.setData({
                   locationWether: true,
@@ -217,10 +226,16 @@ Page({
               clearInterval(placeHandel);
               logNumber = app.globalData.locationObject.location.lng;
               latNumber = app.globalData.locationObject.location.lat;
-              if (app.globalData.locationObjec.address && existence(app.globalData.locationObjec.address)) {
-                locationStr = app.globalData.locationObjec.address;
+              if (app.globalData.locationObject.address && existence(app.globalData.locationObject.address)) {
+                locationStr = app.globalData.locationObject.address;
               }
             }
+            _this.setData({
+              longitudeNumber: logNumber,
+              dimensionNumber: latNumber,
+              locationWether: whetherStr,
+              locationWords: locationStr
+            })
             wx.hideLoading();
           }, 100)
         }else{
@@ -231,14 +246,7 @@ Page({
     _this.setData({
       sexArr: gender(),
       heightArr: stature(),
-      weightArr: heavy(),
-      longitudeNumber: logNumber,
-      dimensionNumber: latNumber,
-      locationWether: whetherStr,
-      locationWords: locationStr
-    })
-    wx.navigateTo({
-      url: '../map/map',
+      weightArr: heavy()
     })
   },
 

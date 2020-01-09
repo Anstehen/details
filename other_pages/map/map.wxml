@@ -1,0 +1,17 @@
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'地理位置',topHeight:statusBarHeight}}"/>
+<map id="map box_twelve" style="width:{{allWidth}}px;height:{{allHeight-statusBarHeight}}px;" latitude="{{acceptLatutide}}" longitude="{{acceptLongitude}}" bindregionchange="regionchange" scale="14" show-location="true" show-compass="true" enable-3D="true"></map>
+<cover-view class="shutter box_twelve">
+    <cover-view class="shutter_page box_thirteen">
+        <cover-view class="shutter_left box_one">
+            <cover-view class="shle_circle box_twelve">
+                <cover-view class="shle_circle_content"></cover-view>
+            </cover-view>
+            <cover-view class="shle_words box_three">{{acceptWords}}</cover-view>
+        </cover-view>
+        <cover-view class="shutter_right box_twelve">
+            <cover-view class="shri box_twelve" bindtap="determine">确定</cover-view>
+        </cover-view>
+    </cover-view>
+</cover-view>
+<!-- <cover-image class="map_img" src="{{enIcon}}"></cover-image> -->
