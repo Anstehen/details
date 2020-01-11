@@ -43,6 +43,7 @@ App({
     })
     // 清除缓存
     wx.clearStorageSync('userInformation');
+    wx.clearStorageSync('orderInfo');
   },
   onError(Error) {
     let title = "系统通知";

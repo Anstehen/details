@@ -1,5 +1,5 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
+import { existence } from '../../utils/tools.js';
 import { edition, version, platform, smallRoutione } from '../../config.js';
 Page({
 
@@ -49,15 +49,15 @@ Page({
     // console.log(wx.getStorageSync('userInformation'));
     let whetherLogin = false;
     let userInfoObj = {};
-    let getUserInfo = wx.getStorageSync('userInformation');
-    if (getUserInfo && existence(getUserInfo)){
-      whetherLogin = true;
-      userInfoObj = getUserInfo;
-    }
-    _this.setData({
-      personInfo: userInfoObj,
-      loginWhether: whetherLogin
-    })
+    // let getUserInfo = wx.getStorageSync('userInformation');
+    // if (getUserInfo && existence(getUserInfo)){
+    //   whetherLogin = true;
+    //   userInfoObj = getUserInfo;
+    // }
+    // _this.setData({
+    //   personInfo: userInfoObj,
+    //   loginWhether: whetherLogin
+    // })
   },
 
   /**

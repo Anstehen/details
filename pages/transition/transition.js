@@ -1,6 +1,6 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { existence } from '../../utils/tools.js';
+import { dataGet } from '../../utils/authorize.js';
 Page({
 
   /**
@@ -9,37 +9,6 @@ Page({
   data: {
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
     statusHeight: app.globalData.systemInfo.statusBarHeight,//状态高度
-    identity:1,//1:普通身份；2:设计师身份
-  },
-  // 页面加载数据展示
-  pageLoading:function(){
-    let _this = this;
-    let para = {
-      userId: wx.getStorageSync('userInfo').userId,
-      version: version,
-      stylistId: wx.getStorageSync('userInfo').userId,
-    }
-    request(`${selectStylistActive}`, para,post).then(res => {
-      // console.log(res);
-      if (res.code == 0) {
-        
-      } else {
-        requestError('userid','项目进入中转页面',`${selectStylistActiveTitle}`);
-        let title = "系统通知";
-        let notice = '出错啦';
-        wx.navigateTo({
-          url: '../../other_pages/error/error?title=' + title + "&notice=" + notice,
-        })
-      }
-    }).catch(error => {
-      requestError('userid', '项目进入中转页面', `${selectStylistActiveTitle}`);
-      var title = "系统通知";
-      var notice = "出错啦";
-      wx.navigateTo({
-        url: '../../other_pages/error/error?title=' + title + "&notice=" + notice,
-      })
-      return;
-    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -47,17 +16,42 @@ Page({
   onLoad: function (options) {
     let _this = this;
     // console.log(app.globalData.systemInfo);
-    setTimeout(function(){
-      if (_this.data.identity == 1){
+    // 查看是否授权
+    wx.getSetting({
+      success: function (ress) {
+        // console.log(ress);
+        if (ress.authSetting['scope.userInfo']) {//已授权
+          dataGet();
+          let numberFive = 0;
+          let getHnadle = setInterval(function () {
+            numberFive += numberFive;
+            if (existence(wx.getStorageSync("userInformation").openid) && numberFive <= 10000) {
+              clearInterval(getHnadle);
+              // identity:1是普通用户，2是设计师
+              // console.log(wx.getStorageSync("userInformation"));
+              if (wx.getStorageSync("userInformation").identity == 1){
+                wx.reLaunch({
+                  url: '../ordinary/ordinary',
+                })
+              } else if (wx.getStorageSync("userInformation").identity == 2){
+                wx.reLaunch({
+                  url: '../desigener/desigener',
+                })
+              }  
+            }
+          }, 100)
+        } else {//没有授权
+          wx.reLaunch({
+            url: '../ordinary/ordinary',
+          })
+        }
+      },
+      fail(error) {
         wx.reLaunch({
           url: '../ordinary/ordinary',
         })
-      } else if (_this.data.identity == 2){
-        wx.reLaunch({
-          url: '../desigener/desigener',
-        })
-      }    
-    },1666)
+      }
+    })
   },
 
   /**

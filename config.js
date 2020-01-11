@@ -18,8 +18,14 @@ var config = {
   openidTitle: `获取用户 openid 出错`,
   // 请求出错
   insertErrorInfo: `${master}/error/insert`,
+  // 添加用户
+  insertUser: `${master}/user/insert`,
+  insertUserTitle: `根据 openid 查询用户信息出错`,
   // 根据openid查询用户信息
   selectByOpenid: `${master}/user/selectByOpenid`,
   selectByOpenidTitle: `根据 openid 查询用户信息出错`,
+  // 微信支付
+  WeiXinPay: `${master}/WeiXinPay`,
+  WeiXinPayTitle: `根据 openid 查询用户信息出错`,
 }
 module.exports = config;
