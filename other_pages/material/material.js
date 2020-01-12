@@ -1,7 +1,8 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError, G} from '../../utils/util.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
-import data from 'data.js';
+import { existence } from '../../utils/tools.js';
+import { ask, askError } from '../../utils/demand.js';
+import { pictureUpload } from '../../utils/picture.js';
+import { edition, version, platform } from '../../config.js';
 Page({
 
   /**
@@ -10,6 +11,7 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    pictureOne:"",
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -32,8 +34,16 @@ Page({
               sizeType: ['original', 'compressed'],
               sourceType: ['album'],
               success: function (res) {
-                // console.log(res);
-
+                // console.log(res.tempFilePaths[0]);
+                wx.showLoading({
+                  mask:true,
+                  title: '图片上传中...',
+                })
+                console.log(pictureUpload(res.tempFilePaths[0]));
+                
+                _this.setData({
+                  pictureOne:pictureUpload(res.tempFilePaths[0])
+                })
               }
             })
           } else {

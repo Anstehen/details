@@ -1,6 +1,8 @@
 const app = getApp();
+import { existence } from '../../utils/tools.js';
+import { ask, askError } from '../../utils/demand.js';
 import { placeAnOrder } from '../../utils/order.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { edition, version, platform, smallRoutione,selectAll,selectAllTitle } from '../../config.js';
 Page({
 
   /**
@@ -22,18 +24,33 @@ Page({
   // 立即下单
   immediatelyClick:function(e){
     let _this = this;
-    wx.navigateTo({
-      url: '../../other_pages/material/material',
-    })
     if(_this.data.limitOrderTimes){
       placeAnOrder();
     }
+  },
+  // 页面加载数据展示
+  getDataInformation:function(e){
+    let _this = this;
+    let para = {}
+    ask("get", `${selectAll}`, para).then(res1 => {
+      // console.log(res1);
+      if (res1.code == 200) {
+       
+      } else {
+        wx.hideLoading();
+        askError(wx.getStorageSync('userInformation').userId, selectAllTitle, '数据请求出错');
+      }
+    }).catch(error => {
+      wx.hideLoading();
+      askError(wx.getStorageSync('userInformation').userId, selectAllTitle, '数据处理出错');
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _this = this;
+    _this.getDataInformation();
   },
 
   /**

@@ -27,5 +27,14 @@ var config = {
   // 微信支付
   WeiXinPay: `${master}/WeiXinPay`,
   WeiXinPayTitle: `根据 openid 查询用户信息出错`,
+  // 查询服务介绍
+  selectAll: `${master}/service/selectAll`,
+  selectAllTitle: `根据 openid 查询用户信息出错`,
+  // 添加订单
+  insertOrder: `${master}/order/insert`,
+  insertOrderTitle: `添加订单出错`,
+  // 图片上传接口
+  uploadFile: `${master}/uploadFile`,
+  uploadFileTitle: `图片上传接口出错`,
 }
 module.exports = config;

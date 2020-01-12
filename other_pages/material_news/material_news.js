@@ -9,6 +9,24 @@ var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
 const qqmapsdk = new QQMapWX({
   key: 'YIJBZ-M2VWF-X54J5-NITUC-YM6BQ-6EBYA' // 必填
 });
+let upstream = {
+  fullFacePhoto:"",//正面照
+  profilePhoto:"",//侧面照
+  hairPhoto:"",//发长照
+  fullBodyPicture:"",//全身照
+  sex:"",//性别
+  height:"",//身高
+  age:"",//年龄
+  weight:"",//体重
+  job:"",//职业
+  city:"",//省市区
+  address:"",//具体街道位置
+  degreeOfChange:"",//发行改变程度
+  lengthRequirement:"",//长度要求
+  hotDye:"",//是否烫染
+  clothing:"",//着装风格
+  takeCare:"",//打理习惯
+}
 Page({
 
   /**
@@ -195,6 +213,7 @@ Page({
       takechange: e.detail.value
     })
   },
+  // 
   /**
    * 生命周期函数--监听页面加载
    */
