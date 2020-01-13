@@ -2,7 +2,7 @@ const app = getApp();
 import { existence } from '../../utils/tools.js';
 import { ask, askError } from '../../utils/demand.js';
 import { placeAnOrder } from '../../utils/order.js';
-import { edition, version, platform, smallRoutione,selectAll,selectAllTitle } from '../../config.js';
+import { edition, version, platform, smallRoutione,information,informationTitle } from '../../config.js';
 Page({
 
   /**
@@ -31,18 +31,21 @@ Page({
   // 页面加载数据展示
   getDataInformation:function(e){
     let _this = this;
-    let para = {}
-    ask("get", `${selectAll}`, para).then(res1 => {
-      // console.log(res1);
-      if (res1.code == 200) {
-       
+    let para = {};
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("post", `${information}`, para).then(res => {
+      // console.log(res);
+      if (res.code == 0) {
+        _this.setData({
+          
+        })
       } else {
         wx.hideLoading();
-        askError(wx.getStorageSync('userInformation').userId, selectAllTitle, '数据请求出错');
+        askError(wx.getStorageSync('userInfo').userId, informationTitle, '数据请求出错');
       }
     }).catch(error => {
       wx.hideLoading();
-      askError(wx.getStorageSync('userInformation').userId, selectAllTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInfo').userId, informationTitle, '数据处理出错');
     })
   },
   /**

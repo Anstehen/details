@@ -20,6 +20,13 @@ Page({
     changeObject:null,
     enIcon:"../../image/202001092046end.png"
   },
+  // 顶部返回按钮点击
+  goBackClick: function (e) {
+    let _this = this;
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   // 地图变化时触发
   regionchange:function(e){
     let _this = this;

@@ -1,9 +1,9 @@
 const app = getApp();
 import { geo } from "../../utils/location.js";
 import { gender, stature, heavy } from "../../utils/materal.js";
-import { existence } from "../../utils/tools.js";
-import { currentTime, pagesPath, request, requestError } from '../../utils/util.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { existence } from '../../utils/tools.js';
+import { ask, askError } from '../../utils/demand.js';
+import { edition, version, platform,information,informationTitle } from '../../config.js';
 var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
 // 实例化API核心类
 const qqmapsdk = new QQMapWX({
@@ -46,17 +46,17 @@ Page({
     dimensionNumber:0,
     locationWether:false,
     locationWords:"请选择您的位置",
-    occupationArr:['学生','教师','程序员'],
+    occupationArr:[],
     selectoccupation:0,
-    changeArr:['尽可能少的改变','接受适当的改变','是要适合，非常愿意改变'],
+    changeArr:[],
     selectchange:0,
-    lengthArr:['好看就行','保留长度','希望剪短'],
+    lengthArr:[],
     lengthchange:0,
-    permArr:['不想烫发','不要改变太大','好看就行'],
+    permArr:[],
     permchange:0,
-    styleArr:['潮男','绅士','居家'],
+    styleArr:[],
     stylechange:0,
-    takeArr:['从不','偶尔','经常'],
+    takeArr:[],
     takechange:0,
   },
   // 顶部返回按钮点击
@@ -213,12 +213,102 @@ Page({
       takechange: e.detail.value
     })
   },
-  // 
+  // 确认提交资料
+  immediatelyClick:function(e){
+    let _this = this;
+    if(_this.data.pictureOne == ""){
+      wx.showToast({
+        icon:'none',
+        mask:true,
+        title: '为了给您推荐到店，请选择您的位置',
+      })
+      return
+    }
+    var para = {
+      
+    }
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("post", `${informationInsert}`, para).then(res => {
+      // console.log(res);
+      if (res.code == 0) {
+        
+      } else {
+        wx.hideLoading();
+        askError(wx.getStorageSync('userInfo').userId, informationInsertTitle, '数据请求出错');
+      }
+    }).catch(error => {
+      wx.hideLoading();
+      askError(wx.getStorageSync('userInfo').userId, informationInsertTitle, '数据处理出错');
+    })
+  },
+  // 页面加载数据展示
+  informationData:function(e){
+    let _this = this;
+    var para = {}
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("post", `${information}`, para).then(res => {
+      // console.log(res);
+      let arrOne = [];
+      let arrTwo = [];
+      let arrThree = [];
+      let arrFour = [];
+      let arrFive = [];
+      let arrSix = [];
+      if(res && existence(res)){
+        for(let i in res){
+          // 改变
+          if(res[i].category == 1 || res[i].category == '1'){
+            arrOne = arrOne.concat(res[i].context);
+          }
+          // 长度
+          if(res[i].category == 2 || res[i].category == '2'){
+            arrTwo = arrTwo.concat(res[i].context);
+          }
+          // 染发
+          if(res[i].category == 3 || res[i].category == '3'){
+            arrThree = arrThree.concat(res[i].context);
+          }
+          // 着装
+          if(wx.getStorageSync('userInfo').sex == 1 || wx.getStorageSync('userInfo').sex == '1'){//男
+            if(res[i].category == 4 || res[i].category == '4'){
+              arrFour = arrFour.concat(res[i].context);
+            }
+          }else{
+            if(res[i].category == 5 || res[i].category == '5'){
+              arrFour = arrFour.concat(res[i].context);
+            }
+          }
+          // 打理
+          if(res[i].category == 6 || res[i].category == '6'){
+            arrFive = arrFive.concat(res[i].context);
+          }
+        }
+      }
+      _this.setData({
+        occupationArr:['学生','教师','程序员'],
+        changeArr:arrOne,
+        lengthArr:arrTwo,
+        permArr:arrThree,
+        styleArr:arrFour,
+        takeArr:arrFive,
+      })
+      // if (res.code == 0) {
+        
+      // } else {
+      //   wx.hideLoading();
+      //   askError(wx.getStorageSync('userInfo').userId, informationTitle, '数据请求出错');
+      // }
+    }).catch(error => {
+      wx.hideLoading();
+      askError(wx.getStorageSync('userInfo').userId, informationTitle, '数据处理出错');
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let _this = this;
+    _this.informationData();
     wx.showLoading({
       mask:true,
       title: '数据加载中...',

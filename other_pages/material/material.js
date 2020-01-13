@@ -1,7 +1,6 @@
 const app = getApp();
 import { existence } from '../../utils/tools.js';
 import { ask, askError } from '../../utils/demand.js';
-import { pictureUpload } from '../../utils/picture.js';
 import { edition, version, platform } from '../../config.js';
 Page({
 
@@ -12,6 +11,9 @@ Page({
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
     pictureOne:"",
+    pictureTwo:"",
+    pictureThree:"",
+    pictureFour:"",
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -21,8 +23,10 @@ Page({
     })
   },
   // 正面照图片
-  choicePicture:function(){
+  choicePicture:function(e){
     let _this = this;
+    // console.log(e.currentTarget.dataset.different);
+    let differentNumber = e.currentTarget.dataset.different;
     wx.showActionSheet({
       itemList: ['从相册中选择', '拍照'],
       success(res) {
@@ -39,11 +43,27 @@ Page({
                   mask:true,
                   title: '图片上传中...',
                 })
-                console.log(pictureUpload(res.tempFilePaths[0]));
-                
-                _this.setData({
-                  pictureOne:pictureUpload(res.tempFilePaths[0])
-                })
+                // console.log(pictureUpload(res.tempFilePaths[0]));
+                pictureUpload(res.tempFilePaths[0],function(res2){
+                  // console.log(res2);
+                  if(differentNumber == 1 || differentNumber == '1'){
+                    _this.setData({
+                      pictureOne:res2
+                  }) 
+                  }else if(differentNumber == 2 || differentNumber == '2'){
+                    _this.setData({
+                      pictureTwo:res2
+                  }) 
+                  }else if(differentNumber == 3 || differentNumber == '3'){
+                    _this.setData({
+                      pictureThree:res2
+                  }) 
+                  }else if(differentNumber == 4 || differentNumber == '4'){
+                    _this.setData({
+                      pictureFour:res2
+                  }) 
+                  }
+                });
               }
             })
           } else {
@@ -68,6 +88,41 @@ Page({
   // 下一步点击
   nextStep:function(){
     let _this = this;
+    // if(_this.data.pictureOne == ""){
+    //   wx.showToast({
+    //     icon:'none',
+    //     mask:true,
+    //     title: '请上传正面照',
+    //   })
+    //   return
+    // }else if(_this.data.pictureTwo == ""){
+    //   wx.showToast({
+    //     icon:'none',
+    //     mask:true,
+    //     title: '请上传侧面照',
+    //   })
+    //   return
+    // }else if(_this.data.pictureThree == ""){
+    //   wx.showToast({
+    //     icon:'none',
+    //     mask:true,
+    //     title: '请上传发长照',
+    //   })
+    //   return
+    // }else if(_this.data.pictureFour == ""){
+    //   wx.showToast({
+    //     icon:'none',
+    //     mask:true,
+    //     title: '请上传全身照',
+    //   })
+    //   return
+    // }
+    app.globalData.pictureObj = {
+      imageOne:_this.data.pictureOne,
+      imageTwo:_this.data.pictureTwo,
+      imageThree:_this.data.pictureThree,
+      imageFour:_this.data.pictureFour,
+    }
     wx.navigateTo({
       url: '../material_news/material_news',
       success: function(res) {},
@@ -79,7 +134,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _this = this;
+    app.globalData.pictureObj = null;
   },
 
   /**

@@ -10,9 +10,9 @@
                 <image class="model_left_img" src="../../image/logo.png"></image>
             </view>
             <view class="model_right box_twelve">
-                <view class="model_right_page box_twelve" bindtap="choicePicture">
-                    <view class="model_right_text">请上传正面照</view>
-                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                <view class="model_right_page box_twelve"  data-different="1" bindtap="choicePicture">
+                    <view class="model_right_text" wx:if="{{pictureOne==''}}">请上传正面照</view>
+                    <image class="model_right_img" src="{{pictureOne}}" mode="widthFix" wx:if="{{pictureOne!=''}}"></image>
                 </view>
                 <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
             </view>
@@ -24,9 +24,9 @@
                 <image class="model_left_img" src="../../image/logo.png"></image>
             </view>
             <view class="model_right box_twelve">
-                <view class="model_right_page box_twelve" bindtap="choicePicture">
-                    <view class="model_right_text">请上传侧面照</view>
-                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                <view class="model_right_page box_twelve"  data-different="2" bindtap="choicePicture">
+                    <view class="model_right_text"  wx:if="{{pictureTwo==''}}">请上传侧面照</view>
+                    <image class="model_right_img" src="{{pictureTwo}}" mode="widthFix"  wx:if="{{pictureTwo!=''}}"></image>
                 </view>
                 <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
             </view>
@@ -38,9 +38,9 @@
                 <image class="model_left_img" src="../../image/logo.png"></image>
             </view>
             <view class="model_right box_twelve">
-                <view class="model_right_page box_twelve" bindtap="choicePicture">
-                    <view class="model_right_text">请上传发长照</view>
-                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                <view class="model_right_page box_twelve"  data-different="3" bindtap="choicePicture">
+                    <view class="model_right_text" wx:if="{{pictureThree==''}}">请上传发长照</view>
+                    <image class="model_right_img" src="{{pictureThree}}" mode="widthFix" wx:if="{{pictureThree!=''}}"></image>
                 </view>
                 <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
             </view>
@@ -52,9 +52,9 @@
                 <image class="model_left_img" src="../../image/logo.png"></image>
             </view>
             <view class="model_right box_twelve">
-                <view class="model_right_page box_twelve" bindtap="choicePicture">
-                    <view class="model_right_text">请上传全身照</view>
-                    <!-- <image class="model_right_img" src="" mode="widthFix"></image> -->
+                <view class="model_right_page box_twelve" data-different="4" bindtap="choicePicture">
+                    <view class="model_right_text" wx:if="{{pictureFour==''}}">请上传全身照</view>
+                    <image class="model_right_img" src="{{pictureFour}}" mode="widthFix" wx:if="{{pictureFour!=''}}"></image>
                 </view>
                 <image class="model_right_imgOne" src="../../image/202001072209camera.png" bindtap="choicePicture"></image>
             </view>

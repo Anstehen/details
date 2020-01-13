@@ -36,5 +36,11 @@ var config = {
   // 图片上传接口
   uploadFile: `${master}/uploadFile`,
   uploadFileTitle: `图片上传接口出错`,
+  // 用户上传资料标签
+  information: `${master}/information/selectAll`,
+  informationTitle: `图片上传接口出错`,
+  // 用户上传资料
+  informationInsert: `${master}/information/insert`,
+  informationInsertTitle: `图片上传接口出错`,
 }
 module.exports = config;

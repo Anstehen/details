@@ -54,5 +54,6 @@ App({
   },
   globalData: {
     systemInfo: null,//客户端设备信息
+    pictureObj:null,//用户资料上传的上传照片
   }
 })
