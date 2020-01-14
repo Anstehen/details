@@ -3,6 +3,43 @@
 <import src="../../component/template/template.wxml" />
 <template is="exist" data="{{title:'报告编辑',topHeight:statusBarHeight}}" />
 <view class="order box_eight" style="margin-top:{{statusBarHeight+44}}px">
+  <view class="faceImg">
+
+  </view>
+ <view class="container">
+    <view class="setTree" wx:for="{{setting}}">
+      <view class="listHeader">{{item.header}}</view>
+      <view class="settingItem" wx:for="{{item.questions}}" wx:for-item="obj" wx:for-index="i" data-path="/other_pages/editDetail/editDetail?msg={{obj.childquestionsStr}}&title={{obj.question}}&form={{httpData}}" bindtap="goPage">
+        <view class="settingItem_l">{{obj.question}}</view>
+        <view class="settingItem_r">
+          <!--回显类型-->
+          <view class="setEcho" wx:if="{{obj.echoType==1}}">
+            {{formData[questions[obj.childquestions[0]].field]||''}}
+          </view>
+          <view class="setEcho" wx:elif="{{obj.echoType==2}}">
+            <view wx:if="{{formData[questions[j].field] && formData[questions[j].field] !== 'false'}}" class="{{k>0?'optionView':''}}" wx:for="{{obj.childquestions}}" wx:for-item="j" wx:for-index="k">
+
+                {{formData[questions[j].field]||''}}
+            </view>
+
+          </view>
+          <view class="setEcho" wx:elif="{{obj.echoType==3}}">
+            <view class="optionView ">
+              {{formData[questions[obj.childquestions[0]].field]||''}}
+            </view>
+          </view>
+          <view class="setEcho" wx:else>
+              {{formData[questions[obj.childquestions[0]].field]||''}}
+          </view>
+
+          <view class="cose_right_img">
+            <image  src="../../image/enter.png" mode="widthFix"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
   <view class="orderInfoTit">
     脸型分析结果
   </view>

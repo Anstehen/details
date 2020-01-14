@@ -31,7 +31,7 @@ Page({
               // console.log(wx.getStorageSync("userInformation"));
               if (wx.getStorageSync("userInformation").identity == 1){
                 wx.reLaunch({
-                  url: '../ordinary/ordinary',
+                  url: '../desigener/desigener',
                 })
               } else if (wx.getStorageSync("userInformation").identity == 2){
                 wx.reLaunch({

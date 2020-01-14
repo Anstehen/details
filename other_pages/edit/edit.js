@@ -13,7 +13,26 @@ Page({
       id:1,
 
     },
+    setting: [
+      {
+        header: '脸型分析',
+        questions: [
+          {
+            question: '脸型',
+            echoType: 1,
+            childquestionsStr: '0,1',
+            childquestions: [0, 1]
+          },
+          {
+            question: '性格描述',
+            echoType: 0,
+            childquestionsStr: '2,3',
+            childquestions: [2, 3]
+          }
+        ]
+      },
 
+    ],
     faceTypeArr:['圆形脸','国字脸','瓜子脸','鞋拔子脸'],//脸型arr
     browTypeArr: ['偏短','正常','偏长'],//上庭arr
     form:{
@@ -46,7 +65,14 @@ Page({
       orderId: options.id
     })
   },
-
+  goPage(e){
+      var path = e.currentTarget.dataset.path || ''
+      if (path) {
+        wx.navigateTo({
+          url: path,
+        })
+      }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

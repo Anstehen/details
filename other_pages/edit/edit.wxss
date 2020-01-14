@@ -1,10 +1,18 @@
 @import "../../app.wxss";
 @import "../../component/template/template.wxss";
 page{
-  background: rgba(245, 246, 250, 1);
+  background: #fff;
+  width: 100%;
+  min-height: 100%;
 }
+
 view{
   box-sizing: border-box;
+}
+.faceImg{
+  width: 100%;
+  height: 350rpx;
+  background: pink;
 }
 .order{
   width: 100%;
@@ -61,4 +69,89 @@ view{
   padding: 20rpx;
   font-size: 28rpx;
   line-height: 1.5;  
+}
+
+
+.container {
+  width: 100%;
+  min-height: 100%;
+  display: block;
+  background: #f7f7f7;
+  padding-bottom: 100rpx;
+}
+
+.listHeader {
+  padding: 0 30rpx;
+  height: 60rpx;
+  background: #f7f7f7;
+  font-size: 26rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+
+}
+
+.settingItem {
+  padding: 0 30rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.settingItem:last-child{
+  border: none;
+}
+
+.settingItem_r {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+  max-width: 50%;
+  min-width: 50%;
+
+}
+
+.settingItem_r>view {
+  margin-left: 20rpx;
+}
+
+.setEcho {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 100%;
+  vertical-align: middle;
+  color: #999999;
+
+}
+
+.setEcho view {
+  display: inline-block;
+  margin-left: 16rpx;
+}
+
+.optionView {
+  /* flex: 1;
+  min-width: 0; */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cose_right_img{
+  width: 20rpx
+}
+.cose_right_img image{
+  width: 100%;
+  height: 100%;
+  vertical-align: baseline;
 }
