@@ -3,7 +3,7 @@ import { geo } from "../../utils/location.js";
 import { gender, stature, heavy } from "../../utils/materal.js";
 import { existence } from '../../utils/tools.js';
 import { ask, askError } from '../../utils/demand.js';
-import { edition, version, platform,information,informationTitle } from '../../config.js';
+import { edition, version, platform,information,informationTitle,updateOrder,updateOrderTitle } from '../../config.js';
 var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
 // 实例化API核心类
 const qqmapsdk = new QQMapWX({
@@ -73,6 +73,11 @@ Page({
     _this.setData({
       indexSex: e.detail.value
     })
+    if(e.detail.value == "男"){
+      upstream.sex = 1;
+    }else{
+      upstream.sex = 0;
+    }
   },
   // 年龄选择
   ageChange:function(e){
@@ -81,6 +86,7 @@ Page({
     _this.setData({
       selectAge: e.detail.value
     })
+    upstream.age = e.detail.value;
   },
   // 身高选择
   heightChange: function (e) {
@@ -89,6 +95,7 @@ Page({
     _this.setData({
       selecheight: e.detail.value
     })
+    upstream.height = e.detail.value;
   },
   // 体重选择
   weightChange: function (e) {
@@ -97,6 +104,7 @@ Page({
     _this.setData({
       selecweight: e.detail.value
     })
+    upstream.weight = e.detail.value;
   },
   // 获取地理位置
   getLocation:function(e){
@@ -141,6 +149,7 @@ Page({
                     url: '../map/map',
                   })
                 }, 100)
+                upstream.city = locationStr;
                 _this.setData({
                   locationWether: true,
                   longitudeNumber: logNumber,
@@ -164,6 +173,7 @@ Page({
     _this.setData({
       selectoccupation: e.detail.value
     })
+    upstream.city = _this.data.occupationArr[e.detail.value];
   },
   // 改变发型的程度
   changeChange: function (e) {
@@ -172,6 +182,7 @@ Page({
     _this.setData({
       selectchange: e.detail.value
     })
+    upstream.degreeOfChange = _this.data.changeArr[e.detail.value];
   },
   // 改长度的要求
   lengthChange: function (e) {
@@ -180,6 +191,7 @@ Page({
     _this.setData({
       lengthchange: e.detail.value
     })
+    upstream.lengthRequirement = _this.data.lengthArr[e.detail.value];
   },
   // 改烫发的要求
   permChange: function (e) {
@@ -188,6 +200,7 @@ Page({
     _this.setData({
       permchange: e.detail.value
     })
+    upstream.hotDye = _this.data.permArr[e.detail.value];
   },
   // 体重选择
   weightChange: function (e) {
@@ -196,6 +209,7 @@ Page({
     _this.setData({
       selecweight: e.detail.value
     })
+    upstream.weight = _this.data.weightArr[e.detail.value];
   },
   // 着装风格
   styleChange: function (e) {
@@ -204,6 +218,7 @@ Page({
     _this.setData({
       stylechange: e.detail.value
     })
+    upstream.clothing = _this.data.styleArr[e.detail.value];
   },
   // 打理习惯
   takeChange: function (e) {
@@ -212,6 +227,7 @@ Page({
     _this.setData({
       takechange: e.detail.value
     })
+    upstream.takeCare = _this.data.takeArr[e.detail.value];
   },
   // 确认提交资料
   immediatelyClick:function(e){
@@ -224,21 +240,23 @@ Page({
       })
       return
     }
-    var para = {
-      
-    }
+    wx.showLoading({
+      mask:true,
+      title: '资料上传中...',
+    })
+    var para = upstream;
     //发送code，encryptedData，iv到后台解码，获取用户信息
-    ask("post", `${informationInsert}`, para).then(res => {
+    ask("post", `${updateOrder}`, para).then(res => {
       // console.log(res);
-      if (res.code == 0) {
+      // if (res.code == 0) {
         
-      } else {
-        wx.hideLoading();
-        askError(wx.getStorageSync('userInfo').userId, informationInsertTitle, '数据请求出错');
-      }
+      // } else {
+      //   wx.hideLoading();
+      //   askError(wx.getStorageSync('userInfo').userId, updateOrderTitle, '数据请求出错');
+      // }
     }).catch(error => {
       wx.hideLoading();
-      askError(wx.getStorageSync('userInfo').userId, informationInsertTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInfo').userId, updateOrderTitle, '数据处理出错');
     })
   },
   // 页面加载数据展示
@@ -282,10 +300,20 @@ Page({
           if(res[i].category == 6 || res[i].category == '6'){
             arrFive = arrFive.concat(res[i].context);
           }
+          // 职业
+          if(res[i].category == 7 || res[i].category == '7'){
+            arrSix = arrSix.concat(res[i].context);
+          }
         }
       }
+      upstream.degreeOfChange = arrOne[0];
+      upstream.lengthRequirement = arrTwo[0];
+      upstream.hotDye = arrThree[0];
+      upstream.clothing = arrFour[0];
+      upstream.takeCare = arrFive[0];
+      upstream.job = arrSix[0];
       _this.setData({
-        occupationArr:['学生','教师','程序员'],
+        occupationArr:arrSix,
         changeArr:arrOne,
         lengthArr:arrTwo,
         permArr:arrThree,
@@ -309,6 +337,14 @@ Page({
   onLoad: function (options) {
     let _this = this;
     _this.informationData();
+    upstream.fullFacePhoto = app.globalData.pictureObj.imageOne;
+    upstream.profilePhoto = app.globalData.pictureObj.imageTwo;
+    upstream.hairPhoto = app.globalData.pictureObj.imageThree;
+    upstream.fullBodyPicture = app.globalData.pictureObj.imageFour;
+    upstream.sex = 0;
+    upstream.height = 110;
+    upstream.age = "1996-08";
+    upstream.weight = 50;
     wx.showLoading({
       mask:true,
       title: '数据加载中...',
@@ -344,7 +380,8 @@ Page({
               dimensionNumber: latNumber,
               locationWether: whetherStr,
               locationWords: locationStr
-            })
+            }) 
+            upstream.city = locationStr;
             wx.hideLoading();
           }, 100)
         }else{

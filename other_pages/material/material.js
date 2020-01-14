@@ -1,5 +1,6 @@
 const app = getApp();
 import { existence } from '../../utils/tools.js';
+import { pictureUpload } from '../../utils/picture.js';
 import { ask, askError } from '../../utils/demand.js';
 import { edition, version, platform } from '../../config.js';
 Page({
@@ -88,35 +89,35 @@ Page({
   // 下一步点击
   nextStep:function(){
     let _this = this;
-    // if(_this.data.pictureOne == ""){
-    //   wx.showToast({
-    //     icon:'none',
-    //     mask:true,
-    //     title: '请上传正面照',
-    //   })
-    //   return
-    // }else if(_this.data.pictureTwo == ""){
-    //   wx.showToast({
-    //     icon:'none',
-    //     mask:true,
-    //     title: '请上传侧面照',
-    //   })
-    //   return
-    // }else if(_this.data.pictureThree == ""){
-    //   wx.showToast({
-    //     icon:'none',
-    //     mask:true,
-    //     title: '请上传发长照',
-    //   })
-    //   return
-    // }else if(_this.data.pictureFour == ""){
-    //   wx.showToast({
-    //     icon:'none',
-    //     mask:true,
-    //     title: '请上传全身照',
-    //   })
-    //   return
-    // }
+    if(_this.data.pictureOne == ""){
+      wx.showToast({
+        icon:'none',
+        mask:true,
+        title: '请上传正面照',
+      })
+      return
+    }else if(_this.data.pictureTwo == ""){
+      wx.showToast({
+        icon:'none',
+        mask:true,
+        title: '请上传侧面照',
+      })
+      return
+    }else if(_this.data.pictureThree == ""){
+      wx.showToast({
+        icon:'none',
+        mask:true,
+        title: '请上传发长照',
+      })
+      return
+    }else if(_this.data.pictureFour == ""){
+      wx.showToast({
+        icon:'none',
+        mask:true,
+        title: '请上传全身照',
+      })
+      return
+    }
     app.globalData.pictureObj = {
       imageOne:_this.data.pictureOne,
       imageTwo:_this.data.pictureTwo,

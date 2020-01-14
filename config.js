@@ -40,7 +40,13 @@ var config = {
   information: `${master}/information/selectAll`,
   informationTitle: `图片上传接口出错`,
   // 用户上传资料
-  informationInsert: `${master}/information/insert`,
-  informationInsertTitle: `图片上传接口出错`,
+  updateOrder: `${master}/order/update`,
+  updateOrderTitle: `图片上传接口出错`,
+  // 查询设计师的信息
+  selectByIdentity: `${master}/user/selectByIdentity`,
+  selectByIdentityTitle: `图片上传接口出错`,
+  // 查询服务介绍
+  selectAllService: `${master}/service/selectAll`,
+  selectAllServiceTitle: `查询服务介绍出错`,
 }
 module.exports = config;
