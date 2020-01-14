@@ -1,0 +1,136 @@
+<!--other_pages/editDetail/editDetail.wxml-->
+<wxs src="../../app.wxs" module="gloval" />
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml" />
+<template is="exist" data="{{title:'报告编辑',topHeight:statusBarHeight}}" />
+<view class="order box_eight" style="margin-top:{{statusBarHeight+44}}px">
+
+  <view class="container">
+    <view class="questionsBox" wx:for="{{questions}}">
+      <view class="questionItem {{item.type}}" wx:if="{{item.type == 'date'}}">
+        <view class="question_l">
+          {{item.question}}
+        </view>
+        <view class="question_r">
+          <picker mode="date" value="{{form[item.field]}}" data-field="{{item.field}}" end="{{nowDate}}" bindchange="bindDateChange">
+            <view class="picker">
+              {{form[item.field]||'暂无'}}
+              <icon class="icon-ptq_right_ico" style="font-size:22rpx;"></icon>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="questionItem {{item.type}}" wx:if="{{item.type == 'date1'}}">
+        <view class="question_l">
+          {{item.question}}
+        </view>
+        <view class="question_r">
+          <picker mode="date" value="{{form[item.field]}}" data-field="{{item.field}}" end="{{nowDate}}" bindchange="bindDate1Change">
+            <view class="picker">
+              {{form[item.field] ||'暂无'}}
+              <icon class="icon-ptq_right_ico" style="font-size:22rpx;"></icon>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="questionItem {{item.type}}" wx:if="{{item.type == 'time'}}">
+        <view class="question_l">
+          {{item.question}}
+        </view>
+        <view class="question_r">
+          <picker mode="time" value="{{form[item.field]}}" data-field="{{item.field}}" end="{{nowDate}}" bindchange="bindDate1Change">
+            <view class="picker">
+              {{form[item.field] ||'00:00'}}
+              <icon class="icon-ptq_right_ico" style="font-size:22rpx;"></icon>
+
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="questionItem {{item.type}}" wx:if="{{item.type == 'radio'}}">
+        <view class="questionTitle">{{item.question}}（单选）</view>
+        <view class="optionsBox">
+          <view class="optionCheck" wx:for="{{item.options}}" wx:for-item="obj" wx:for-index="i">
+            <view class="optionCheck" wx:if="{{obj.type == 1}}" data-id="{{obj.id}}" data-field="{{item.field}}" bindtap="radioCheck">
+              <view class="icon" wx:if="{{!form[item.field][obj.id]}}">
+                <icon class="icon-pq-circle sel-img-noselected" style="display:flex"></icon>
+              </view>
+              <view class="icon sel-img-selected" wx:else>
+                <icon class="icon-pq-smrzt sel-img-selected" style="display:flex"></icon>
+              </view>
+              <view class="optionText">{{obj.text}}</view>
+            </view>
+            <view class="optionCheck" wx:if="{{obj.type == 2}}" data-id="{{obj.id}}" data-field="{{item.field}}" catchtap="radioCheck1">
+              <view class="icon" wx:if="{{!form[item.field][obj.id]}}">
+                <icon class="icon-pq-circle sel-img-noselected" style="display:flex"></icon>
+              </view>
+              <view class="icon sel-img-selected" wx:else>
+                <icon class="icon-pq-smrzt sel-img-selected" style="display:flex"></icon>
+              </view>
+              <view class="optionText">{{obj.text}}
+                <input value="{{others[item.field]?others[item.field][obj.id].content:''}}" catchtap="{{form[item.field][obj.id]?'noTap':'radioCheck1'}}" bindinput="setCont" data-id="{{obj.id}}" data-field="{{item.field}}" type="{{obj.contentType?obj.contentType:text}}"
+                  maxlength="{{obj.maxlength}}"></input>{{obj.text2}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="questionItem {{item.type}}" wx:if="{{item.type == 'select' && (!item.condition1?true:form[item.condition1][item.condition2])}}">
+        <view class="questionTitle">{{item.question}}（多选）</view>
+        <view class="optionsBox">
+          <view class="optionCheck" wx:for="{{item.options}}" wx:for-item="obj" wx:for-index="i">
+            <view class="optionCheck" wx:if="{{obj.type == 1}}" data-id="{{obj.id}}" data-field="{{item.field}}" bindtap="selectCheck">
+              <view class="icon" wx:if="{{!form[item.field][obj.id]}}">
+                <icon class="icon-pq-circle sel-img-noselected" style="display:flex"></icon>
+              </view>
+              <view class="icon sel-img-selected" wx:else>
+                <icon class="icon-pq-smrzt sel-img-selected" style="display:flex"></icon>
+              </view>
+              <view class="optionText">{{obj.text}}</view>
+            </view>
+            <view class="optionCheck" wx:if="{{obj.type == 2}}" data-id="{{obj.id}}" data-field="{{item.field}}" catchtap="selectCheck1">
+              <view class="icon" wx:if="{{!form[item.field][obj.id]}}">
+                <icon class="icon-pq-circle sel-img-noselected" style="display:flex"></icon>
+              </view>
+              <view class="icon sel-img-selected" wx:else>
+                <icon class="icon-pq-smrzt sel-img-selected" style="display:flex"></icon>
+              </view>
+              <view class="optionText">{{obj.text}}
+                <input data-val="{{form[item.field][obj.id]?'':'selectCheck1' }}" value="{{others[item.field]?others[item.field][obj.id].content:''}}" catchtap="{{form[item.field][obj.id]?'noTap':'selectCheck1'}}" bindinput="setCont" data-id="{{obj.id}}"
+                  data-field="{{item.field}}" type="{{obj.contentType?obj.contentType:text}}" maxlength="{{obj.maxlength}}"></input>{{obj.text2}}</view>
+            </view>
+            <view class="optionCheck" wx:if="{{obj.type == 3}}" data-id="{{obj.id}}" data-field="{{item.field}}" bindtap="selectCheck2">
+              <view class="icon" wx:if="{{!form[item.field][obj.id]}}">
+                <icon class="icon-pq-circle sel-img-noselected" style="display:flex"></icon>
+              </view>
+              <view class="icon sel-img-selected" wx:else>
+                <icon class="icon-pq-smrzt sel-img-selected" style="display:flex"></icon>
+              </view>
+              <view class="optionText">{{obj.text}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="questionItem {{item.type}}" wx:if="{{item.type == 'input'}}">
+        <view class="questionTitle">{{item.question}}</view>
+        <view class="optionsBox">
+          <view class="optionText">
+            {{item.text}}
+            <input value="{{form[item.field]}}" bindinput="setText" data-field="{{item.field}}" type="{{item.type||'text'}}" maxlength="{{item.maxlength}}"></input>
+            {{item.text2}}
+          </view>
+        </view>
+      </view>
+
+      <view class="questionItem {{item.type}}" wx:if="{{item.type == 'text'}}">
+        <view class="questionTitle">{{item.question}}</view>
+        <view class="textareaBox">
+          <textarea value="{{form[item.field]}}" bindinput="setText" data-field="{{item.field}}" maxlength="255"></textarea>
+
+        </view>
+      </view>
+
+    </view>
+    <button class="success_over_box" bindtap="submit">提 交</button>
+  </view>
+</view>

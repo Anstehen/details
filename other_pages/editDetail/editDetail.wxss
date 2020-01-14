@@ -1,0 +1,102 @@
+/* other_pages/editDetail/editDetail.wxss */
+@import "../../app.wxss";
+@import "../../component/template/template.wxss";
+page{
+  background: #fff;
+  width: 100%;
+  min-height: 100%;
+}
+.container{
+  width: 100%;
+  min-height: 100%;
+  display: block;
+  background: #fff;
+  font-size: 28rpx;
+  color: #222;
+}
+[class*=icon-]{
+  color: #81D8D1;
+}
+[class*=icon-].icon-ptq_right_ico{
+  color: #666;
+  margin-left: 10rpx;
+}
+.questionItem.date,.questionItem.date1,.questionItem.time{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  padding: 0 30rpx;
+}
+
+.question_r{
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+.question_r picker{
+  width: 100%;
+  
+}
+.picker{
+  text-align: right;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+.questionTitle{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.optionsBox{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+.optionCheck{
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+}
+.optionText{
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.input .optionText{
+  padding: 20rpx;
+
+}
+.optionText input{
+  border-bottom: 1rpx solid #999;
+  width: 100rpx;
+  padding-left: 8rpx;
+  text-align: center;
+}
+
+.success_over_box {
+  margin-top: 100rpx;
+  width: 490rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  color: #fff;
+  line-height: 88rpx;
+  background:linear-gradient(360deg,rgba(102,204,196,1) 0%,rgba(129,216,209,1) 100%);
+ box-shadow:0px 4px 8px 0px rgba(72,155,148,0.45);
+  border: none;
+  font-size: 36rpx;
+}
+.textareaBox{
+  padding: 20rpx;
+}
+.textareaBox textarea{
+  padding: 20rpx;
+  background: #f7f7f7;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
