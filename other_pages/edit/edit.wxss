@@ -1,4 +1,3 @@
-@import "../../app.wxss";
 @import "../../component/template/template.wxss";
 page{
   background: #fff;
@@ -6,152 +5,28 @@ page{
   min-height: 100%;
 }
 
-view{
-  box-sizing: border-box;
+
+
+
+
+.material{
+  width: 166rpx;
+  height: 66rpx;
+  background:rgba(255, 255, 255, 1);
+  box-shadow:0rpx 4rpx 10rpx 0rpx rgba(169,169,169,0.5);
+  position: fixed;
+  top: 206rpx;
+  right: 0;
+  border-radius: 36rpx 0 0 36rpx;
 }
-.faceImg{
-  width: 100%;
-  height: 350rpx;
-  background: pink;
+.material_img{
+  width: 32rpx;
+  height: 32rpx;
 }
-.order{
-  width: 100%;
-  height: auto;
-  background: #fff;
-  color: #222;
-}
-
-.orderInfoTit{
-  line-height: 100rpx;
-  font-size: 32rpx;
-  padding: 0 30rpx;
-  font-weight: 500;
-}
-.textTitle{
-  font-weight: 500;
-  line-height: 80rpx;
-  font-size: 32rpx;
-
-}
-.faceType{
-  display: flex;
-  justify-content: flex-end;
-  font-size: 28rpx;
-  align-items: center;
-  padding: 0 30rpx;
-  height: 80rpx;
-}
-
-.faceTypeLabel{
-  color: #999;
-}
-
-.faceTypeCont{
-  width: 150rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  text-align: center;
-  border-radius: 30rpx;
-  background: #d7d7d7;
-}
-
-.textBox{
-  padding: 0 30rpx;
-  width: 100%;
-
-}
-
-.textArea>textarea{
-  width: 100%;
-  display: block;
-  box-sizing: border-box;
-  background: #d7d7d7;
-  padding: 20rpx;
-  font-size: 28rpx;
-  line-height: 1.5;  
-}
-
-
-.container {
-  width: 100%;
-  min-height: 100%;
-  display: block;
-  background: #f7f7f7;
-  padding-bottom: 100rpx;
-}
-
-.listHeader {
-  padding: 0 30rpx;
-  height: 60rpx;
-  background: #f7f7f7;
-  font-size: 26rpx;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-
-}
-
-.settingItem {
-  padding: 0 30rpx;
-  height: 80rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 28rpx;
-  background: #fff;
-  border-bottom: 1rpx solid #f7f7f7;
-}
-
-.settingItem:last-child{
-  border: none;
-}
-
-.settingItem_r {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 50%;
-  max-width: 50%;
-  min-width: 50%;
-
-}
-
-.settingItem_r>view {
-  margin-left: 20rpx;
-}
-
-.setEcho {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex: 1;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  height: 100%;
-  vertical-align: middle;
-  color: #999999;
-
-}
-
-.setEcho view {
-  display: inline-block;
-  margin-left: 16rpx;
-}
-
-.optionView {
-  /* flex: 1;
-  min-width: 0; */
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.cose_right_img{
-  width: 20rpx
-}
-.cose_right_img image{
-  width: 100%;
-  height: 100%;
-  vertical-align: baseline;
+.material_text{
+  margin-left: 6rpx;
+  font-size:22rpx;
+  font-weight:500;
+  color:rgba(129,132,145,1);
+  line-height:36rpx;
 }

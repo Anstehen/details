@@ -11,7 +11,7 @@
                   <text class="cpon_left_textOne">订单编号:</text>
                   <text class="cpon_left_textTwo">1234567890</text>
               </view>
-              <view class="cpon_lright box_five" bindtap="goPage" data-path="/other_pages/reportDetail/reportDetail">
+              <view class="cpon_lright box_five" bindtap="goPage">
                   <text class="cpon_lright_text">查看报告</text>
                   <image class="cpon_lright_img" src="../../image/20191118triangleRight.png"></image>
               </view>
@@ -27,7 +27,7 @@
             </view>
             <view class="cards_page_three box_fifteen">
                 <view class="cpth_concat box_twelve">联系设计师</view>
-                <view class="cpth_look box_twelve" bindtap="goPage" data-path="/other_pages/reportDetail/reportDetail">查看报告</view>
+                <view class="cpth_look box_twelve" bindtap="goPage">查看报告</view>
             </view>
         </view>  
     </view>

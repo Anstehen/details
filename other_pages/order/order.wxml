@@ -67,7 +67,7 @@
         <text class="function_one_text">编 辑</text>
     </view>
 </view>
-<view class="look box_five">
+<view class="look box_five" bindtap="lookReport">
     <image class="look_img" src="../../image/201911202303look.png"></image>
     <text class="look_text">查看报告</text>
 </view>

@@ -1,6 +1,6 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { ask, askError } from '../../utils/demand.js';
+import { edition, version, platform, smallRoutione,selectByDesigneOpenid,selectByDesigneOpenidTitle } from '../../config.js';
 Page({
 
   /**
@@ -47,12 +47,34 @@ Page({
       url: '../../other_pages/order/order',
     })
   },
+  // 页面初始数据
+  initialData:function(e){
+    let _this = this;
+    var para = {
+      pageNum: 1,
+      pagesize: 100,
+      designeOpenid: wx.getStorageSync("userInformation").openid,
+    }
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("post", `${selectByDesigneOpenid}`, para).then(res => {
+      // console.log(res);
+      if (res.code == 0) {
+        
+      } else {
+        wx.hideLoading();
+        askError("", selectByDesigneOpenidTitle, '数据请求出错');
+      }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", selectByDesigneOpenidTitle, '数据处理出错');
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let _this = this;
-
+    _this.initialData();//页面初始数据
   },
 
   /**

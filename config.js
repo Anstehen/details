@@ -48,5 +48,8 @@ var config = {
   // 查询服务介绍
   selectAllService: `${master}/service/selectAll`,
   selectAllServiceTitle: `查询服务介绍出错`,
+  // 设计师端根据设计师的openid查询出订单
+  selectByDesigneOpenid: `${master}/order/selectByDesigneOpenid`,
+  selectByDesigneOpenidTitle: `设计师端根据设计师的openid查询出订单出错`,
 }
 module.exports = config;

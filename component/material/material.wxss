@@ -1,0 +1,80 @@
+@import "../../app.wxss";
+.material{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 666;
+}
+.material_one{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.39);
+}
+.material_two{
+  width: 91.47%;
+  height: auto;
+  position: absolute;
+  background:rgba(255,255,255,1);
+}
+.material_two_page{
+  width: 96%;
+  height: auto;
+  margin-left: 2%;
+  position: relative;
+}
+.material_two_page_img{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+}
+.primary{
+  width: 100%;
+  height: auto;
+  margin-top: 36rpx;
+}
+.primary_words{
+  font-size:32rpx;
+  font-weight:600;
+  color:rgba(53,59,80,1);
+  line-height:44rpx;
+}
+.primary_page{
+  width:200rpx;
+  height:200rpx;
+  background:rgba(235,236,240,1);
+  border-radius:11rpx;
+  opacity:0.79;
+  overflow: hidden;
+  margin-top: 16rpx;
+}
+.primary_page_img{
+  width:200rpx;
+  height:auto;
+}
+.othres{
+  width: 100%;
+  height: auto;
+  margin-top: 36rpx;
+}
+.mtp_model{
+  margin-top: 12rpx;
+}
+.mtp_model_title{
+  font-size:28rpx;
+  font-weight:bold;
+  color:rgba(74,74,74,1);
+  line-height:40rpx;
+}
+.mtp_model_content{
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(96,105,114,1);
+  line-height:40rpx;
+}
+.mtp_message{
+  width: 100%;
+  height: 36rpx;
+}

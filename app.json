@@ -15,14 +15,14 @@
         "authorize/authorize",
         "leisure/leisure",
         "report/report",
-        "reportDetail/reportDetail",
         "service/service",
         "order/order",
         "edit/edit",
         "editDetail/editDetail",
         "material/material",
         "material_news/material_news",
-        "map/map"
+        "map/map",
+        "presentation/presentation"
       ]
     }
   ],

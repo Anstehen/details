@@ -15,15 +15,36 @@ Page({
   onGotUserInfo:function(e){
     let _this = this;
     // console.log(e);
-    lookempower(e,1);
     wx.showLoading({
       mask:true,
       title: '数据加载中...',
     })
-    // wx.reLaunch({
-    //   url: `../../${_this.data.acceptPath}`,
-    // })
-    // wx.setStorageSync('userInformation', e)
+    lookempower(e,1,function(res){
+      // console.log(res);
+      wx.hideLoading();
+      if(res.status == 200){
+        if (res.data.user.identity == 1 || res.data.user.identity == '1'){
+          console.log(res.data.user)
+          wx.reLaunch({
+            url: '../../pages/own/own',
+          })
+        } else if (res.data.user.identity == 2 || res.data.user.identity == '2'){
+          wx.reLaunch({
+            url: '../../pages/mine/mine',
+          })
+        }else{
+          wx.showToast({
+            icon:'none',
+            title: '身份识别出错！请稍后再试',
+          })
+        }
+      }else{
+        wx.showToast({
+          icon:'none',
+          title: '网络出错了！请稍后再试',
+        })
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载

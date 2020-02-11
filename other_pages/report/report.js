@@ -27,9 +27,8 @@ Page({
   },
 //页面跳转
   goPage(e){
-    const path = e.currentTarget.dataset.path;
     wx.navigateTo({
-      url: path,
+      url: "../presentation/presentation",
     })
   },
   /**

@@ -6,10 +6,10 @@
 <view class="desigener box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="card box_five">
       <view class="card_picture box_twelve" bindtap="{{!loginWhether?'onGotUserInfo':''}}">
-          <image class="card_picture_img" src="{{!loginWhether?'../../image/default.png':personInfo.detail.userInfo.avatarUrl}}" mode="widthFix"></image>
+          <image class="card_picture_img" src="{{!loginWhether?'../../image/default.png':personInfo.userImage}}" mode="widthFix"></image>
       </view>
       <view class="card_words box_eight" bindtap="{{!loginWhether?'onGotUserInfo':''}}">
-          <text class="card_words_textOne">{{!loginWhether?defaultNeme:personInfo.detail.userInfo.nickName}}</text>
+          <text class="card_words_textOne">{{!loginWhether?defaultNeme:personInfo.userName}}</text>
           <text class="card_words_textTwo">{{!loginWhether?defaultLevel:identity}}</text>
       </view>
     </view>

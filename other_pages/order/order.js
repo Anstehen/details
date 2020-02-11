@@ -18,6 +18,13 @@ Page({
       delta: 1
     })
   },
+  // 查看报告
+  lookReport:function(e){
+    let _this = this;
+    wx.navigateTo({
+      url: '../presentation/presentation',
+    })
+  },
   // 编辑点击
   editClick:function(e){
     let _this = this;

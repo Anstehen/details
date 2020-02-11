@@ -20,7 +20,7 @@ page{
   border: 2rpx solid rgba(233, 190, 136, 1);
 }
 .card_picture_img{
-  width: 100rpx;
+  width: 100%;
   height: auto;
 }
 .card_words{

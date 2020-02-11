@@ -70,3 +70,11 @@
   flex-direction: row-reverse;
   align-items: center;
 }
+/* 超出两行用省略号代替 */
+.spill_over{ 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

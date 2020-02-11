@@ -18,6 +18,7 @@
     </view>
 </view>
 <view class="desigener box_eight" style="margin-top:{{statusBarHeight+44}}px">
+    <view class="clearance"></view>
     <view class="cards box_twelve" wx:for="{{orderArr}}" wx:for-item="item" wx:for-index="index" wx:key="order">
         <view class="cards_model box_eight" bindtap="orderClick">
             <view class="camo_one box_six">
