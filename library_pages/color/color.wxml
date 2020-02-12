@@ -1,0 +1,21 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'发色库',topHeight:statusBarHeight}}"/>
+<view class="color box_eight" style="margin-top:{{statusBarHeight+44}}px">
+    <view class="package box_seven">
+        <view class="package_model selection box_twelve" bindtap="selectClick">
+            <image class="package_model_img" src="{{}}" mode="widthFix"></image>
+            <view class="package_model_delete">
+                <image class="pmd_img" src="../../image/cancle.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="message"></view>
+</view>
+<!-- 功能按钮 -->
+<view class="function box_twelve">
+    <view class="function_page box_twelve" bindtap="determineClick">
+        <text class="function_page_text">确 定</text>
+    </view>
+</view>

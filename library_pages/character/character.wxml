@@ -1,0 +1,21 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'性格描述',topHeight:statusBarHeight}}"/>
+<view class="character box_eight" style="margin-top:{{statusBarHeight+44}}px">
+    <view class="words">
+        <text class="words_text">性格描述:</text>
+    </view>
+    <view class="narration box_twelve">
+        <view class="narration_page box_twelve">
+            <textarea class="narration_page_text" placeholder="请输入性格描述" placeholder-class="napat_place" value="{{faceValue}}" maxlength="366" bindinput="textareaInput"></textarea>
+        </view>
+    </view>
+    <view class="message"></view>
+</view>
+<!-- 功能按钮 -->
+<view class="function box_twelve">
+    <view class="function_page box_twelve" bindtap="determineClick">
+        <text class="function_page_text">确 定</text>
+    </view>
+</view>

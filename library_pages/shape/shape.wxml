@@ -1,0 +1,29 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'脸型',topHeight:statusBarHeight}}"/>
+<view class="shape box_eight" style="margin-top:{{statusBarHeight+44}}px">
+    <view class="words box_three">
+        <view class="words_text">脸型:</view>
+        <view class="words_picker">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{faceShapeArray}}">
+              <view class="words_picker_text box_twelve">
+                <text>{{faceShapeArray[index]}}</text>
+                <image class="wpt_img" src="../../image/down.png"></image>
+              </view>
+            </picker>
+        </view>
+    </view>
+    <view class="narration box_twelve">
+        <view class="narration_page box_twelve">
+            <textarea class="narration_page_text" placeholder="请输入脸型介绍" placeholder-class="napat_place" value="{{faceValue}}" maxlength="366" bindinput="textareaInput"></textarea>
+        </view>
+    </view>
+    <view class="message"></view>
+</view>
+<!-- 功能按钮 -->
+<view class="function box_twelve">
+    <view class="function_page box_twelve" bindtap="determineClick">
+        <text class="function_page_text">确 定</text>
+    </view>
+</view>

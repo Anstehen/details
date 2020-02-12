@@ -1,0 +1,63 @@
+@import "../../component/template/template.wxss";
+page{
+  background: rgba(255, 255, 255, 1);
+}
+.color{
+  width: 100%;
+  height: auto;
+  background:rgba(247, 248, 252, 1);
+}
+.package{
+  width: 100%;
+  height: auto;
+}
+.package_model{
+  width: 156rpx;
+  height: 400rpx;
+  margin: 20rpx;
+  position: relative;
+}
+.selection{
+  border: 2rpx solid rgba(255, 115, 117, 1);
+}
+.package_model_img{
+  width: 156rpx;
+  height: auto;
+}
+.package_model_delete{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+}
+.pmd_img{
+  width: 36rpx;
+  height: 36rpx;
+}
+.message{
+  width: 100%;
+  height: 166rpx;
+}
+.function{
+  width: 100%;
+  height: 142rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx -2rpx 16rpx 0rpx rgba(222,223,227,0.41);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.function_page{
+  width: 91.47%;
+  height: 86rpx;
+  background: rgba(255, 72, 125, 0.6);
+  border-radius: 36rpx;
+}
+.function_page_text{
+  margin-left: 12rpx;
+  font-size:32rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:44rpx;
+}

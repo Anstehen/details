@@ -1,9 +1,179 @@
-<wxs src="../../app.wxs" module="gloval" />
+<wxs src="../../app.wxs" module="gloval"/>
 <!-- 顶部导航栏 -->
-<import src="../../component/template/template.wxml" />
-<template is="exist" data="{{title:'报告编辑',topHeight:statusBarHeight}}" />
-<view class="order box_eight" style="margin-top:{{statusBarHeight+44}}px">
-
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'报告展示',topHeight:statusBarHeight}}"/>
+<view class="presentation box_eight" style="margin-top:{{statusBarHeight+44}}px">
+    <view class="portrait box_twelve">
+        <image class="portrait_img" src="../../image/logo.png" mode="widthFix"></image>
+    </view>
+    <view class="model box_five">
+        <image class="model_img" src="../../image/201911212308service.png"></image>
+        <text  class="model_text">脸型分析</text>
+    </view>
+    <view class="shape box_eight">
+        <view class="shape_title">脸型：<text class="shape_title_words">方圆型脸</text></view>
+        <view class="shape_content box_eight">
+            <text class="shape_content_text" wx:for="{{shapeArr}}" wx:for-item="item" wx:key="shape">{{item}}</text>
+        </view>
+    </view>
+    <view class="edit box_twelve">
+        <view class="edit_page box_five" bindtap="faceShapgeClick">
+            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <text class="edit_page_text">修改编辑</text>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="shape box_eight">
+        <view class="shape_title">性格描述:</view>
+        <view class="shape_content box_eight">
+            <text class="shape_content_text">方形脸的女生：果断、刚毅、正直，拥有很高的智慧，以及敏锐的观察力，甚至具有超乎常人的第六感。意志非常的坚强，做事不管遇到什么困难都不会退缩，都会坚持不懈，不达目的誓不罢休。</text>
+        </view>
+    </view>
+    <view class="edit box_twelve">
+        <view class="edit_page box_five" bindtap="characterClick">
+            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <text class="edit_page_text">修改编辑</text>
+        </view>
+    </view>
+    <view class="line"></view>
+        <view class="shape box_eight">
+        <view class="shape_title">上庭正常:</view>
+        <view class="shape_content box_eight">
+            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
+        </view>
+    </view>
+    <view class="shape box_eight">
+        <view class="shape_title">中庭柔美:</view>
+        <view class="shape_content box_eight">
+            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
+        </view>
+    </view><view class="shape box_eight">
+        <view class="shape_title">下庭正常:</view>
+        <view class="shape_content box_eight">
+            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
+        </view>
+    </view>
+    <view class="edit box_twelve">
+        <view class="edit_page box_five" bindtap="courtClick">
+            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <text class="edit_page_text">修改编辑</text>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="shape box_eight">
+        <view class="shape_title">脸型总结:</view>
+        <view class="shape_content box_eight">
+            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
+        </view>
+    </view>
+    <view class="edit box_twelve">
+        <view class="edit_page box_five" bindtap="summaryClick">
+            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <text class="edit_page_text">修改编辑</text>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="model box_five">
+        <image class="model_img" src="../../image/201911212308service.png"></image>
+        <text  class="model_text">发型推荐</text>
+    </view>
+    <view class="recommend box_eight">
+        <view class="recommend_model box_eight">
+            <view class="remo_title box_three">
+                <image class="remo_title_img" src="../../image/201911212337flower.png"></image>
+                <text class="remo_title_text">第一款</text>
+            </view>
+            <view class="remo_picture box_twelve">
+                <swiper class="swiper"
+                        indicator-dots="{{dots}}"
+                        autoplay="{{autoplay}}"
+                        interval="{{interval}}">
+                    <block wx:for="{{pictureArr}}" wx:key="*this">
+                        <swiper-item>
+                            <view class="swiper_item box_twelve">
+                                <image class="swiper_item_img" src="{{}}" mode="widthFix"></image>
+                            </view>
+                        </swiper-item>
+                    </block>
+                </swiper>
+            </view>
+            <view class="remo_store">
+                <view class="remo_store_words">设计师为您筛选优质店铺</view>
+                <view class="remo_store_count box_two">
+                    <view class="remosc_left box_twelve">
+                        <image class="remosc_left_img" src="{{}}" mode="widthFix"></image>
+                    </view>
+                    <view class="remosc_right">
+                        <text class="remosc_right_title spill_over">BEAUTRIUM GINZA</text>
+                        <view class="remosc_right_address box_one">
+                            <view class="remoscra_one box_twelve">
+                                <image class="remoscra_one_img" src="../../image/address.png"></image>
+                            </view>
+                            <view class="remoscra_two">城西银泰店 | 拱墅区丰潭路229号</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="remo_phone">
+                <view class="remo_store_words">有问题您可以联系设计师</view>
+                <view class="remo_phone_words">电话:12345678900</view>
+            </view>
+            <view class="remo_price">
+                <view class="remo_store_words">店铺价位范围:</view>
+                <view class="remo_phone_words">剪发：38-60元</view>
+                <view class="remo_phone_words">烫/染：38-60-88元</view>
+            </view>
+            <view class="remo_ready">
+                <view class="remo_store_words">去店铺前您需要准备:</view>
+                <view class="remo_ready_modle box_twelve">
+                    <view class="remorm_words box_eight">
+                        <text class="remorm_words_text">1、我是学生，发量适中，发质属于比较细软，对长度的要求是好看就行，对刘海的要求是都可以，对烫染的要求是只要好看都能接受，头发打理的时间是没时间打理，穿着风格是潮男,型男,文艺,轻奢，日常喜欢户外运动，对于造型只要适合我，非常接受改变，关于美，我的态度是适可而止，理性对待。</text>
+                        <text class="remorm_words_text">2、根据您的整体脸型,可以选择两侧较长,头顶偏平的发型;切记,不要让两侧剪的太短,不要做头顶太高的造型,这样的话会显得脸更宽、更长。</text>
+                    </view>
+                </view>
+            </view>
+            <view class="remo_careful">
+                <view class="remo_store_words">到店后您需要注意:</view>
+                <view class="remorm_words box_eight">
+                    <text class="remorm_words_text">1、我是学生，发量适中，发质属于比较细软，对长度的要求是好看就行，对刘海的要求是都可以，对烫染的要求是只要好看都能接受，头发打理的时间是没时间打理，穿着风格是潮男,型男,文艺,轻奢，日常喜欢户外运动，对于造型只要适合我，非常接受改变，关于美，我的态度是适可而止，理性对待。</text>
+                    <text class="remorm_words_text">2、根据您的整体脸型,可以选择两侧较长,头顶偏平的发型;切记,不要让两侧剪的太短,不要做头顶太高的造型,这样的话会显得脸更宽、更长。</text>
+                </view>
+            </view>
+            <view class="remo_edit box_five">
+                <view class="remo_edit_delete box_five">
+                    <image class="remoed_img" src="../../image/delete.png"></image>
+                    <text class="remoed_text">删除</text>
+                </view>
+                <view class="remo_edit_modify box_five">
+                    <image class="remoed_img" src="../../image/edit.png"></image>
+                    <text class="remoed_text">修改编辑</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="model box_five">
+        <image class="model_img" src="../../image/201911212308service.png"></image>
+        <text  class="model_text">发色推荐</text>
+    </view>
+    <view class="hairColor box_five">
+        <view class="hairColor_page box_twelve">
+            <image class="hairColor_img" src="{{}}" mode="widthFix"></image>
+        </view>
+    </view>
+    <view class="edit box_twelve">
+        <view class="edit_page box_five" bindtap="colorClick">
+            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <text class="edit_page_text">修改编辑</text>
+        </view>
+    </view>
+    <view class="message"></view>
+</view>
+<!-- 底部导航栏 -->
+<view class="function box_twelve">
+    <view class="function_page box_five">
+        <image class="function_page_img" src="../../image/201911202250send.png"></image>
+        <text class="function_page_text">发 送</text>
+    </view>
 </view>
 <!-- 用户资料 -->
 <view class="material box_five" bindtap="materialClick">

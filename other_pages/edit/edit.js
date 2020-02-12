@@ -9,6 +9,12 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    shapeArr:['1.椭圆形脸的人给人温和，亲近的感觉，在气质上更具有清瘦感。','2.发际线顶端倒下巴底部的长度适中。','3.腮部的棱角不明显呈圆弧形。','4.下巴线条较为柔和，弧度适中。','5.椭圆形脸的女性给人浪漫，优雅，优柔寡断的感觉，不足之处在于由于脸型而略有增龄感。'],
+    dots:true,
+    autoplay:true,
+    interval:5000,
+    pictureArr:[{},{},{}],
+    materialShow:false
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -33,12 +39,49 @@ Page({
       })
     }
   },
+  // 脸型分析---脸型
+  faceShapgeClick:function(e){
+    let _this = this;
+    wx.navigateTo({
+      url: '../../library_pages/shape/shape',
+    })
+  },
+  // 脸型分析---性格描述
+  characterClick:function(e){
+    let _this = this;
+    wx.navigateTo({
+      url: '../../library_pages/character/character',
+    })
+  },
+  // 脸型分析---上中下庭
+  courtClick:function(e){
+    let _this = this;
+    wx.navigateTo({
+      url: '../../library_pages/court/courts',
+    })
+  },
+  // 脸型分析---脸型总结
+  summaryClick:function(e){
+    let _this = this;
+    wx.navigateTo({
+      url: '../../library_pages/summary/summary',
+    })
+  },
+  // 发色推荐---修改编辑
+  colorClick:function(e){
+    let _this = this;
+    wx.navigateTo({
+      url: '../../library_pages/color/color',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    let _this = this;
+
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -52,7 +95,7 @@ Page({
   onShow: function () {
 
   },
- 
+
   /**
    * 生命周期函数--监听页面隐藏
    */

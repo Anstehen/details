@@ -1,0 +1,87 @@
+@import "../../component/template/template.wxss";
+page{
+  background: rgba(255, 255, 255, 1);
+}
+.shape{
+  width: 100%;
+  height: auto;
+}
+.words{
+  margin-top: 32rpx;
+  width: 100%;
+  height: auto;
+}
+.words_text{
+  margin-left: 4.27%;
+  font-size:32rpx;
+  font-weight:600;
+  color:rgba(53,59,80,1);
+  line-height:44rpx;
+}
+.words_picker{
+  margin-left: 12rpx;
+}
+.words_picker_text{
+  width:182rpx;
+  height:56rpx;
+  border-radius:8rpx;
+  border:2rpx solid rgba(0, 0, 0, 0.15);
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(96,105,114,1);
+  line-height:40rpx;
+}
+.wpt_img{
+  margin-left: 8rpx;
+  width: 26rpx;
+  height: 32rpx;
+}
+.narration{
+  width: 100%;
+  height: 566rpx;
+  margin-top: 36rpx;
+}
+.narration_page{
+  width: 91.47%;
+  height: 100%;
+  border:2px dotted rgba(0,0,0,0.15);
+}
+.narration_page_text{
+  width: 96%;
+  height: 96%;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(96,105,114,1);
+  line-height:40rpx;
+}
+.napat_place{
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(96,105,114,0.5);
+  line-height:40rpx;
+}
+.message{
+  width: 100%;
+  height: 166rpx;
+}
+.function{
+  width: 100%;
+  height: 142rpx;
+  box-shadow:0rpx -2rpx 16rpx 0rpx rgba(222,223,227,0.41);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.function_page{
+  width: 91.47%;
+  height: 86rpx;
+  background: rgba(255, 72, 125, 0.6);
+  border-radius: 36rpx;
+}
+.function_page_text{
+  margin-left: 12rpx;
+  font-size:32rpx;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:44rpx;
+}

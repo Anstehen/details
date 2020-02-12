@@ -1,0 +1,14 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'脸型特征',topHeight:statusBarHeight}}"/>
+<view class="court box_eight" style="margin-top:{{statusBarHeight+44}}px">
+    
+    <view class="message"></view>
+</view>
+<!-- 功能按钮 -->
+<view class="function box_twelve">
+    <view class="function_page box_twelve" bindtap="determineClick">
+        <text class="function_page_text">确 定</text>
+    </view>
+</view>

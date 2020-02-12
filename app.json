@@ -24,6 +24,16 @@
         "map/map",
         "presentation/presentation"
       ]
+    },
+    {
+      "root":"library_pages",
+      "pages":[
+        "color/color",
+        "shape/shape",
+        "character/character",
+        "summary/summary",
+        "court/courts"
+      ]
     }
   ],
   "window": {

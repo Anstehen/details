@@ -1,14 +1,14 @@
 <wxs src="../../app.wxs" module="gloval"/>
 <!-- 顶部导航栏 -->
 <import src="../../component/template/template.wxml"/>
-<template is="exist" data="{{title:'报告展示',topHeight:statusBarHeight}}"/>
+<template is="exist" data="{{title:'报告编辑',topHeight:statusBarHeight}}"/>
 <view class="presentation box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="portrait box_twelve">
         <image class="portrait_img" src="../../image/logo.png" mode="widthFix"></image>
     </view>
     <view class="model box_five">
         <image class="model_img" src="../../image/201911212308service.png"></image>
-        <text  class="model_text">您的脸型分析结果是</text>
+        <text  class="model_text">脸型分析</text>
     </view>
     <view class="shape box_eight">
         <view class="shape_title">您的脸型是：方圆型脸</view>
