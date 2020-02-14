@@ -3,12 +3,71 @@
 <import src="../../component/template/template.wxml"/>
 <template is="exist" data="{{title:'脸型特征',topHeight:statusBarHeight}}"/>
 <view class="court box_eight" style="margin-top:{{statusBarHeight+44}}px">
-    
+    <view class="words box_three">
+        <view class="words_text">上庭:</view>
+        <view class="words_picker">
+            <picker bindchange="upperPicker" value="{{upperIndex}}" range="{{upperArray}}">
+              <view class="words_picker_text box_twelve">
+                <text>{{upperArray[upperIndex]}}</text>
+                <image class="wpt_img" src="../../image/down.png"></image>
+              </view>
+            </picker>
+        </view>
+    </view>
+    <view class="narration box_twelve">
+        <view class="narration_page box_twelve">
+            <textarea class="narration_page_text" placeholder="请输入上庭描述" placeholder-class="napat_place" value="{{upperValue}}" maxlength="366" bindinput="upperInput"></textarea>
+        </view>
+    </view>
+    <view class="words box_three">
+        <view class="words_text">中庭:</view>
+        <view class="words_picker">
+            <picker bindchange="stallsPicker" value="{{stallsIndex}}" range="{{stallsArray}}">
+              <view class="words_picker_text box_twelve">
+                <text>{{stallsArray[stallsIndex]}}</text>
+                <image class="wpt_img" src="../../image/down.png"></image>
+              </view>
+            </picker>
+        </view>
+    </view>
+    <view class="narration box_twelve">
+        <view class="narration_page box_twelve">
+            <textarea class="narration_page_text" placeholder="请输入中庭描述" placeholder-class="napat_place" value="{{stallsValue}}" maxlength="366" bindinput="stallsInput"></textarea>
+        </view>
+    </view>
+    <view class="words box_three">
+        <view class="words_text">下庭:</view>
+        <view class="words_picker">
+            <picker bindchange="lowerPicker" value="{{lowerIndex}}" range="{{lowerArray}}">
+              <view class="words_picker_text box_twelve">
+                <text>{{lowerArray[lowerIndex]}}</text>
+                <image class="wpt_img" src="../../image/down.png"></image>
+              </view>
+            </picker>
+        </view>
+    </view>
+    <view class="narration box_twelve">
+        <view class="narration_page box_twelve">
+            <textarea class="narration_page_text" placeholder="请输入下庭描述" placeholder-class="napat_place" value="{{lowerValue}}" maxlength="366" bindinput="lowerInput"></textarea>
+        </view>
+    </view>
     <view class="message"></view>
 </view>
 <!-- 功能按钮 -->
-<view class="function box_twelve">
-    <view class="function_page box_twelve" bindtap="determineClick">
-        <text class="function_page_text">确 定</text>
-    </view>
-</view>
+<cover-view class="function box_twelve">
+    <cover-view class="function_page box_twelve" bindtap="determineClick">
+        <cover-view class="function_page_text">确 定</cover-view>
+    </cover-view>
+</cover-view>
+<!-- 上庭弹出框 -->
+<cover-view class="upper box_twelve" style="height:{{screenHeight}}px" wx:if="{{popupShow}}">
+    <cover-view class="upper_one" bindtap="upperCloseClick"></cover-view>
+    <cover-view class="upper_two box_eleven">
+        <cover-image class="upper_two_img" src="../../image/cancle.png" bindtap="upperCloseClick"></cover-image>
+        <cover-view class="upper_two_message"></cover-view>
+        <cover-view class="upper_two_page utm_select" wx:for="{{upperPopupArr}}" wx:for-item="item" wx:key="upper" bindtap="upperContentClick">
+            <cover-view class="upper_two_model">{{item}}</cover-view>
+        </cover-view>
+        <cover-view class="upper_two_message"></cover-view>
+    </cover-view>
+</cover-view>

@@ -2,90 +2,9 @@
 page{
   background: rgba(255, 255, 255, 1);
 }
-.presentation{
+.haidstyle{
   width: 100%;
   height: auto;
-}
-.portrait{
-  width: 100%;
-  height: auto;
-  margin-top: 32rpx;
-}
-.portrait_img{
-  width: 66%;
-  height: auto;
-}
-.model{
-  margin-top: 36rpx;
-  width: 100%;
-  height: auto;
-}
-.model_img{
-  width: 36rpx;
-  height: 36rpx;
-}
-.model_text{
-  margin-left: 12rpx;
-  font-size:36rpx;
-  font-weight:bold;
-  color:rgba(53,59,80,1);
-  line-height:50rpx;
-}
-.shape{
-  margin-top: 28rpx;
-  width: 91.47%;
-  height: auto;
-  margin-left: 4.27%;
-}
-.shape_title{
-  font-size:32rpx;
-  font-weight:bold;
-  color:rgba(82, 92, 125, 1);
-  line-height:40rpx;
-  letter-spacing:1rpx;
-}
-.shape_title_words{
-  font-size:28rpx;
-  font-weight:500;
-}
-.shape_content{
-  margin-top: 16rpx;
-  width: 100%;
-  height: auto;
-}
-.shape_content_text{
-  margin-top: 10rpx;
-  font-size:28rpx;
-  font-weight:500;
-  color:rgba(129,132,145,1);
-  line-height:40rpx;
-}
-.edit{
-  width: 100%;
-  height: 96rpx;
-}
-.edit_page{
-  width: 66.66%;
-  height: 64rpx;
-  background: rgba(255, 72, 125, 0.6);
-  border-radius: 36rpx;
-}
-.edit_page_img{
-  width: 36rpx;
-  height: 36rpx;
-}
-.edit_page_text{
-  margin-left: 8rpx;
-  font-size:28rpx;
-  font-weight:500;
-  color:rgba(255,255,255,1);
-  line-height:40rpx;
-}
-.line{
-  margin: 18rpx 0 0 4.27%;
-  width: 91.47%;
-  height: 3rpx;
-  background-color: lightgray;
 }
 .recommend{
   width: 91.47%;
@@ -188,6 +107,21 @@ page{
   line-height:40rpx;
   margin: 18rpx 0 0 16rpx;
 }
+.remopw_input{
+  width: 366rpx;
+  height: 40rpx;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(96,105,114,1);
+  line-height:40rpx;
+  padding-left: 12rpx;
+}
+.remopw_place{
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(96,105,114,0.5);
+  line-height:40rpx;
+}
 .remo_price{
   margin-top: 46rpx;
 }
@@ -208,9 +142,19 @@ page{
   margin: 2% 2%;
 }
 .remorm_words_text{
+  width: 100%;
+  height: 266rpx;
+  border: 2rpx dotted rgba(0, 0, 0, 0.15);
+  padding: 12rpx;
   font-size:28rpx;
   font-weight:500;
   color:rgba(96,105,114,1);
+  line-height:40rpx;
+}
+.remorm_words_pace{
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(96,105,114,0.5);
   line-height:40rpx;
 }
 .remo_careful{
@@ -245,26 +189,34 @@ page{
   background: rgba(8, 199, 158, 1);
   margin-left: 5%
 }
-.hairColor{
-  margin-top: 32rpx;
-  width: 100%;
-  height: 546rpx;
+.remo_edit_local{
+  width: 40%;
+  height: 66rpx;
+  border-radius: 36rpx;
+  border: 2rpx solid rgba(255, 72, 125, 0.6);
 }
-.hairColor_page{
-  width:220rpx;
-  height:564rpx;
-  border-radius: 8rpx;
-  overflow: hidden;
-}
-.hairColor_img{
-  width: 220rpx;
-  height: auto;
-}
-.hairColor_page_text{
+.remo_edit_local_text{
   font-size:28rpx;
   font-weight:500;
-  color:rgba(145,142,163,1);
+  color:rgba(255, 72, 125, 0.6);
   line-height:40rpx;
+}
+.remo_edit_hair{
+  width: 40%;
+  height: 66rpx;
+  border-radius: 36rpx;
+  border: 2rpx solid rgba(8, 199, 158, 1);
+  margin-left: 3%
+}
+.remo_edit_hair_text{
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(8, 199, 158, 1);
+  line-height:40rpx;
+}
+.message{
+  width: 100%;
+  height: 266rpx;
 }
 .function{
   width: 100%;
@@ -281,39 +233,10 @@ page{
   background: rgba(255, 72, 125, 0.6);
   border-radius: 36rpx;
 }
-.function_page_img{
-  width: 36rpx;
-  height: 36rpx;
-}
 .function_page_text{
   margin-left: 12rpx;
   font-size:32rpx;
   font-weight:400;
   color:rgba(255,255,255,1);
   line-height:44rpx;
-}
-.material{
-  width: 166rpx;
-  height: 66rpx;
-  background:rgba(255, 255, 255, 1);
-  box-shadow:0rpx 4rpx 10rpx 0rpx rgba(169,169,169,0.5);
-  position: fixed;
-  top: 206rpx;
-  right: 0;
-  border-radius: 36rpx 0 0 36rpx;
-}
-.material_img{
-  width: 32rpx;
-  height: 32rpx;
-}
-.material_text{
-  margin-left: 6rpx;
-  font-size:22rpx;
-  font-weight:500;
-  color:rgba(129,132,145,1);
-  line-height:36rpx;
-}
-.message{
-  width: 100%;
-  height: 166rpx;
 }

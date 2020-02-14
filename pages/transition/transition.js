@@ -15,44 +15,47 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
+    wx.reLaunch({
+      url: '../desigener/desigener',
+    })
     // console.log(app.globalData.systemInfo);
     // 查看是否授权
-    wx.getSetting({
-      success: function (ress) {
-        // console.log(ress);
-        if (ress.authSetting['scope.userInfo']) {//已授权
-          dataGet();
-          let numberFive = 0;
-          let getHnadle = setInterval(function () {
-            numberFive += numberFive;
-            if (existence(wx.getStorageSync("userInformation").openid) && numberFive <= 10000) {
-              clearInterval(getHnadle);
-              // identity:1是普通用户，2是设计师
-              // console.log(wx.getStorageSync("userInformation"));
-              if (wx.getStorageSync("userInformation").identity == 1){
-                wx.reLaunch({
-                  // url: '../ordinary/ordinary',
-                  url: '../desigener/desigener',
-                })
-              } else if (wx.getStorageSync("userInformation").identity == 2){
-                wx.reLaunch({
-                  url: '../desigener/desigener',
-                })
-              }  
-            }
-          }, 100)
-        } else {//没有授权
-          wx.reLaunch({
-            url: '../ordinary/ordinary',
-          })
-        }
-      },
-      fail(error) {
-        wx.reLaunch({
-          url: '../ordinary/ordinary',
-        })
-      }
-    })
+    // wx.getSetting({
+    //   success: function (ress) {
+    //     // console.log(ress);
+    //     if (ress.authSetting['scope.userInfo']) {//已授权
+    //       dataGet();
+    //       let numberFive = 0;
+    //       let getHnadle = setInterval(function () {
+    //         numberFive += numberFive;
+    //         if (existence(wx.getStorageSync("userInformation").openid) && numberFive <= 10000) {
+    //           clearInterval(getHnadle);
+    //           // identity:1是普通用户，2是设计师
+    //           // console.log(wx.getStorageSync("userInformation"));
+    //           if (wx.getStorageSync("userInformation").identity == 1){
+    //             wx.reLaunch({
+    //               // url: '../ordinary/ordinary',
+    //               url: '../desigener/desigener',
+    //             })
+    //           } else if (wx.getStorageSync("userInformation").identity == 2){
+    //             wx.reLaunch({
+    //               url: '../desigener/desigener',
+    //             })
+    //           }  
+    //         }
+    //       }, 100)
+    //     } else {//没有授权
+    //       wx.reLaunch({
+    //         url: '../ordinary/ordinary',
+    //       })
+    //     }
+    //   },
+    //   fail(error) {
+    //     wx.reLaunch({
+    //       url: '../ordinary/ordinary',
+    //     })
+    //   }
+    // })
   },
 
   /**

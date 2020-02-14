@@ -1,0 +1,37 @@
+<wxs src="../../app.wxs" module="gloval"/>
+<!-- 顶部导航栏 -->
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'店铺详情',topHeight:statusBarHeight}}"/>
+<view class="store box_seven" style="margin-top:{{statusBarHeight+44}}px">
+    <view class="recommend">
+        <view class="recommend_model box_eight">
+          <view class="remo_picture box_twelve">
+              <swiper class="swiper"
+                      indicator-dots="{{dots}}"
+                      autoplay="{{autoplay}}"
+                      interval="{{interval}}">
+                  <block wx:for="{{pictureArr}}" wx:key="*this">
+                      <swiper-item>
+                          <view class="swiper_item box_twelve">
+                              <image class="swiper_item_img" src="{{}}" mode="widthFix"></image>
+                          </view>
+                      </swiper-item>
+                  </block>
+              </swiper>
+          </view>
+        </view>
+    </view>
+    <view class="price box_twelve">
+        <view class="price_page box_eight">
+            <text class="price_page_text">店铺名称：</text>
+            <text class="price_page_textOne">菠萝菠萝蜜</text>
+        </view>
+    </view>
+    <view class="price box_twelve">
+        <view class="price_page box_eight">
+            <text class="price_page_text">店铺范围价：</text>
+            <text class="price_page_textOne">剪发：38-66元</text>
+            <text class="price_page_textOne">烫染：36-66-86</text>
+        </view>
+    </view>
+</view>

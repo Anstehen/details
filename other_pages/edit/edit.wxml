@@ -140,11 +140,11 @@
                 </view>
             </view>
             <view class="remo_edit box_five">
-                <view class="remo_edit_delete box_five">
+                <view class="remo_edit_delete box_five" bindtap="hairstyleClick">
                     <image class="remoed_img" src="../../image/delete.png"></image>
                     <text class="remoed_text">删除</text>
                 </view>
-                <view class="remo_edit_modify box_five">
+                <view class="remo_edit_modify box_five" bindtap="hairstyleEidtClick">
                     <image class="remoed_img" src="../../image/edit.png"></image>
                     <text class="remoed_text">修改编辑</text>
                 </view>
@@ -156,8 +156,11 @@
         <text  class="model_text">发色推荐</text>
     </view>
     <view class="hairColor box_five">
-        <view class="hairColor_page box_twelve">
+        <!-- <view class="hairColor_page box_twelve">
             <image class="hairColor_img" src="{{}}" mode="widthFix"></image>
+        </view> -->
+        <view class="hairColor_page box_twelve">
+            <text class="hairColor_page_text">暂无推荐~</text>
         </view>
     </view>
     <view class="edit box_twelve">

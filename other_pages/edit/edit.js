@@ -67,6 +67,28 @@ Page({
       url: '../../library_pages/summary/summary',
     })
   },
+  // 发行推荐---删除
+  hairstyleClick:function(e){
+    let _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '您确定要删除该款发型么?',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+  // 发行推荐---修改编辑
+  hairstyleEidtClick:function(e){
+    let _this = this;
+    wx.navigateTo({
+      url: '../../library_pages/hairstyle/hairstyle',
+    })
+  },
   // 发色推荐---修改编辑
   colorClick:function(e){
     let _this = this;

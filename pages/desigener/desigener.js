@@ -74,7 +74,7 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    _this.initialData();//页面初始数据
+    // _this.initialData();//页面初始数据
   },
 
   /**

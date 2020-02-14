@@ -32,7 +32,10 @@
         "shape/shape",
         "character/character",
         "summary/summary",
-        "court/courts"
+        "court/courts",
+        "hairstyle/hairstyle",
+        "store/store",
+        "store_detail/store_detail"
       ]
     }
   ],
