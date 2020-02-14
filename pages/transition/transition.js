@@ -10,52 +10,46 @@ Page({
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
     statusHeight: app.globalData.systemInfo.statusBarHeight,//状态高度
   },
+  // 进入页面信息处理
+  pagesInfo:function(e){
+    let _this = this;
+    //查看是否授权
+    wx.getSetting({
+      success: function (ress) {
+        // console.log(ress);
+        if (ress.authSetting['scope.userInfo']) {//已授权
+          dataGet(function(res){
+            // console.log(res);
+              if (res.identity == 1){
+                wx.reLaunch({
+                  url: '../ordinary/ordinary',
+                })
+              } else if (res.identity == 2){
+                wx.reLaunch({
+                  url: '../desigener/desigener',
+                })
+              }
+          });
+        } else {//没有授权
+          wx.reLaunch({
+            url: '../ordinary/ordinary',
+          })
+        }
+      },
+      fail(error) {
+        wx.reLaunch({
+          url: '../ordinary/ordinary',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let _this = this;
-    wx.reLaunch({
-      url: '../desigener/desigener',
-    })
+    _this.pagesInfo();//进入页面信息处理
     // console.log(app.globalData.systemInfo);
-    // 查看是否授权
-    // wx.getSetting({
-    //   success: function (ress) {
-    //     // console.log(ress);
-    //     if (ress.authSetting['scope.userInfo']) {//已授权
-    //       dataGet();
-    //       let numberFive = 0;
-    //       let getHnadle = setInterval(function () {
-    //         numberFive += numberFive;
-    //         if (existence(wx.getStorageSync("userInformation").openid) && numberFive <= 10000) {
-    //           clearInterval(getHnadle);
-    //           // identity:1是普通用户，2是设计师
-    //           // console.log(wx.getStorageSync("userInformation"));
-    //           if (wx.getStorageSync("userInformation").identity == 1){
-    //             wx.reLaunch({
-    //               // url: '../ordinary/ordinary',
-    //               url: '../desigener/desigener',
-    //             })
-    //           } else if (wx.getStorageSync("userInformation").identity == 2){
-    //             wx.reLaunch({
-    //               url: '../desigener/desigener',
-    //             })
-    //           }  
-    //         }
-    //       }, 100)
-    //     } else {//没有授权
-    //       wx.reLaunch({
-    //         url: '../ordinary/ordinary',
-    //       })
-    //     }
-    //   },
-    //   fail(error) {
-    //     wx.reLaunch({
-    //       url: '../ordinary/ordinary',
-    //     })
-    //   }
-    // })
   },
 
   /**

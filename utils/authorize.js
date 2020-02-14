@@ -175,7 +175,7 @@ const getPhone = function(val1,val2,val3){
   })
 }
 // 已授权用户获取用户信息
-const dataGet = () =>{
+const dataGet = (callback) =>{
   wx.login({
     success: res => {
       var code = res.code;
@@ -196,6 +196,7 @@ const dataGet = () =>{
           ask("get", `${selectByOpenid}`, paraOne).then(res2 => {
             // console.log(res2);
             wx.setStorageSync('userInformation', res2);
+            callback(res2);
             // if (res2.code == 200) {
             //   wx.setStorageSync('userInformation', res2);
             // } else {
