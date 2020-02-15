@@ -1,0 +1,84 @@
+@import "../../app.wxss";
+.material{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 666;
+}
+.material_one{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.39);
+}
+.material_two{
+  width: 91.47%;
+  height: auto;
+  position: absolute;
+  background:rgba(255,255,255,1);
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.words{
+  width: 100%;
+  height: auto;
+  margin-top: 26rpx;
+}
+.words_img{
+  width: 32rpx;
+  height: 32rpx;
+}
+.words_text{
+  margin-left: 12rpx;
+  font-size:28rpx;
+  font-weight:bold;
+  color:rgba(89,93,110,1);
+  line-height:40rpx;
+}
+.content{
+  margin-top: 16rpx;
+  width: 100%;
+  height: 266rpx;
+}
+.content_text{
+  width: 92%;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(119,128,145,1);
+  line-height:40rpx;
+}
+.btn{
+  margin-top: 16rpx;
+  width: 100%;
+  height: 96rpx;
+}
+.btn_left{
+  width: 50%;
+  height: 100%;
+  border: 2rpx solid rgba(207, 208, 212, 0.5);
+  font-size:32rpx;
+  font-weight:500;
+  color:rgba(190,196,207,1);
+  line-height:44rpx;
+}
+.btn_right{
+  width: 50%;
+  height: 100%;
+  border: 2rpx solid rgba(207, 208, 212, 0.5);
+  position: relative;
+}
+.btn_right_text{
+  font-size:32rpx;
+  font-weight:500;
+  color:rgba(254,122,128,1);
+  line-height:44rpx;
+}
+.br_button{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+}
+.br_button::after{
+  border:none;
+}

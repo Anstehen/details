@@ -1,0 +1,19 @@
+<view class="material box_twelve" style="height:{{screenHeight}}px">
+    <view class="material_one" bindtap="shoutDownClick"></view>
+    <view class="material_two box_eight">
+        <view class="words box_five">
+            <image class="words_img" src="../../image/201911230100problem.png"></image>
+            <text class="words_text">提 示</text>
+        </view>
+        <view class="content box_twelve">
+            <view class="content_text">为了更好的给您提供服务，我们希望获取您的手机号</view>
+        </view>
+        <view class="btn box_one">
+            <view class="btn_left box_twelve" bindtap="cancleClick">取消</view>
+            <view class="btn_right box_twelve">
+                <text class="btn_right_text">确 定</text>
+                <button class="br_button" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneClick"></button>
+            </view>
+        </view>
+    </view>
+</view>

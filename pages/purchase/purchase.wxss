@@ -1,4 +1,3 @@
-@import "../../app.wxss";
 @import "../../component/template/template.wxss";
 page{
   /* background: rgba(245, 246, 250, 1); */
@@ -10,16 +9,21 @@ page{
 }
 .swiper{
   width: 100%;
-  height: 360rpx;
+  height: 566rpx;
 }
 .swiper_swiper{
   width: 100%;
-  height: 360rpx;
+  height: 566rpx;
 }
 .swiper_page{
   width: 100%;
-  height: 360rpx;
-  background: cyan;
+  height: 566rpx;
+  background: rgba(53, 59, 80, 1);
+  overflow: hidden;
+}
+.swiper_page_img{
+  width: 100%;
+  height: auto;
 }
 .desigenre{
   width: 100%;
@@ -54,11 +58,9 @@ page{
   color:rgba(24, 144, 255, 1);
   line-height:36rpx;
   text-shadow:0rpx 4rpx 8rpx rgba(0,0,0,0.34);
+  margin-top: -12rpx;
 }
-.depa_right_textTwo{
-  margin-top: 12rpx;
-}
-.depa_right_textThree{
+.depa_right_textOne{
   margin-top: 12rpx;
 }
 .service{

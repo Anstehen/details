@@ -2,13 +2,25 @@
 var processingValue = function(val){
   var processOne = val;
   var processTwo = '';
-  if(processOne == undefined || processOne == null || processOne == ''){
+  if(processOne == undefined || processOne == null || processOne == "undefined" || processOne == "null" || processOne == ''){
     processTwo = '';
   }else{
     processTwo = processOne;
   }
   return processTwo
 }
+// 判断值是 null、undefined 或 ''返回true；否则返回false
+var judgeValue = function(val){
+  var str = val;
+  var returnStr = false;
+  if(str == undefined || str == null || str == "undefined" || str == "null" || str == ''){
+    returnStr = false;
+  }else{
+    returnStr = true;
+  }
+  return returnStr
+}
 module.exports = {
-  processingValue: processingValue
+  processingValue: processingValue,
+  judgeValue:judgeValue
 }
