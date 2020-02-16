@@ -19,12 +19,12 @@ Page({
       mask:true,
       title: '数据加载中...',
     })
-    lookempower(e,1,function(res){
+    lookempower(e,function(res){
       // console.log(res);
       wx.hideLoading();
       if(res.status == 200){
         if (res.data.user.identity == 1 || res.data.user.identity == '1'){
-          console.log(res.data.user)
+          // console.log(res.data.user);
           wx.reLaunch({
             url: '../../pages/own/own',
           })

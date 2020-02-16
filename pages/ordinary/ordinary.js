@@ -9,6 +9,7 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    limitshow:true
   },
   // 我的点击
   minelick: function (e) {
@@ -20,8 +21,49 @@ Page({
   // 立即去下单点击
   placeAnOrderClick:function(e){
     let _this = this;
-    wx.navigateTo({
-      url: '../../pages/purchase/purchase',
+    if(_this.data.limitshow){
+      wx.navigateTo({
+        url: '../../pages/purchase/purchase',
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '下单需要获取您的信息，请先登录',
+        success (res) {
+          if (res.confirm) {
+            // console.log('用户点击确定')
+            wx.reLaunch({
+              url: '../own/own',
+            })
+          } else if (res.cancel) {
+            // console.log('用户点击取消')
+          }
+        }
+      })
+    }
+  },
+  // 进入页面信息处理
+  pagesInfo:function(e){
+    let _this = this;
+    //查看是否授权
+    wx.getSetting({
+      success: function (ress) {
+        // console.log(ress);
+        if (ress.authSetting['scope.userInfo']) {//已授权
+          _this.setData({
+            limitshow:true,
+          })
+        } else {//没有授权
+          _this.setData({
+            limitshow:false,
+          })
+        }
+      },
+      fail(error) {
+        _this.setData({
+          limitshow:false,
+        })
+      }
     })
   },
   /**
@@ -29,7 +71,7 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-
+    _this.pagesInfo();//进入页面信息处理
   },
 
   /**

@@ -4,11 +4,11 @@
 <template is="nothing" data="{{title:'我 的',topHeight:statusBarHeight}}"/>
 <!-- 内容区域 -->
 <view class="desigener box_eight" style="margin-top:{{statusBarHeight+44}}px">
-    <view class="card box_five">
-      <view class="card_picture box_twelve" bindtap="{{!loginWhether?'onGotUserInfo':''}}">
+    <view class="card box_five" bindtap="{{!loginWhether?'onGotUserInfo':''}}">
+      <view class="card_picture box_twelve">
           <image class="card_picture_img" src="{{!loginWhether?'../../image/default.png':personInfo.userImage}}" mode="widthFix"></image>
       </view>
-      <view class="card_words box_eight" bindtap="{{!loginWhether?'onGotUserInfo':''}}">
+      <view class="card_words box_eight">
           <text class="card_words_textOne">{{!loginWhether?defaultNeme:personInfo.userName}}</text>
           <text class="card_words_textTwo">{{!loginWhether?defaultLevel:identity}}</text>
       </view>
@@ -23,7 +23,7 @@
                 <image class="cose_right_img" src="../../image/enter.png"></image>
             </view>
         </view>
-        <view class="count_setting box_twelve">
+        <view class="count_setting box_twelve" wx:if="{{loginWhether}}">
             <view class="cose box_six" bindtap="reportClick">
                 <view class="cose_left box_two">
                   <image class="cose_left_img" src="../../image/report.png"></image>
