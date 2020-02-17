@@ -12,6 +12,11 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    designerIcon:`${app.globalData.pictureUrl}/201911212245designer.jpg`,
+    serviceIcon:`${app.globalData.pictureUrl}/201911212308service.png`,
+    flowerIcon:`${app.globalData.pictureUrl}/201911212337flower.png`,
+    problemIcon:`${app.globalData.pictureUrl}/201911230100problem.png`,
+    orderIcon:`${app.globalData.pictureUrl}/201911212218placeAnOrder.png`,
     limitOrderTimes:true,
     phonePopupShow:false,
     designerObject:null,
@@ -39,6 +44,15 @@ Page({
     wx.previewImage({
       current: e.currentTarget.dataset.info, // 当前显示图片的http链接
       urls: _this.data.carouselArr // 需要预览的图片http链接列表
+    })
+  },
+  // 微信二维码预览
+  codeClick:function(e){
+    let _this = this;
+    // console.log(_this.data.designerObject.wechat)
+    wx.previewImage({
+      current: _this.data.designerObject.wechat, // 当前显示图片的http链接
+      urls: [_this.data.designerObject.wechat] // 需要预览的图片http链接列表
     })
   },
   // 手机授权---确定

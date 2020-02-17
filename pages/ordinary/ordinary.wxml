@@ -6,7 +6,7 @@
 <view class="ordinary" style="margin-top:{{statusBarHeight}}px">
     <view class="placeAnOrder box_twelve">
         <view class="placeAnOrder_page box_five" bindtap="placeAnOrderClick">
-            <image class="placeAnOrder_page_img" src="../../image/201911212218placeAnOrder.png"></image>
+            <image class="placeAnOrder_page_img" src="{{orderIcon}}"></image>
             <text class="placeAnOrder_page_text">立即去下单</text>
         </view>
     </view>

@@ -9,7 +9,8 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
-    limitshow:true
+    limitshow:true,
+    orderIcon:`${app.globalData.pictureUrl}/201911212218placeAnOrder.png`
   },
   // 我的点击
   minelick: function (e) {

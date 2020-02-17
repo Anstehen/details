@@ -19,7 +19,7 @@
         <view class="desigenre_page box_one">
             <view class="depa_left box_twelve">
                 <view class="depa_left_page box_twelve">
-                    <image class="depa_left_page_img" src="../../image/201911212245designer.jpg" mode="widthFix"></image>
+                    <image class="depa_left_page_img" src="{{designerIcon}}" mode="widthFix"></image>
                 </view>
             </view>
             <view class="depa_right box_ten">
@@ -29,17 +29,17 @@
     </view>
     <view class="service box_twelve" wx:if="{{serviceArr.length!=0}}">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <image class="service_page_img" src="{{serviceIcon}}"></image>
             <text class="service_page_text">我们的服务</text>
         </view>
     </view>
     <view class="term box_two" wx:if="{{serviceArr.length!=0}}" wx:for="{{serviceArr}}" wx:for-item="item" wx:key="service">
-        <image class="term_img" src="../../image/201911212337flower.png"></image>
+        <image class="term_img" src="{{flowerIcon}}"></image>
         <text class="term_text">{{item}}</text>
     </view>
     <view class="service box_twelve" wx:if="{{doneStr!=''}}">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
+            <image class="service_page_img" src="{{problemIcon}}"></image>
             <text class="service_page_text">我们经常做的是</text>
         </view>
     </view>
@@ -50,7 +50,7 @@
     </view>
     <view class="service box_twelve" wx:if="{{experienceStr!=''}}">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
+            <image class="service_page_img" src="{{problemIcon}}"></image>
             <text class="service_page_text">我们的经历</text>
         </view>
     </view>
@@ -61,7 +61,7 @@
     </view>
     <view class="service box_twelve" wx:if="{{tengledStr!=''}}">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
+            <image class="service_page_img" src="{{problemIcon}}"></image>
             <text class="service_page_text">我们纠结的问题</text>
         </view>
     </view>
@@ -72,7 +72,7 @@
     </view>
     <view class="service box_twelve" wx:if="{{wantStr!=''}}">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911230100problem.png"></image>
+            <image class="service_page_img" src="{{problemIcon}}"></image>
             <text class="service_page_text">我们不想再经历的是</text>
         </view>
     </view>
@@ -83,7 +83,7 @@
     </view>
     <view class="service box_twelve" wx:if="{{detailArr.length!=0}}">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <image class="service_page_img" src="{{serviceIcon}}"></image>
             <text class="service_page_text">服务详情</text>
         </view>
     </view>
@@ -98,7 +98,7 @@
     </view>
     <view class="service box_twelve" wx:if="{{gloval.judgeValue(designerObject)}}">
         <view class="service_page box_two">
-            <image class="service_page_img" src="../../image/201911212308service.png"></image>
+            <image class="service_page_img" src="{{serviceIcon}}"></image>
             <text class="service_page_text">金牌发型师为您服务</text>
         </view>
     </view>
@@ -123,7 +123,7 @@
             <view class="calling_page_four box_six">
                 <view class="capafo_left">添加微信免费咨询：</view>
                 <view class="capafo_right box_twelve">
-                    <image class="capafo_right_img" src="{{designerObject.wechat}}" mode="widthFix"></image>
+                    <image class="capafo_right_img" src="{{designerObject.wechat}}" mode="widthFix" catchtap="codeClick"></image>
                 </view>
             </view>
             <view class="calling_page_one"></view>
@@ -134,7 +134,7 @@
 </view>
 <view class="buy box_twelve">
     <view class="buy_page box_five" bindtap="immediatelyClick">
-        <image class="buy_page_img" src="../../image/201911212218placeAnOrder.png"></image>
+        <image class="buy_page_img" src="{{orderIcon}}"></image>
         <text class="buy_page_text">立即下单</text>
     </view>
 </view>
