@@ -3,13 +3,37 @@
 <import src="../../component/template/template.wxml"/>
 <template is="nothing" data="{{title:'首 页',topHeight:statusBarHeight}}"/>
 <!-- 内容区域 -->
-<view class="ordinary" style="margin-top:{{statusBarHeight}}px">
-    <view class="placeAnOrder box_twelve">
-        <view class="placeAnOrder_page box_five" bindtap="placeAnOrderClick">
-            <image class="placeAnOrder_page_img" src="{{orderIcon}}"></image>
-            <text class="placeAnOrder_page_text">立即去下单</text>
+<view class="ordinary box_eight" style="margin-top:{{statusBarHeight + 44}}px">
+    <view class="words box_five">
+        <view class="words_one">专业</view>
+        <view class="words_two">发型设计</view>
+        <view class="words_three">×</view>
+        <view class="words_four">您的专业发型设计师</view>
+    </view>
+    <view class="picture">
+        <view class="picture_swiper">
+          <swiper 
+            class="picture_swiper"
+            indicator-dots="{{indicatorDots}}"
+            autoplay="{{autoplay}}" 
+            interval="{{interval}}" 
+            duration="{{duration}}"
+            circular="{{circular}}">
+            <block wx:for="{{pictureArr}}" wx:key="*this">
+              <swiper-item>
+                <image class="picture_img" src="{{item}}" mode="widthFix" bindtap="placeAnOrderClick"></image>
+              </swiper-item>
+            </block>
+          </swiper>
         </view>
     </view>
+    <view class="btn box_five">
+        <view class="btn_circular box_twelve" bindtap="placeAnOrderClick">
+            <image class="btn_circular_img" src="{{magicIcon}}"></image>
+        </view>
+        <text class="btn_text" bindtap="placeAnOrderClick">查看详情</text>
+    </view>
+    <view class="message"></view>
 </view>
 <!-- 底部导航栏 -->
 <template is="bar" data="{{page:1}}"/>

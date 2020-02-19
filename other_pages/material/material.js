@@ -11,6 +11,11 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    cameraIcon: `${app.globalData.pictureUrl}/icon/202001072209camera.png`,
+    hairLengthIcon: `${app.globalData.pictureUrl}/submission/20200218hairLength.jpg`,
+    positiveIcon: `${app.globalData.pictureUrl}/submission/20200218positive.jpg`,
+    sideViewIcon: `${app.globalData.pictureUrl}/submission/20200218sideView.png`,
+    wholeBodyIcon: `${app.globalData.pictureUrl}/submission/20200218wholeBody.png`,
     pictureOne:"",
     pictureTwo:"",
     pictureThree:"",

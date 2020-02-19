@@ -104,9 +104,9 @@ const lookempower = (val,calback) =>{
           }
           //发送code，encryptedData，iv到后台解码，获取用户信息
           ask("get", `${insertUser}`, paraOne).then(res3 => {
-            // console.log(res3);
+            console.log(res3);
             if (res3.status == 200) {
-              wx.setStorageSync('userInformation', res3.info);
+              wx.setStorageSync('userInformation', res3.data.user);
               calback(res3);
             } else {
               wx.hideLoading();

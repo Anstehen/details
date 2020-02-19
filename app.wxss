@@ -70,6 +70,10 @@
   flex-direction: row-reverse;
   align-items: center;
 }
+.box_sisteen{
+  display: flex;
+  flex-direction: row-reverse;
+}
 /* 超出两行用省略号代替 */
 .spill_over{ 
   overflow: hidden;

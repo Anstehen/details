@@ -9,8 +9,17 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    orderIcon: `${app.globalData.pictureUrl}/icon/201911212218placeAnOrder.png`,
+    orderIcon: `${app.globalData.pictureUrl}/icon/201911212218placeAnOrder.png`,
+    magicIcon: `${app.globalData.pictureUrl}/icon/202002191105magicMand.png`,
     limitshow:true,
-    orderIcon:`${app.globalData.pictureUrl}/201911212218placeAnOrder.png`
+    pictureArr: [`${app.globalData.pictureUrl}/homePage/202002191115picture.jpg`, `${app.globalData.pictureUrl}/homePage/202002191330image.jpg`],
+    indicatorDots: false,
+    vertical: false,
+    autoplay: true,
+    interval: 5666,
+    duration: 500,
+    circular:true
   },
   // 我的点击
   minelick: function (e) {

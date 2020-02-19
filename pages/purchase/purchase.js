@@ -12,11 +12,11 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
-    designerIcon:`${app.globalData.pictureUrl}/201911212245designer.jpg`,
-    serviceIcon:`${app.globalData.pictureUrl}/201911212308service.png`,
-    flowerIcon:`${app.globalData.pictureUrl}/201911212337flower.png`,
-    problemIcon:`${app.globalData.pictureUrl}/201911230100problem.png`,
-    orderIcon:`${app.globalData.pictureUrl}/201911212218placeAnOrder.png`,
+    designerIcon:`${app.globalData.pictureUrl}/icon/201911212245designer.jpg`,
+    serviceIcon:`${app.globalData.pictureUrl}/icon/201911212308service.png`,
+    flowerIcon:`${app.globalData.pictureUrl}/icon/201911212337flower.png`,
+    problemIcon:`${app.globalData.pictureUrl}/icon/201911230100problem.png`,
+    orderIcon:`${app.globalData.pictureUrl}/icon/201911212218placeAnOrder.png`,
     limitOrderTimes:true,
     phonePopupShow:false,
     designerObject:null,

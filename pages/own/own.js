@@ -2,6 +2,7 @@ const app = getApp();
 import { lookempower } from '../../utils/authorize.js';
 import { existence } from '../../utils/tools.js';
 import { edition, version, platform, smallRoutione } from '../../config.js';
+let refresh = false;
 Page({
 
   /**
@@ -26,6 +27,7 @@ Page({
   // 获取用户信息
   onGotUserInfo:function(e){
     let _this = this;
+    refresh = true;
     wx.navigateTo({
       url: `/other_pages/authorize/authorize?afferentPath=${'pages/own/own'}`,
     })
@@ -72,7 +74,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let _this = this;
+    if (refresh){
+      refresh = false;
+      _this.onLoad();
+    }
   },
 
   /**
