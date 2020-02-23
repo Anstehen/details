@@ -2,26 +2,28 @@
     <view class="material_one" bindtap="shoutDownClick"></view>
     <view class="material_two">
         <view class="material_two_page box_eight">
-            <image class="material_two_page_img" src="../../image/cancle.png" bindtap="shoutDownClick"></image>
+            <image class="material_two_page_img" src="{{cancleIcon}}" bindtap="shoutDownClick"></image>
             <view class="primary box_eight">
                 <view class="primary_words">主头像</view>
                 <view class="primary_page box_twelve">
-                    <image class="primary_page_img" src="{{}}" mode="widthFix"></image>
+                    <image class="primary_page_img" src="{{mainPicture}}" mode="widthFix"></image>
                 </view>
             </view>
             <view class="othres">
                 <view class="primary_words">其它头像</view>
-                <view class="primary_page box_twelve">
-                    <image class="primary_page_img" src="{{}}" mode="widthFix"></image>
+                <view class="primary_total box_one">
+                  <view class="primary_page box_twelve" wx:for="{{othersArr}}" wx:key="*this">
+                    <image class="primary_page_img" src="{{item}}" mode="widthFix"></image>
+                  </view>
                 </view>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">性别：</text>
-                <text class="mtp_model_content">男</text>
+                <text class="mtp_model_content">{{sexStr}}</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">身高：</text>
-                <text class="mtp_model_content">178cm</text>
+                <text class="mtp_model_content">{{information.height}}cm</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">年龄：</text>
@@ -29,35 +31,35 @@
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">体重：</text>
-                <text class="mtp_model_content">66kg</text>
+                <text class="mtp_model_content">{{information.weight}}kg</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">职业：</text>
-                <text class="mtp_model_content">白领</text>
+                <text class="mtp_model_content">{{information.job}}</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">地址：</text>
-                <text class="mtp_model_content">河南省平顶山市最好县最好镇</text>
+                <text class="mtp_model_content">{{information.city}}</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">对于改变：</text>
-                <text class="mtp_model_content">尽可能少的改变</text>
+                <text class="mtp_model_content">{{information.degreeOfChange}}</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">对于长度：</text>
-                <text class="mtp_model_content">好看就行</text>
+                <text class="mtp_model_content">{{information.lengthRequirement}}</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">对于烫染：</text>
-                <text class="mtp_model_content">好看就行</text>
+                <text class="mtp_model_content">{{information.hotDye}}</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">着装风格：</text>
-                <text class="mtp_model_content">淑女</text>
+                <text class="mtp_model_content">{{information.clothing}}</text>
             </view>
             <view class="mtp_model box_three">
                 <text class="mtp_model_title">打理习惯：</text>
-                <text class="mtp_model_content">不打理</text>
+                <text class="mtp_model_content">{{information.takeCare}}</text>
             </view>
             <view class="mtp_message"></view>
         </view>

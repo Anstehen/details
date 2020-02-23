@@ -5,10 +5,12 @@
 <view class="order box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="swiper">
         <swiper indicator-dots="{{true}}"
-        autoplay="{{true}}" interval="5000" duration="500" class="swiper_swiper">
+        autoplay="{{true}}" interval="5000" duration="500" circular="true" class="swiper_swiper">
           <block wx:for="{{swiperArr}}" wx:key="info">
             <swiper-item>
-              <view class="swiper_page"></view>
+              <view class="swiper_page box_twelve">
+                <image class="swiper_page_img" src="{{item}}" mode="widthFix" data-info="{{item}}" bindtap="picturePriveiw"></image>
+              </view>
             </swiper-item>
           </block>
         </swiper>
@@ -17,28 +19,28 @@
         <view class="designer_page box_thirteen">
             <view class="designer_page_left box_three">
                 <view class="dple_one">
-                    <image class="dple_one_img" src="../../image/20191119attestation.png"></image>
+                    <image class="dple_one_img" src="{{attestationIcon}}"></image>
                     <view class="dple_one_model box_twelve">
-                        <image class="dple_one_model_img" src="../../image/logo.png" mode="widthFix"></image>
+                        <image class="dple_one_model_img" src="{{dataObject.users[0].userImage}}" mode="widthFix"></image>
                     </view>
                 </view>
                 <view class="dple_two box_ten">
                     <view class="dple_two_textOne box_two">
                         <text class="dptt_textOne">名字：</text>
-                        <text class="dptt_textTwo">不知所谓</text>
+                        <text class="dptt_textTwo">{{dataObject.users[0].userName}}</text>
                     </view>
                     <view class="dple_two_textOne dple_public box_two">
                         <text class="dptt_textOne">性别：</text>
-                        <text class="dptt_textTwo">男</text>
+                        <text class="dptt_textTwo">{{gloval.genderChange(dataObject.sex)}}</text>
                     </view>
-                    <view class="dple_two_textOne dple_public box_two">    
+                    <!-- <view class="dple_two_textOne dple_public box_two">    
                         <text class="dptt_textOne">年龄：</text>
                         <text class="dptt_textTwo">18</text>
-                    </view>
+                    </view> -->
                 </view>
             </view>
             <view class="designer_page_right box_twelve">
-                <view class="depari box_twelve">电话联系</view>
+                <view class="depari box_twelve" bindtap="phoneClick">电话联系</view>
             </view>
         </view>
     </view>
@@ -46,28 +48,24 @@
         <view class="model_one box_twelve">
             <view class="model_one_page box_three">
                 <text class="model_one_page_text">状态：</text>
-                <view class="model_one_page_view">未设计</view>
+                <view class="model_one_page_view">{{gloval.stateChange(dataObject.orderStatus)}}</view>
             </view>
         </view>
         <view class="model_one box_twelve">
             <view class="model_one_page box_three">
                 <text class="model_one_page_text">时间：</text>
-                <view class="model_one_page_view">2019-11-20 22：35</view>
+                <view class="model_one_page_view">{{dataObject.payTime}}</view>
             </view>
         </view>
     </view>
 </view>
 <view class="function box_five">
-    <view class="function_one box_five">
-        <image class="function_one_img" src="../../image/201911202250send.png"></image>
-        <text class="function_one_text">发 送</text>
-    </view>
-    <view class="function_two box_five" bindtap="editClick">
-        <image class="function_one_img" src="../../image/201911202250edit.png"></image>
+    <view class="function_one box_five" bindtap="editClick">
+        <image class="function_one_img" src="{{editIcon}}"></image>
         <text class="function_one_text">编 辑</text>
     </view>
 </view>
-<view class="look box_five" bindtap="lookReport">
-    <image class="look_img" src="../../image/201911202303look.png"></image>
+<view class="look box_five" bindtap="lookReport" wx:if="{{dataObject.orderStatus==3||dataObject.orderStatus=='3'}}">
+    <image class="look_img" src="{{lookIcon}}"></image>
     <text class="look_text">查看报告</text>
 </view>

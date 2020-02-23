@@ -29,7 +29,7 @@ page{
 .state_model_coucur{
   position: absolute;
   bottom: 6rpx;
-  width:88rpx;
+  width:139rpx;
   height:6rpx;
   background:linear-gradient(270deg,rgba(255,87,127,1) 0%,rgba(255,35,62,1) 100%);
   border-radius:3rpx;
@@ -58,7 +58,7 @@ page{
   border-bottom: 1rpx solid rgba(237, 238, 242, 0.5);
 }
 .camo_one_left{
-  width: 100%;
+  width: auto;
   height: 100%;
   margin-left: 26rpx;
 }
@@ -73,10 +73,32 @@ page{
   color:rgba(53,59,80,0.5);
   line-height:34rpx;
 }
+.camoor_textOne{
+  font-size:26rpx;
+  font-weight:500;
+  color:rgba(255,84,123,1);
+  line-height:36rpx;
+}
+.camoor_textTwo{
+  font-size:26rpx;
+  font-weight:500;
+  color:rgba(8,199,158,1);
+  line-height:36rpx;
+}
+.camoor_textThree{
+  font-size:26rpx;
+  font-weight:500;
+  color:rgba(255, 165, 16, 1);
+  line-height:36rpx;
+}
 .camo_one_right{
-  width: 32rpx;
-  height: 32rpx;
-  margin-right: 26rpx;
+  width: auto;
+  margin-right: 12rpx;
+}
+.camoor_image{
+  margin-left: 12rpx;
+  width: 28rpx;
+  height: 28rpx; 
 }
 .camo_two{
   width: 100%;
@@ -91,6 +113,10 @@ page{
 }
 .camo_two_left_img{
   width: 160rpx;
+  height: auto;
+}
+.camo_two_left_imgOne{
+  width: 124rpx;
   height: auto;
 }
 .camo_two_right{
@@ -139,13 +165,34 @@ page{
   line-height:34rpx;
 }
 .camo_three_right{
-  margin-right: 26rpx;
+  margin-right: 12rpx;
+}
+.camotr_contact{
+  width:142rpx;
+  height:52rpx;
+  border-radius:26rpx;
+  border:2rpx solid rgba(8, 199, 158, 1);
+  font-size:26rpx;
+  color:rgba(8, 199, 158, 1);
+  line-height:36rpx;
+}
+.camotr_delete{
+  margin-left: 12rpx;
   width:142rpx;
   height:52rpx;
   border-radius:26rpx;
   border:2rpx solid rgba(121,152,184,1);
   font-size:26rpx;
   color:rgba(121,152,184,1);
+  line-height:36rpx;
+}
+.empty{
+  width: 100%;
+  height: auto;
+  margin-top: 266rpx;
+  font-size:30rpx;
+  font-weight:bold;
+  color:rgba(111,119,146,0.5);
   line-height:36rpx;
 }
 .message{

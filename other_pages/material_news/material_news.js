@@ -10,6 +10,8 @@ const qqmapsdk = new QQMapWX({
   key: 'YIJBZ-M2VWF-X54J5-NITUC-YM6BQ-6EBYA' // 必填
 });
 let upstream = {
+  orderId:"",
+  orderStatus: 2,//订单状态。1，默认已付款，待填写信息。2，信息填写完成。
   fullFacePhoto:"",//正面照
   profilePhoto:"",//侧面照
   hairPhoto:"",//发长照
@@ -58,6 +60,7 @@ Page({
     stylechange:0,
     takeArr:[],
     takechange:0,
+    acceptOrderId:"",
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -109,6 +112,10 @@ Page({
   // 获取地理位置
   getLocation:function(e){
     let _this = this;
+    let whetherStr = false;
+    let logNumber = 0;
+    let latNumber = 0;
+    let locationStr = "";
     if (_this.data.locationWether){//已授权
       wx.navigateTo({
         url: '../map/map',
@@ -119,46 +126,28 @@ Page({
         success(resLocation) {
           // console.log(resLocation);
           // 用户已经同意
-          //其他操作...
-          // console.log("用户已经同意位置授权");
-          wx.openSetting({
-            success: function (res) {
-              // console.log(res);
-              if (res.authSetting["scope.userLocation"] == true) {
-                let logNumber = 0;
-                let latNumber = 0;
-                let locationStr = "";
-                wx.showLoading({
-                  mask:true,
-                  title: '数据加载中...',
-                })
-                geo();//获取位置信息
-                let numberFour = 0;
-                let placeHandel = setInterval(function () {
-                  numberFour += numberFour;
-                  if (existence(app.globalData.locationObject) && numberFour <= 10000) {
-                    clearInterval(placeHandel);
-                    logNumber = app.globalData.locationObject.location.lng;
-                    latNumber = app.globalData.locationObject.location.lat;
-                    if (app.globalData.locationObject.address && existence(app.globalData.locationObject.address)) {
-                      locationStr = app.globalData.locationObject.address;
-                    }
-                  }
-                  wx.hideLoading({});
-                  wx.navigateTo({
-                    url: '../map/map',
-                  })
-                }, 100)
-                upstream.city = locationStr;
-                _this.setData({
-                  locationWether: true,
-                  longitudeNumber: logNumber,
-                  dimensionNumber: latNumber,
-                  locationWords: locationStr
-                })
-              }
-            }
+          wx.showLoading({
+            mask: true,
+            title: '数据加载中...',
           })
+          whetherStr = true;
+          //获取位置信息
+          geo(function (res) {
+            // console.log(res);
+            logNumber = res.location.lng;
+            latNumber = res.location.lat;
+            if (res.address && existence(res.address)) {
+              locationStr = res.address;
+            }
+            _this.setData({
+              longitudeNumber: logNumber,
+              dimensionNumber: latNumber,
+              locationWether: whetherStr,
+              locationWords: locationStr
+            })
+            upstream.city = locationStr;
+            wx.hideLoading();
+          });
         },
         fail() {
           // console.log("用户已经拒绝位置授权");
@@ -248,15 +237,18 @@ Page({
     //发送code，encryptedData，iv到后台解码，获取用户信息
     ask("post", `${updateOrder}`, para).then(res => {
       // console.log(res);
-      // if (res.code == 0) {
-        
-      // } else {
-      //   wx.hideLoading();
-      //   askError(wx.getStorageSync('userInfo').userId, updateOrderTitle, '数据请求出错');
-      // }
+      if (res1.status == 200) {
+        wx.hideLoading();
+        wx.navigateTo({
+          url: '../material_success/material_success',
+        })
+      } else {
+        wx.hideLoading();
+        askError(wx.getStorageSync('userInformation').userId, updateOrderTitle, '数据请求出错');
+      }
     }).catch(error => {
       wx.hideLoading();
-      askError(wx.getStorageSync('userInfo').userId, updateOrderTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, updateOrderTitle, '数据处理出错');
     })
   },
   // 页面加载数据展示
@@ -287,7 +279,7 @@ Page({
             arrThree = arrThree.concat(res[i].context);
           }
           // 着装
-          if(wx.getStorageSync('userInfo').sex == 1 || wx.getStorageSync('userInfo').sex == '1'){//男
+          if(wx.getStorageSync('userInformation').sex == 1 || wx.getStorageSync('userInformation').sex == '1'){//男
             if(res[i].category == 4 || res[i].category == '4'){
               arrFour = arrFour.concat(res[i].context);
             }
@@ -324,11 +316,11 @@ Page({
         
       // } else {
       //   wx.hideLoading();
-      //   askError(wx.getStorageSync('userInfo').userId, informationTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, informationTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError(wx.getStorageSync('userInfo').userId, informationTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, informationTitle, '数据处理出错');
     })
   },
   /**
@@ -336,7 +328,9 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
+    // console.log(options);
     _this.informationData();
+    upstream.orderId = options.transorderid;
     upstream.fullFacePhoto = app.globalData.pictureObj.imageOne;
     upstream.profilePhoto = app.globalData.pictureObj.imageTwo;
     upstream.hairPhoto = app.globalData.pictureObj.imageThree;
@@ -356,34 +350,30 @@ Page({
     let locationStr = "";
     wx.getSetting({
       success: (res) => {
-        // console.log(res)
+        // console.log(res);
         // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
         // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
         // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
         if (res.authSetting['scope.userLocation']) {
           //已授权
           whetherStr = true;
-          geo();//获取位置信息
-          let numberFour = 0;
-          let placeHandel = setInterval(function () {
-            numberFour += numberFour;
-            if (existence(app.globalData.locationObject) && numberFour <= 10000) {
-              clearInterval(placeHandel);
-              logNumber = app.globalData.locationObject.location.lng;
-              latNumber = app.globalData.locationObject.location.lat;
-              if (app.globalData.locationObject.address && existence(app.globalData.locationObject.address)) {
-                locationStr = app.globalData.locationObject.address;
-              }
+          //获取位置信息
+          geo(function(res){
+            // console.log(res);
+            logNumber = res.location.lng;
+            latNumber = res.location.lat;
+            if (res.address && existence(res.address)) {
+              locationStr = res.address;
             }
             _this.setData({
               longitudeNumber: logNumber,
               dimensionNumber: latNumber,
               locationWether: whetherStr,
               locationWords: locationStr
-            }) 
+            })
             upstream.city = locationStr;
             wx.hideLoading();
-          }, 100)
+          });
         }else{
           wx.hideLoading();
         }
@@ -392,7 +382,8 @@ Page({
     _this.setData({
       sexArr: gender(),
       heightArr: stature(),
-      weightArr: heavy()
+      weightArr: heavy(),
+      acceptOrderId: options.transorderid
     })
   },
 

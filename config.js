@@ -24,6 +24,12 @@ var config = {
   // 根据openid查询用户信息
   selectByOpenid: `${master}/user/selectByOpenid`,
   selectByOpenidTitle: `根据 openid 查询用户信息出错`,
+  // 根据openid修改用户信息
+  updateUserByOpenid: `${master}/user/updateUserByOpenid`,
+  updateUserByOpenidTitle: `根据openid修改用户信息出错`,
+  // 获取用户手机号
+  getPhone: `${master}/phone/getPhone`,
+  getPhoneTitle: `获取用户手机号出错`,
   // 微信支付
   WeiXinPay: `${master}/WeiXinPay`,
   WeiXinPayTitle: `根据 openid 查询用户信息出错`,
@@ -39,17 +45,29 @@ var config = {
   // 用户上传资料标签
   information: `${master}/information/selectAll`,
   informationTitle: `图片上传接口出错`,
-  // 用户上传资料
+  // 用户上传资料---根据 orderid 修改
   updateOrder: `${master}/order/update`,
-  updateOrderTitle: `图片上传接口出错`,
+  updateOrderTitle: `用户上传资料出错`,
   // 查询设计师的信息
   selectByIdentity: `${master}/user/selectByIdentity`,
-  selectByIdentityTitle: `图片上传接口出错`,
+  selectByIdentityTitle: `查询设计师的信息出错`,
   // 查询服务介绍
   selectAllService: `${master}/service/selectAll`,
   selectAllServiceTitle: `查询服务介绍出错`,
   // 设计师端根据设计师的openid查询出订单
   selectByDesigneOpenid: `${master}/order/selectByDesigneOpenid`,
   selectByDesigneOpenidTitle: `设计师端根据设计师的openid查询出订单出错`,
+  // 设计师端根据设计师的openid查询出订单---根据id删除订单
+  deleteOrder: `${master}/order/delete`,
+  deleteOrderTitle: `根据id删除订单出错`,
+  // 根据openid查询订单 (用户端展示)
+  userSelectByOpenid: `${master}/order/selectByOpenid`,
+  userSelectByOpenidTitle: `根据openid查询订单 (用户端展示)出错`,
+  // 查询设计师服务价格
+  selectPrice: `${master}/price/selectPrice`,
+  selectPriceTitle: `查询设计师服务价格出错`,
+  // 根据orderId查询订单
+  selectOrder: `${master}/order/select`,
+  selectOrderTitle: `根据orderId查询订单出错`,
 }
 module.exports = config;

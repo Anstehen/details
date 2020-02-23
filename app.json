@@ -21,6 +21,7 @@
         "editDetail/editDetail",
         "material/material",
         "material_news/material_news",
+        "material_success/material_success",
         "map/map",
         "presentation/presentation"
       ]

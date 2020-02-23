@@ -12,20 +12,53 @@ Page({
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
     cameraIcon: `${app.globalData.pictureUrl}/icon/202001072209camera.png`,
-    hairLengthIcon: `${app.globalData.pictureUrl}/submission/20200218hairLength.jpg`,
-    positiveIcon: `${app.globalData.pictureUrl}/submission/20200218positive.jpg`,
-    sideViewIcon: `${app.globalData.pictureUrl}/submission/20200218sideView.png`,
-    wholeBodyIcon: `${app.globalData.pictureUrl}/submission/20200218wholeBody.png`,
+    hairLengthIcon: `${app.globalData.pictureUrl}/submission/202002211824hairLength.jpg`,
+    positiveIcon: `${app.globalData.pictureUrl}/submission/202002211824positive.jpg`,
+    sideViewIcon: `${app.globalData.pictureUrl}/submission/202002211824sideView.jpg`,
+    wholeBodyIcon: `${app.globalData.pictureUrl}/submission/202002211825wholeBody.jpg`,
     pictureOne:"",
     pictureTwo:"",
     pictureThree:"",
     pictureFour:"",
+    acceptOrderId:"",
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
     let _this = this;
     wx.navigateBack({
       delta: 1
+    })
+  },
+  // 正面照模板预览
+  positivePreview:function(e){
+    let _this = this;
+    wx.previewImage({
+      current: _this.data.positiveIcon, // 当前显示图片的http链接
+      urls: [_this.data.positiveIcon] // 需要预览的图片http链接列表
+    })
+  },
+  // 侧面照模板预览
+  sidePreview: function (e) {
+    let _this = this;
+    wx.previewImage({
+      current: _this.data.sideViewIcon, // 当前显示图片的http链接
+      urls: [_this.data.sideViewIcon] // 需要预览的图片http链接列表
+    })
+  },
+  // 发长照模板预览
+  hairLengthPreview: function (e) {
+    let _this = this;
+    wx.previewImage({
+      current: _this.data.hairLengthIcon, // 当前显示图片的http链接
+      urls: [_this.data.hairLengthIcon] // 需要预览的图片http链接列表
+    })
+  },
+  // 全身照模板预览
+  whokePreview: function (e) {
+    let _this = this;
+    wx.previewImage({
+      current: _this.data.wholeBodyIcon, // 当前显示图片的http链接
+      urls: [_this.data.wholeBodyIcon] // 需要预览的图片http链接列表
     })
   },
   // 正面照图片
@@ -130,7 +163,7 @@ Page({
       imageFour:_this.data.pictureFour,
     }
     wx.navigateTo({
-      url: '../material_news/material_news',
+      url: `../material_news/material_news?transorderid=${_this.data.acceptOrderId}`,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -142,6 +175,9 @@ Page({
   onLoad: function (options) {
     let _this = this;
     app.globalData.pictureObj = null;
+    _this.setData({
+      acceptOrderId: options.transorderid
+    })
   },
 
   /**

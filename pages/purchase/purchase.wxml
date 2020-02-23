@@ -5,7 +5,7 @@
 <view class="purchase box_eight" style="margin-top:{{statusBarHeight+44}}px">
   <view class="swiper" wx:if="{{carouselArr.length!=0}}">
         <swiper indicator-dots="{{true}}"
-        autoplay="{{true}}" interval="5000" duration="500" class="swiper_swiper">
+        autoplay="{{true}}" interval="5000" duration="500" circular="true" class="swiper_swiper">
           <block wx:for="{{carouselArr}}" wx:key="info">
             <swiper-item>
               <view class="swiper_page box_twelve">
@@ -119,6 +119,10 @@
             <view class="calling_page_three box_eight">
                 <view class="capt_words">服务特色：</view>
                 <view class="capt_page box_eight">{{designerObject.serviceCharacteristics}}</view>
+            </view>
+            <view class="calling_page_three box_eight">
+                <view class="capt_words">服务价格：</view>
+                <view class="capt_page box_eight">设计师为你提供 {{serverPrice}} 的特优价格</view>
             </view>
             <view class="calling_page_four box_six">
                 <view class="capafo_left">添加微信免费咨询：</view>

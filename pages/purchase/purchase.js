@@ -2,8 +2,8 @@ const app = getApp();
 import { existence,symbolArr } from '../../utils/tools.js';
 import { ask, askError } from '../../utils/demand.js';
 import { placeAnOrder } from '../../utils/order.js';
-import { getPhone } from '../../utils/authorize.js';
-import { edition, version, platform, smallRoutione,selectByIdentity,selectByIdentityTitle,selectAllService,selectAllServiceTitle } from '../../config.js';
+import { getMobile } from '../../utils/authorize.js';
+import { edition, version, platform, smallRoutione, selectByIdentity, selectByIdentityTitle, selectAllService, selectAllServiceTitle, selectPrice, selectPriceTitle } from '../../config.js';
 Page({
 
   /**
@@ -29,6 +29,7 @@ Page({
     tengledStr: "",
     wantStr: "",
     detailArr: [],
+    serverPrice:0
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -67,9 +68,9 @@ Page({
       _this.setData({
         phonePopupShow:false
       })
-      // getPhone(e.detail,function(res){
-      //   console.log(res);
-      // });
+      getMobile(e.detail.detail, function (res) {
+        console.log(res);
+      });
     }
   },
   // 手机号授权---取消
@@ -83,14 +84,15 @@ Page({
   immediatelyClick:function(e){
     let _this = this;
     // console.log(wx.getStorageSync("userInformation"));
-    if(!existence(wx.getStorageSync("userInformation").userPhone)){
-      // _this.setData({
-      //   phonePopupShow:true
-      // })
-      placeAnOrder();
+    if(existence(wx.getStorageSync("userInformation").userPhone)){
+      placeAnOrder(_this.data.designerObject);
     }else{
       if(_this.data.limitOrderTimes){
-        placeAnOrder();
+        // placeAnOrder();
+        _this.setData({
+          phonePopupShow:true,
+          limitOrderTimes:false
+        })
       }
     }
   },
@@ -115,11 +117,11 @@ Page({
       //   })
       // } else {
       //   wx.hideLoading();
-      //   askError(wx.getStorageSync('userInfo').userId, selectByIdentityTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, selectByIdentityTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError(wx.getStorageSync('userInfo').userId, selectByIdentityTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, selectByIdentityTitle, '数据处理出错');
     })
     // 2.0 设计师服务信息
     let paraOne = {};
@@ -175,11 +177,31 @@ Page({
       //   })
       // } else {
       //   wx.hideLoading();
-      //   askError(wx.getStorageSync('userInfo').userId, selectAllServiceTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, selectAllServiceTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError(wx.getStorageSync('userInfo').userId, selectAllServiceTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, selectAllServiceTitle, '数据处理出错');
+    })
+    // 获取设计师服务价格
+    let paraTwo = {};
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("post", `${selectPrice}`, paraTwo).then(res => {
+      // console.log(res);
+      _this.setData({
+        serverPrice: res.price
+      })
+      // if (res.code == 0) {
+      //   _this.setData({
+
+      //   })
+      // } else {
+      //   wx.hideLoading();
+      //   askError(wx.getStorageSync('userInformation').userId, selectPriceTitle, '数据请求出错');
+      // }
+    }).catch(error => {
+      wx.hideLoading();
+      askError(wx.getStorageSync('userInformation').userId, selectPriceTitle, '数据处理出错');
     })
   },
   /**

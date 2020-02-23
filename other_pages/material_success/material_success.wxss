@@ -1,0 +1,48 @@
+@import "../../component/template/template.wxss";
+page{
+  background: rgba(241, 242, 245, 1);
+}
+.success{
+  width: 100%;
+  height: auto;
+}
+.picture{
+  width: 100%;
+  height: auto;
+  margin-top: 166rpx;
+}
+.picture_img{
+  width: 300rpx;
+  height: auto;
+}
+.words{
+  margin-top: 48rpx;
+  width: 100%;
+  height: auto;
+}
+.words_title{
+  font-size:36rpx;
+  font-weight:bold;
+  color:rgba(53,59,80,1);
+}
+.words_introduce{
+  width: 91.47%;
+  margin-top: 36rpx;
+  font-size:32rpx;
+  font-weight:500;
+  color:rgba(149,160,182,1);
+}
+.btn{
+  margin-top: 48rpx;
+  width: 100%;
+  height: auto;
+}
+.btn_function{
+  width: 324rpx;
+  height: 84rpx;
+  border-radius: 64rpx;
+  border: 2rpx solid rgba(254, 152, 177, 1);
+  font-size:36rpx;
+  font-weight:bold;
+  color:rgba(254, 152, 177, 1);
+}

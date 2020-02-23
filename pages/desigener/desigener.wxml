@@ -5,53 +5,65 @@
 <!-- 内容区域 -->
 <view class="state box_one">
     <view class="state_model box_twelve" bindtap="designNoneClick">
-        <text class="{{stateChioce != 1 ? 'state_model_textOne':'state_model_textTwo'}}">未设计</text>
+        <text class="{{stateChioce != 1 ? 'state_model_textOne':'state_model_textTwo'}}">资料未上传</text>
         <view class="state_model_coucur" wx:if="{{stateChioce == 1}}"></view>
     </view>
     <view class="state_model box_twelve" bindtap="designDoingClick">
-        <text class="{{stateChioce != 2 ? 'state_model_textOne':'state_model_textTwo'}}">已设计</text>
+        <text class="{{stateChioce != 2 ? 'state_model_textOne':'state_model_textTwo'}}">未设计</text>
         <view class="state_model_coucur" wx:if="{{stateChioce == 2}}"></view>
     </view>
     <view class="state_model box_twelve" bindtap="designFinishClick">
-        <text class="{{stateChioce != 3 ? 'state_model_textOne':'state_model_textTwo'}}">已完成</text>
+        <text class="{{stateChioce != 3 ? 'state_model_textOne':'state_model_textTwo'}}">已设计</text>
         <view class="state_model_coucur" wx:if="{{stateChioce == 3}}"></view>
     </view>
 </view>
 <view class="desigener box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="clearance"></view>
-    <view class="cards box_twelve" wx:for="{{orderArr}}" wx:for-item="item" wx:for-index="index" wx:key="order">
-        <view class="cards_model box_eight" bindtap="orderClick">
+    <view class="cards box_twelve" wx:for="{{orderArr}}" wx:for-item="item" wx:for-index="index" wx:key="order" wx:if="{{orderArr.length!=0}}">
+        <view class="cards_model box_eight" data-info="{{item}}" bindtap="{{item.orderStatus==2?'orderClick':''}}">
             <view class="camo_one box_six">
                 <view class="camo_one_left box_three">
                     <text class="camo_one_left_one">订单号：</text>
-                    <text class="camo_one_left_two">1234567890</text>
+                    <text class="camo_one_left_two">{{item.orderNumber}}</text>
                 </view>
-                <image class="camo_one_right" src="../../image/20191118triangleRight.png"></image>
+                <view class="camo_one_right box_three">
+                    <text class="camoor_textOne" wx:if="{{item.orderStatus==1}}">资料未上传</text>
+                    <text class="camoor_textTwo" wx:if="{{item.orderStatus==2}}">去设计</text>
+                    <text class="camoor_textThree" wx:if="{{item.orderStatus==3}}">已发送</text>
+                    <image class="camoor_image" src="{{enterIcon}}" wx:if="{{item.orderStatus==2}}"></image>
+                </view>
             </view>
             <view class="camo_two box_three">
                 <view class="camo_two_left box_twelve">
-                    <image class="camo_two_left_img" src="../../image/logo.png" mode="widthFix"></image>
+                    <image class="camo_two_left_img" src="{{item.fullFacePhoto}}" mode="widthFix" wx:if="{{gloval.judgeValue(item.fullFacePhoto)}}"></image>
+                    <image class="camo_two_left_imgOne" src="{{defaultIcon}}" mode="widthFix" wx:else></image>
                 </view>
                 <view class="camo_two_right box_eight">
                     <view class="ctr_model box_three">
                         <text class="ctr_model_one">用户名：</text>
-                        <text class="ctr_model_two">Anstehen</text>
+                        <text class="ctr_model_two">{{item.users[0].userName}}</text>
                     </view>
                     <view class="ctr_modelOne box_three">
                         <text class="ctr_model_one">支付时间：</text>
-                        <text class="ctr_model_two">2019-11-18 23:39:00</text>
+                        <text class="ctr_model_two">{{item.payTime}}</text>
                     </view>
                 </view>
             </view>
             <view class="camo_three box_six">
                 <view class="camo_three_left box_three">
                     <text class="camo_three_left_one">付款：</text>
-                    <text class="camo_three_left_two">￥68.8</text>
+                    <text class="camo_three_left_two">￥{{item.payMoney}}</text>
                 </view>
-                <view class="camo_three_right box_twelve">删 除</view>
+                <view class="camo_three_right box_three">
+                     <view class="camotr_contact box_twelve" data-info="{{item}}" catchtap="phoneClick">联系用户</view>
+                     <view class="camotr_delete box_twelve" data-info="{{item}}" wx:if="{{item.orderStatus!=1}}" catchtap="deleteClick">删 除</view>
+                </view>
             </view>
         </view>
     </view>
+</view>
+<view class="state box_one" wx:if="{{orderArr.length==0}}">
+    <view class="empty box_twelve">您暂无订单~</view>
 </view>
 <view class="message"></view>
 <!-- 底部导航栏 -->

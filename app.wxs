@@ -20,7 +20,35 @@ var judgeValue = function(val){
   }
   return returnStr
 }
+// 根据数字、字符串返回性别
+var genderChange = function(str){
+  var ruturnStr = "暂无";
+  if (str == undefined || str == null || str == "undefined" || str == "null" || str == ''){
+    ruturnStr = "暂无";
+  } else if (str == 0 || str == '0'){
+    ruturnStr = "男";
+  }else{
+    ruturnStr = "女";
+  }
+  return ruturnStr
+}
+// 根据数字、字符串返回状态
+var stateChange = function(str){
+  var ruturnStr = "未设计";
+  if (str == undefined || str == null || str == "undefined" || str == "null" || str == '') {
+    ruturnStr = "未设计";
+  } else if (str == 1 || str == '1') {
+    ruturnStr = "资料未上传";
+  } else if (str == 2 || str == '2'){
+    ruturnStr = "未设计";
+  } else if (str == 3 || str == '3') {
+    ruturnStr = "已完成";
+  }
+  return ruturnStr
+}
 module.exports = {
   processingValue: processingValue,
-  judgeValue:judgeValue
+  judgeValue:judgeValue,
+  genderChange: genderChange,
+  stateChange: stateChange
 }

@@ -7,7 +7,7 @@
     <view class="cards">
         <view class="model box_five">
             <view class="model_left box_twelve">
-                <image class="model_left_img" src="{{positiveIcon}}"></image>
+                <image class="model_left_img" src="{{positiveIcon}}" bindtap="positivePreview"></image>
             </view>
             <view class="model_right box_twelve">
                 <view class="model_right_page box_twelve"  data-different="1" bindtap="choicePicture">
@@ -21,7 +21,7 @@
     <view class="cards">
         <view class="model box_five">
             <view class="model_left box_twelve">
-                <image class="model_left_img" src="{{sideViewIcon}}"></image>
+                <image class="model_left_img" src="{{sideViewIcon}}" bindtap="sidePreview"></image>
             </view>
             <view class="model_right box_twelve">
                 <view class="model_right_page box_twelve"  data-different="2" bindtap="choicePicture">
@@ -35,7 +35,7 @@
     <view class="cards">
         <view class="model box_five">
             <view class="model_left box_twelve">
-                <image class="model_left_img" src="{{hairLengthIcon}}"></image>
+                <image class="model_left_img" src="{{hairLengthIcon}}" bindtap="hairLengthPreview"></image>
             </view>
             <view class="model_right box_twelve">
                 <view class="model_right_page box_twelve"  data-different="3" bindtap="choicePicture">
@@ -49,7 +49,7 @@
     <view class="cards">
         <view class="model box_five">
             <view class="model_left box_twelve">
-                <image class="model_left_img" src="{{wholeBodyIcon}}"></image>
+                <image class="model_left_img" src="{{wholeBodyIcon}}" bindtap="whokePreview"></image>
             </view>
             <view class="model_right box_twelve">
                 <view class="model_right_page box_twelve" data-different="4" bindtap="choicePicture">

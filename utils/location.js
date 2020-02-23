@@ -4,7 +4,7 @@ const QQMapWX = require('../lib/qqmap-wx-jssdk.js');
 const qqmapsdk = new QQMapWX({
   key: 'YIJBZ-M2VWF-X54J5-NITUC-YM6BQ-6EBYA' // 必填
 });
-const geo = () =>{
+const geo = (callback) =>{
   wx.getLocation({
     type: 'wgs84',
     success: function (res) {
@@ -21,7 +21,7 @@ const geo = () =>{
         success: (res1) => {
           // console.log(res1);
           let transfer = res1.result;
-          app.globalData.locationObject = transfer;
+          callback(transfer);
         },
         fail: function (error) {
           // console.error(error);

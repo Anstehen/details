@@ -4,31 +4,35 @@
 <template is="exist" data="{{title:'我的报告',topHeight:statusBarHeight}}"/>
 <view class="report box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="cards box_twelve" wx:for="{{orderArr}}" wx:for-index="index" wx:for-item="item" wx:key="order">
-        <view class="cards_page box_eight">
+        <view class="cards_page box_eight" bindtap="{{item.orderStatus==2?'lookReportClick':''}}">
             <view class="cards_page_bac"></view>
             <view class="cards_page_one box_thirteen">
               <view class="cpon_left box_five">
                   <text class="cpon_left_textOne">订单编号:</text>
-                  <text class="cpon_left_textTwo">1234567890</text>
+                  <text class="cpon_left_textTwo">{{item.orderNumber}}</text>
               </view>
-              <view class="cpon_lright box_five" bindtap="goPage">
-                  <text class="cpon_lright_text">查看报告</text>
-                  <image class="cpon_lright_img" src="../../image/20191118triangleRight.png"></image>
+              <view class="cpon_lright box_five">
+                  <text class="cpon_lright_text" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}">查看报告</text>
+                  <text class="cpon_lright_textOne" wx:else>资料未上传</text>
+                  <image class="cpon_lright_img" src="{{triangleRightIcon}}" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}"></image>
               </view>
             </view>
             <view class="cards_page_two box_three">
                 <view class="cptw_left box_twelve">
-                    <image class="cptw_left_img" mode="widthFix" src="../../image/logo.png"></image>
+                    <image class="cptw_left_img" mode="widthFix" src="{{item.fullFacePhoto}}" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}"></image>
+                    <image class="cptw_left_imgOne" mode="widthFix" src="{{defaultIcon}}" wx:else></image>
                 </view>
                 <view class="cptw_right box_ten">
-                    <text class="cptw_right_textOne">设计师：流浪大师</text>
-                    <text class="cptw_right_textTwo">上传时间：2019-11-25 22：49</text>
+                    <text class="cptw_right_textOne">设计师：{{item.designeName}}</text>
+                    <text class="cptw_right_textTwo">创建时间：{{item.createTime}}</text>
                 </view>
             </view>
             <view class="cards_page_three box_fifteen">
-                <view class="cpth_concat box_twelve">联系设计师</view>
-                <view class="cpth_look box_twelve" bindtap="goPage">查看报告</view>
+                <view class="cpth_concat box_twelve" data-info="{{item}}" catchtap="phoneClick">联系设计师</view>
+                <view class="cpth_unload box_twelve" data-info="{{item}}" catchtap="uploadClick" wx:if="{{item.orderStatus==1||item.orderStatus=='1'}}">去上传</view>
+                <view class="cpth_look box_twelve" data-info="{{item}}" catchtap="lookReportClick" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}">查看报告</view>
             </view>
         </view>  
     </view>
+    <view class="message"></view>
 </view>

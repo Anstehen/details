@@ -1,6 +1,6 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { ask, askError } from '../../utils/demand.js';
+import { edition, version, platform, smallRoutione, selectOrder, selectOrderTitle } from '../../config.js';
 Page({
 
   /**
@@ -14,7 +14,9 @@ Page({
     autoplay:true,
     interval:5000,
     pictureArr:[{},{},{}],
-    materialShow:false
+    materialShow:false,
+    acceptOrderId:"",
+    userDataObject:null
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -96,12 +98,39 @@ Page({
       url: '../../library_pages/color/color',
     })
   },
+  // 页面初始数据
+  initialData: function (e) {
+    let _this = this;
+    var para = {
+      orderId: _this.data.acceptOrderId
+    }
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("get", `${selectOrder}`, para).then(res => {
+      // console.log(res);
+      _this.setData({
+        userDataObject: res,
+      })
+      // if (res.code == 0) {
+
+      // } else {
+      //   wx.hideLoading();
+      //   askError("", selectOrderTitle, '数据请求出错');
+      // }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", selectOrderTitle, '数据处理出错');
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let _this = this;
-
+    // console.log(options);
+    _this.setData({
+      acceptOrderId: options.orderid
+    })
+    _this.initialData();//页面初始数据
   },
 
   /**

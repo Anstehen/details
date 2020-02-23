@@ -41,6 +41,10 @@
   color:rgba(53,59,80,1);
   line-height:44rpx;
 }
+.primary_total{
+  width: 100%;
+  height: auto;
+}
 .primary_page{
   width:200rpx;
   height:200rpx;
@@ -48,7 +52,7 @@
   border-radius:11rpx;
   opacity:0.79;
   overflow: hidden;
-  margin-top: 16rpx;
+  margin: 16rpx 0 0 8rpx;
 }
 .primary_page_img{
   width:200rpx;

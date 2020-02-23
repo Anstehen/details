@@ -17,8 +17,8 @@ Page({
     acceptLatutide:0,
     acceptLongitude:0,
     acceptWords:"",
-    changeObject:null,
-    enIcon:"../../image/202001092046end.png"
+    changeObject: null,
+    endIcon: `${app.globalData.pictureUrl}/icon/202001092046end.png`,
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {

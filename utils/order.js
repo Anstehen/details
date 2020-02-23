@@ -1,17 +1,18 @@
 import { ask, askError } from '../utils/demand.js';
 import { existence } from '../utils/tools.js';
 import { version, platform, smallRoutione, WeiXinPay, WeiXinPayTitle,insertOrder,insertOrderTitle } from "../config.js";
-const placeAnOrder = () =>{
-  wx.navigateTo({
-    url: '../../other_pages/material/material',
-  })
-  return
+const placeAnOrder = (val) =>{
+  // wx.navigateTo({
+  //   url: '../../other_pages/material/material',
+  // })
+  // return
+  let desigenrObject = val;
   let para = {
     openid: wx.getStorageSync('userInformation').openid,
-    designeOpenid: "oeR1e5SwZ_ftWta4sc4ktviihUps",
-    designeName: "可乐中的漂流瓶",
-    designePhone: "15237535892",
-    designeImg:"",
+    designeOpenid: desigenrObject.openid,
+    designeName: desigenrObject.userName,
+    designePhone: desigenrObject.userPhone,
+    designeImg: desigenrObject.userImage,
   }
   ask("post", `${insertOrder}`, para).then(res1 => {
     // console.log(res1);
@@ -39,7 +40,7 @@ const placeAnOrder = () =>{
           success(payres) {
             //支付成功
             wx.navigateTo({
-              url: '../../other_pages/material/material',
+              url: `../../other_pages/material/material?transorderid=${res1.data.order.orderId}`,
             })
           },
           fail(se) {

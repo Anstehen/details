@@ -1,0 +1,14 @@
+<import src="../../component/template/template.wxml"/>
+<template is="exist" data="{{title:'订单完成',topHeight:statusBarHeight}}"/>
+<view class="success box_eight" style="margin-top:{{statusBarHeight+44}}px">
+  <view class="picture box_twelve">
+      <image class="picture_img" src="{{orderSuccessIcon}}" mode="widthFix"></image>
+  </view>
+  <view class="words box_eleven">
+      <view class="words_title">资料上传成功!</view>
+      <view class="words_introduce">我们的设计师已经收到您的资料，正在快马加鞭的为您服务，请耐心等待...</view>
+  </view>
+  <view class="btn box_twelve">
+      <view class="btn_function box_twelve" bindtap="goBackClick">确 定</view>
+  </view>
+</view>
