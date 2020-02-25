@@ -49,10 +49,13 @@ Component({
       let strTwo = 0;
       let numberOne = dataStr(1);
       let numberTwo = bearingObject.age.split("-")[0];
-      console.log(numberOne)
-      console.log(numberTwo)
-      strTwo = parseInt(numberTwo) - parseInt(numberTwo);
-      console.log(strTwo)
+      let numberThree = dataStr(2);
+      let numberFour = bearingObject.age.split("-")[1];
+      if (parseInt(numberFour) >= parseInt(numberThree)){
+        strTwo = parseInt(numberOne) - parseInt(numberTwo) - 1;
+      }else{
+        strTwo = parseInt(numberOne) - parseInt(numberTwo);
+      }
       _this.setData({
         mainPicture: bearingObject.fullFacePhoto,
         othersArr: [bearingObject.fullBodyPicture, bearingObject.hairPhoto, bearingObject.profilePhoto],

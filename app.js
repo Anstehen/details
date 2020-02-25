@@ -56,5 +56,6 @@ App({
     pictureUrl:"https://hzweirui.oss-cn-hangzhou.aliyuncs.com/smallProgram",
     systemInfo: null,//客户端设备信息
     pictureObj:null,//用户资料上传的上传照片
+    compileObject:null,//编辑资料
   }
 })

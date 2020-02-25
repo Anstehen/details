@@ -69,5 +69,23 @@ var config = {
   // 根据orderId查询订单
   selectOrder: `${master}/order/select`,
   selectOrderTitle: `根据orderId查询订单出错`,
+  // 订单详情（设计师报告编辑）---根据orderId查询
+  selectOrderDetailByOrderId: `${master}/orderDetail/selectOrderDetailByOrderId`,
+  selectOrderDetailByOrderIdTitle: `根据orderId查询订单出错`,
+  // 订单详情（设计师报告编辑）---根据id修改
+  orderUpdate: `${master}/orderDetail/update`,
+  orderUpdateTitle: `根据id修改出错`,
+  // 订单详情（设计师报告编辑）---查询所有脸型分析
+  editSelectAll: `${master}/faceAnalysis/selectAll`,
+  editSelectAllTitle: `查询所有脸型分析出错`,
+  // 订单详情（设计师报告编辑）---上庭查询所有
+  editUpper: `${master}/uppercourt/selectAll`,
+  editUpperTitle: `上庭查询所有出错`,
+  // 订单详情（设计师报告编辑）---中庭查询所有
+  editStalls: `${master}/stalls/selectAll`,
+  editStallsTitle: `中庭查询所有出错`,
+  // 订单详情（设计师报告编辑）---下庭查询所有
+  editLower: `${master}/lowerCourt/selectAll`,
+  editLowerTitle: `下庭查询所有出错`,
 }
 module.exports = config;

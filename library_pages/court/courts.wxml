@@ -9,7 +9,7 @@
             <picker bindchange="upperPicker" value="{{upperIndex}}" range="{{upperArray}}">
               <view class="words_picker_text box_twelve">
                 <text>{{upperArray[upperIndex]}}</text>
-                <image class="wpt_img" src="../../image/down.png"></image>
+                <image class="wpt_img" src="{{downIcon}}"></image>
               </view>
             </picker>
         </view>
@@ -25,7 +25,7 @@
             <picker bindchange="stallsPicker" value="{{stallsIndex}}" range="{{stallsArray}}">
               <view class="words_picker_text box_twelve">
                 <text>{{stallsArray[stallsIndex]}}</text>
-                <image class="wpt_img" src="../../image/down.png"></image>
+                <image class="wpt_img" src="{{downIcon}}"></image>
               </view>
             </picker>
         </view>
@@ -41,7 +41,7 @@
             <picker bindchange="lowerPicker" value="{{lowerIndex}}" range="{{lowerArray}}">
               <view class="words_picker_text box_twelve">
                 <text>{{lowerArray[lowerIndex]}}</text>
-                <image class="wpt_img" src="../../image/down.png"></image>
+                <image class="wpt_img" src="{{downIcon}}"></image>
               </view>
             </picker>
         </view>
@@ -63,10 +63,10 @@
 <cover-view class="upper box_twelve" style="height:{{screenHeight}}px" wx:if="{{popupShow}}">
     <cover-view class="upper_one" bindtap="upperCloseClick"></cover-view>
     <cover-view class="upper_two box_eleven">
-        <cover-image class="upper_two_img" src="../../image/cancle.png" bindtap="upperCloseClick"></cover-image>
+        <cover-image class="upper_two_img" src="{{cancleIcon}}" bindtap="upperCloseClick"></cover-image>
         <cover-view class="upper_two_message"></cover-view>
-        <cover-view class="upper_two_page utm_select" wx:for="{{upperPopupArr}}" wx:for-item="item" wx:key="upper" bindtap="upperContentClick">
-            <cover-view class="upper_two_model">{{item}}</cover-view>
+        <cover-view wx:for="{{upperPopupArr}}" data-info="{{item}}" wx:key="upper"class="{{item.content==upperValue?'upper_two_pageOne':'upper_two_page'}}" bindtap="upperContentClick">
+            <cover-view class="upper_two_model">{{item.content}}</cover-view>
         </cover-view>
         <cover-view class="upper_two_message"></cover-view>
     </cover-view>

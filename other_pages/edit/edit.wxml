@@ -4,83 +4,88 @@
 <template is="exist" data="{{title:'报告展示',topHeight:statusBarHeight}}"/>
 <view class="presentation box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="portrait box_twelve">
-        <image class="portrait_img" src="../../image/logo.png" mode="widthFix"></image>
+        <image class="portrait_img" src="{{userDataObject.fullFacePhoto}}" mode="widthFix"></image>
     </view>
     <view class="model box_five">
-        <image class="model_img" src="../../image/201911212308service.png"></image>
+        <image class="model_img" src="{{serviceIcon}}"></image>
         <text  class="model_text">脸型分析</text>
     </view>
     <view class="shape box_eight">
-        <view class="shape_title">脸型：<text class="shape_title_words">方圆型脸</text></view>
-        <view class="shape_content box_eight">
-            <text class="shape_content_text" wx:for="{{shapeArr}}" wx:for-item="item" wx:key="shape">{{item}}</text>
+        <view class="shape_title">脸型：<text class="shape_title_words" wx:if="{{gloval.judgeValue(editObject.faceShape)}}">{{editObject.faceShape}}</text><text class="shape_title_wordsOne" wx:else>请编辑</text></view>
+        <view class="shape_content box_eight" wx:if="{{gloval.judgeValue(editObject.faceShapeDetail)}}">
+            <text class="shape_content_text">{{editObject.faceShapeDetail}}</text>
+        </view>
+        <view class="shape_contentOne box_twelve" wx:else>
+          <text class="shape_title_wordsOne">请编辑</text>
+        </view>
+    </view>
+    <view class="shape box_eight">
+        <view class="shape_title">性格描述:</view>
+        <view class="shape_content box_eight" wx:if="{{gloval.judgeValue(editObject.faceShapeCharacter)}}">
+            <text class="shape_content_text">{{editObject.faceShapeCharacter}}</text>
+        </view>
+        <view class="shape_contentOne box_twelve" wx:else>
+          <text class="shape_title_wordsOne">请编辑</text>
+        </view>
+    </view>
+    <view class="shape box_eight">
+        <view class="shape_title">脸型总结:</view>
+        <view class="shape_content box_eight" wx:if="{{gloval.judgeValue(editObject.faceSummary)}}">
+            <text class="shape_content_text">{{editObject.faceSummary}}</text>
+        </view>
+        <view class="shape_contentOne box_twelve" wx:else>
+          <text class="shape_title_wordsOne">请编辑内容</text>
         </view>
     </view>
     <view class="edit box_twelve">
         <view class="edit_page box_five" bindtap="faceShapgeClick">
-            <image class="edit_page_img" src="../../image/edit.png"></image>
-            <text class="edit_page_text">修改编辑</text>
-        </view>
-    </view>
-    <view class="line"></view>
-    <view class="shape box_eight">
-        <view class="shape_title">性格描述:</view>
-        <view class="shape_content box_eight">
-            <text class="shape_content_text">方形脸的女生：果断、刚毅、正直，拥有很高的智慧，以及敏锐的观察力，甚至具有超乎常人的第六感。意志非常的坚强，做事不管遇到什么困难都不会退缩，都会坚持不懈，不达目的誓不罢休。</text>
-        </view>
-    </view>
-    <view class="edit box_twelve">
-        <view class="edit_page box_five" bindtap="characterClick">
-            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <image class="edit_page_img" src="{{editIcon}}"></image>
             <text class="edit_page_text">修改编辑</text>
         </view>
     </view>
     <view class="line"></view>
         <view class="shape box_eight">
-        <view class="shape_title">上庭正常:</view>
-        <view class="shape_content box_eight">
-            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
+        <view class="shape_title">{{gloval.judgeValue(editObject.uppercourt)?editObject.uppercourt:'请编辑上庭'}}:</view>
+        <view class="shape_content box_eight" wx:if="{{gloval.judgeValue(editObject.uppercourtDetail)}}">
+            <text class="shape_content_text">{{editObject.uppercourtDetail}}</text>
+        </view>
+        <view class="shape_contentOne box_twelve" wx:else>
+          <text class="shape_title_wordsOne">请编辑内容</text>
         </view>
     </view>
     <view class="shape box_eight">
-        <view class="shape_title">中庭柔美:</view>
-        <view class="shape_content box_eight">
-            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
+        <view class="shape_title">{{gloval.judgeValue(editObject.stalls)?editObject.stalls:'请编辑中庭'}}:</view>
+        <view class="shape_content box_eight" wx:if="{{gloval.judgeValue(editObject.stallsDetail)}}">
+            <text class="shape_content_text">{{editObject.stallsDetail}}</text>
         </view>
-    </view><view class="shape box_eight">
-        <view class="shape_title">下庭正常:</view>
-        <view class="shape_content box_eight">
-            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
+        <view class="shape_contentOne box_twelve" wx:else>
+          <text class="shape_title_wordsOne">请编辑内容</text>
+        </view>
+    </view>
+    <view class="shape box_eight">
+        <view class="shape_title">{{gloval.judgeValue(editObject.lowerCourt)?editObject.lowerCourt:'请编辑下庭'}}:</view>
+        <view class="shape_content box_eight" wx:if="{{gloval.judgeValue(editObject.lowerCourtDetail)}}">
+            <text class="shape_content_text">{{editObject.lowerCourtDetail}}</text>
+        </view>
+        <view class="shape_contentOne box_twelve" wx:else>
+          <text class="shape_title_wordsOne">请编辑内容</text>
         </view>
     </view>
     <view class="edit box_twelve">
         <view class="edit_page box_five" bindtap="courtClick">
-            <image class="edit_page_img" src="../../image/edit.png"></image>
-            <text class="edit_page_text">修改编辑</text>
-        </view>
-    </view>
-    <view class="line"></view>
-    <view class="shape box_eight">
-        <view class="shape_title">脸型总结:</view>
-        <view class="shape_content box_eight">
-            <text class="shape_content_text">您的整体脸型呈椭圆形脸，您的上庭适中，适合有刘海或无刘海的造型；中庭五官气质偏强势，可以考虑做减龄柔和感的发型中和您的整体气质；下庭偏短，下巴轮廓有明显的V型，整体发型要避免贴合感，做强调立体感的造型。</text>
-        </view>
-    </view>
-    <view class="edit box_twelve">
-        <view class="edit_page box_five" bindtap="summaryClick">
-            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <image class="edit_page_img" src="{{editIcon}}"></image>
             <text class="edit_page_text">修改编辑</text>
         </view>
     </view>
     <view class="line"></view>
     <view class="model box_five">
-        <image class="model_img" src="../../image/201911212308service.png"></image>
+        <image class="model_img" src="{{serviceIcon}}"></image>
         <text  class="model_text">发型推荐</text>
     </view>
-    <view class="recommend box_eight">
+    <view class="recommend box_eight" wx:if="{{editObject.orderRecommends.length!=0}}">
         <view class="recommend_model box_eight">
             <view class="remo_title box_three">
-                <image class="remo_title_img" src="../../image/201911212337flower.png"></image>
+                <image class="remo_title_img" src="{{flowerIcon}}"></image>
                 <text class="remo_title_text">第一款</text>
             </view>
             <view class="remo_picture box_twelve">
@@ -107,7 +112,7 @@
                         <text class="remosc_right_title spill_over">BEAUTRIUM GINZA</text>
                         <view class="remosc_right_address box_one">
                             <view class="remoscra_one box_twelve">
-                                <image class="remoscra_one_img" src="../../image/address.png"></image>
+                                <image class="remoscra_one_img" src="{{addressIcon}}"></image>
                             </view>
                             <view class="remoscra_two">城西银泰店 | 拱墅区丰潭路229号</view>
                         </view>
@@ -141,31 +146,40 @@
             </view>
             <view class="remo_edit box_five">
                 <view class="remo_edit_delete box_five" bindtap="hairstyleClick">
-                    <image class="remoed_img" src="../../image/delete.png"></image>
+                    <image class="remoed_img" src="{{deleteIcon}}"></image>
                     <text class="remoed_text">删除</text>
                 </view>
                 <view class="remo_edit_modify box_five" bindtap="hairstyleEidtClick">
-                    <image class="remoed_img" src="../../image/edit.png"></image>
+                    <image class="remoed_img" src="{{editIcon}}"></image>
                     <text class="remoed_text">修改编辑</text>
                 </view>
             </view>
         </view>
     </view>
+    <view class="recommend_none box_twelve" wx:if="{{editObject.orderRecommends.length<3}}">
+        <view class="recommend_none_page box_eleven">
+            <image class="renopa_img" src="{{addIcon}}"></image>
+            <text class="renopa_text">添加发型</text>
+        </view>
+    </view>
+    <view class="line"></view>
     <view class="model box_five">
-        <image class="model_img" src="../../image/201911212308service.png"></image>
+        <image class="model_img" src="{{serviceIcon}}"></image>
         <text  class="model_text">发色推荐</text>
     </view>
     <view class="hairColor box_five">
-        <!-- <view class="hairColor_page box_twelve">
-            <image class="hairColor_img" src="{{}}" mode="widthFix"></image>
-        </view> -->
-        <view class="hairColor_page box_twelve">
+        <view class="hairColor_content box_one" wx:if="{{gloval.judgeValue(editObject.hairColor)}}">
+            <view class="hairColor_page box_twelve">
+                <image class="hairColor_img" src="{{}}" mode="widthFix"></image>
+            </view>
+        </view>
+        <view class="hairColor_page box_twelve" wx:else>
             <text class="hairColor_page_text">暂无推荐~</text>
         </view>
     </view>
     <view class="edit box_twelve">
         <view class="edit_page box_five" bindtap="colorClick">
-            <image class="edit_page_img" src="../../image/edit.png"></image>
+            <image class="edit_page_img" src="{{editIcon}}"></image>
             <text class="edit_page_text">修改编辑</text>
         </view>
     </view>
@@ -174,13 +188,13 @@
 <!-- 底部导航栏 -->
 <view class="function box_twelve">
     <view class="function_page box_five">
-        <image class="function_page_img" src="../../image/201911202250send.png"></image>
+        <image class="function_page_img" src="{{sendIcon}}"></image>
         <text class="function_page_text">发 送</text>
     </view>
 </view>
 <!-- 用户资料 -->
 <view class="material box_five" bindtap="materialClick">
-    <image class="material_img" src="../../image/201911230100problem.png"></image>
+    <image class="material_img" src="{{problemIcon}}"></image>
     <text class="material_text">提交的资料</text>
 </view>
 <!-- 用户资料展示 -->

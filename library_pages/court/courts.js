@@ -1,6 +1,7 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { ask, askError } from '../../utils/demand.js';
+import { existence } from '../../utils/tools.js';
+import { edition, version, platform, smallRoutione, editUpper, editUpperTitle, editStalls, editStallsTitle, editLower, editLowerTitle, orderUpdate, orderUpdateTitle } from '../../config.js';
 Page({
 
   /**
@@ -9,20 +10,25 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    cancleIcon: `${app.globalData.pictureUrl}/icon/cancle.png`,
+    downIcon: `${app.globalData.pictureUrl}/icon/down.png`,
     upperIndex:0,
-    upperArray:['上庭正常','上庭短','上庭长'],
+    upperArray:['上庭偏短','上庭正常','上庭偏长'],
     upperValue:"",
-    upperPopupArr:['上庭长度适中,适合有刘海的造型;','上庭长度适中,适合有刘海的造型;'],
+    upperPopupArr:[],
     stallsIndex:0,
-    stallsArray:['中庭正常','中庭短','中庭长'],
+    stallsArray:['中庭柔美','中庭硬朗'],
     stallsValue:"",
-    stallsPopupArr:['中庭偏硬朗、偏强势,选择曲线刘海的发型来弱化硬朗和强势;','中庭偏硬朗、偏强势,选择曲线刘海的发型来弱化硬朗和强势;'],
+    stallsPopupArr:[],
     lowerIndex:0,
-    lowerArray:['下庭正常','下庭短','下庭长'],
+    lowerArray:['下庭偏短','下庭正常','下庭偏长'],
     lowerValue:"",
     lowerPopupArr:['下庭长度适中,无需修饰,需注重两侧不要太短就行;','下庭长度适中,无需修饰,需注重两侧不要太短就行;'],
     popupNumber:1,
-    popupShow:false
+    popupShow:false,
+    shangtingArr:[],
+    zhongtingArr:[],
+    xiatingArr:[]
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -35,11 +41,29 @@ Page({
   upperPicker:function(e){
     let _this = this;
     // console.log(e.detail.value);
-    _this.setData({
-      upperIndex:e.detail.value,
-      popupShow:true,
-      popupNumber:1
-    })
+    let bearingArr = _this.data.shangtingArr;
+    let emptyArr = [];
+    for (let i in bearingArr){
+      if (parseInt(bearingArr[i].uppercourtStatus) == (parseInt(e.detail.value) + 1)){
+        bearingArr[i]['content'] = bearingArr[i].uppercourtDesc;
+        emptyArr = emptyArr.concat(bearingArr[i]);
+      }
+    }
+    if (emptyArr.length == 1){
+      _this.setData({
+        upperIndex: e.detail.value,
+        popupShow: false,
+        popupNumber: 1,
+        upperValue: emptyArr[0].uppercourtDesc
+      })
+    }else{
+      _this.setData({
+        upperIndex: e.detail.value,
+        popupShow: true,
+        popupNumber: 1,
+        upperPopupArr: emptyArr
+      })
+    }
   },
   // 上庭内容输入
   upperInput:function(e){
@@ -53,11 +77,29 @@ Page({
   stallsPicker:function(e){
     let _this = this;
     // console.log(e.detail.value);
-    _this.setData({
-      stallsIndex:e.detail.value,
-      popupShow:true,
-      popupNumber:2
-    })
+    let bearingArr = _this.data.zhongtingArr;
+    let emptyArr = [];
+    for (let i in bearingArr) {
+      if (parseInt(bearingArr[i].stallsStatus) == (parseInt(e.detail.value) + 1)) {
+        bearingArr[i]['content'] = bearingArr[i].stallsDesc;
+        emptyArr = emptyArr.concat(bearingArr[i]);
+      }
+    }
+    if (emptyArr.length == 1) {
+      _this.setData({
+        stallsIndex: e.detail.value,
+        popupShow: false,
+        popupNumber: 2,
+        stallsValue: emptyArr[0].uppercourtDesc
+      })
+    } else {
+      _this.setData({
+        stallsIndex: e.detail.value,
+        popupShow: true,
+        popupNumber: 2,
+        upperPopupArr: emptyArr
+      })
+    }
   },
   // 中庭内容输入
   stallsInput:function(e){
@@ -71,11 +113,29 @@ Page({
   lowerPicker:function(e){
     let _this = this;
     // console.log(e.detail.value);
-    _this.setData({
-      lowerIndex:e.detail.value,
-      popupShow:true,
-      popupNumber:3
-    })
+    let bearingArr = _this.data.xiatingArr;
+    let emptyArr = [];
+    for (let i in bearingArr) {
+      if (parseInt(bearingArr[i].lowerCourtStatus) == (parseInt(e.detail.value) + 1)) {
+        bearingArr[i]['content'] = bearingArr[i].lowerCourtDesc;
+        emptyArr = emptyArr.concat(bearingArr[i]);
+      }
+    }
+    if (emptyArr.length == 1) {
+      _this.setData({
+        lowerIndex: e.detail.value,
+        popupShow: false,
+        popupNumber: 3,
+        lowerValue: emptyArr[0].lowerCourtDesc
+      })
+    } else {
+      _this.setData({
+        lowerIndex: e.detail.value,
+        popupShow: true,
+        popupNumber: 3,
+        upperPopupArr: emptyArr
+      })
+    }
   },
   // 下庭内容输入
   lowerInput:function(e){
@@ -95,6 +155,20 @@ Page({
   // 上中下庭---选中
   upperContentClick:function(e){
     let _this = this;
+    // console.log(e);
+    if (_this.data.popupNumber == 1){//上庭
+      _this.setData({
+        upperValue: e.currentTarget.dataset.info.content
+      })
+    } else if (_this.data.popupNumber == 2) {//中庭
+      _this.setData({
+        stallsValue: e.currentTarget.dataset.info.content
+      })
+    } else if (_this.data.popupNumber == 3) {//下庭
+      _this.setData({
+        lowerValue: e.currentTarget.dataset.info.content
+      })
+    }
     _this.setData({
       popupShow:false
     })
@@ -102,15 +176,141 @@ Page({
   // 确定点击
   determineClick:function(e){
     let _this = this;
-    wx.navigateBack({
-      delta:1
+    if (_this.data.upperValue == "") {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入上庭描述',
+      })
+      return
+    }
+    if (_this.data.stallsValue == "") {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入中庭描述',
+      })
+      return
+    }
+    if (_this.data.lowerValue == "") {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入下庭描述',
+      })
+      return
+    }
+    let para = {
+      id: app.globalData.compileObject.id,
+      uppercourt: _this.data.upperArray[_this.data.upperIndex],
+      uppercourtDetail: _this.data.upperValue,
+      stalls: _this.data.stallsArray[_this.data.stallsIndex],
+      stallsDetail: _this.data.stallsValue,
+      lowerCourt: _this.data.lowerArray[_this.data.lowerIndex],
+      lowerCourtDetail: _this.data.lowerValue,
+    }
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("get", `${orderUpdate}`, para).then(res => {
+      // console.log(res);
+      if (res.status == 200) {
+        wx.showToast({
+          icon: "none",
+          title: '修改成功！',
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500)
+      } else {
+        wx.hideLoading();
+        askError("", orderUpdateTitle, '数据请求出错');
+      }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", orderUpdateTitle, '数据处理出错');
+    })
+  },
+  // 页面初始数据
+  initialData: function (e) {
+    let _this = this;
+    let para = {}
+    // 上庭
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("get", `${editUpper}`, para).then(res => {
+      // console.log(res);
+      let strOne = "";
+      if (existence(app.globalData.compileObject.uppercourtDetail)){
+        strOne = app.globalData.compileObject.uppercourtDetail;
+      }else{
+        strOne = res[0].uppercourtDesc;
+      }
+      _this.setData({
+        shangtingArr:res,
+        upperValue: strOne
+      })
+      // if (res.code == 0) {
+
+      // } else {
+      //   wx.hideLoading();
+      //   askError("", editUpperTitle, '数据请求出错');
+      // }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", editUpperTitle, '数据处理出错');
+      })
+    // 中庭
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("get", `${editStalls}`, para).then(res => {
+      // console.log(res);
+      let strOne = "";
+      if (existence(app.globalData.compileObject.stallsDetail)) {
+        strOne = app.globalData.compileObject.stallsDetail;
+      } else {
+        strOne = res[0].stallsDesc;
+      }
+      _this.setData({
+        zhongtingArr: res,
+        stallsValue: strOne
+      })
+      // if (res.code == 0) {
+
+      // } else {
+      //   wx.hideLoading();
+      //   askError("", editStallsTitle, '数据请求出错');
+      // }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", editStallsTitle, '数据处理出错');
+      })
+    // 下庭
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("get", `${editLower}`, para).then(res => {
+      // console.log(res);
+      let strOne = "";
+      if (existence(app.globalData.compileObject.lowerCourtDetail)) {
+        strOne = app.globalData.compileObject.lowerCourtDetail;
+      } else {
+        strOne = res[0].lowerCourtDesc;
+      }
+      _this.setData({
+        xiatingArr: res,
+        lowerValue: strOne
+      })
+      // if (res.code == 0) {
+
+      // } else {
+      //   wx.hideLoading();
+      //   askError("", editLowerTitle, '数据请求出错');
+      // }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", editLowerTitle, '数据处理出错');
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _this = this;
+    _this.initialData();//页面初始数据
   },
 
   /**

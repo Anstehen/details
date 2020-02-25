@@ -8,8 +8,8 @@
         <view class="words_picker">
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{faceShapeArray}}">
               <view class="words_picker_text box_twelve">
-                <text>{{faceShapeArray[index]}}</text>
-                <image class="wpt_img" src="../../image/down.png"></image>
+                <text>{{faceTitle}}</text>
+                <image class="wpt_img" src="{{downIcon}}"></image>
               </view>
             </picker>
         </view>
@@ -19,11 +19,27 @@
             <textarea class="narration_page_text" placeholder="请输入脸型介绍" placeholder-class="napat_place" value="{{faceValue}}" maxlength="366" bindinput="textareaInput"></textarea>
         </view>
     </view>
+    <view class="words box_three">
+        <view class="words_text">性格描述:</view>
+    </view>
+    <view class="narration box_twelve">
+        <view class="narration_page box_twelve">
+            <textarea class="narration_page_text" placeholder="请输入性格描述" placeholder-class="napat_place" value="{{characterValue}}" maxlength="366" bindinput="characterInput"></textarea>
+        </view>
+    </view>
+    <view class="words box_three">
+        <view class="words_text">脸型总结:</view>
+    </view>
+    <view class="narration box_twelve">
+        <view class="narration_page box_twelve">
+            <textarea class="narration_page_text" placeholder="请输入脸型总结" placeholder-class="napat_place" value="{{summaryValue}}" maxlength="366" bindinput="summaryInput"></textarea>
+        </view>
+    </view>
     <view class="message"></view>
 </view>
 <!-- 功能按钮 -->
-<view class="function box_twelve">
-    <view class="function_page box_twelve" bindtap="determineClick">
-        <text class="function_page_text">确 定</text>
-    </view>
-</view>
+<cover-view class="function box_twelve">
+    <cover-view class="function_page box_twelve" bindtap="determineClick">
+        <cover-view class="function_page_text">确 定</cover-view>
+    </cover-view>
+</cover-view>

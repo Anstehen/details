@@ -31,7 +31,6 @@
       "pages":[
         "color/color",
         "shape/shape",
-        "character/character",
         "summary/summary",
         "court/courts",
         "hairstyle/hairstyle",
