@@ -2,16 +2,27 @@
 <!-- 顶部导航栏 -->
 <import src="../../component/template/template.wxml"/>
 <template is="exist" data="{{title:'发色库',topHeight:statusBarHeight}}"/>
-<view class="color box_eight" style="margin-top:{{statusBarHeight+44}}px">
+<view class="color box_eight" style="margin-top:{{statusBarHeight+104}}px">
     <view class="package box_seven">
-        <view class="package_model selection box_twelve" bindtap="selectClick">
-            <image class="package_model_img" src="{{}}" mode="widthFix"></image>
+        <view class="package_model selection box_twelve" wx:for="{{pictureArr}}" wx:key="*this" data-info="{{item}}" bindtap="selectClick">
+            <image class="package_model_img" src="{{item.hairColor}}" mode="widthFix"></image>
             <view class="package_model_delete">
-                <image class="pmd_img" src="../../image/cancle.png"></image>
+                <image class="pmd_img" src="{{item.choice}}"></image>
             </view>
         </view>
     </view>
     <view class="message"></view>
+</view>
+<!-- 顶部功能按钮 -->
+<view class="choice" style="top:{{statusBarHeight+43}}px">
+    <view class="choice_page box_two" wx:if="{{gender==0||gender=='0'}}">
+        <view class="chpa_active box_twelve">男 生</view>
+    </view>
+    <view class="choice_page box_two" wx:else>
+        <view class="{{type==0?'chpa_active':'chpa_one'}} box_twelve" bindtap="wholeClick">全 部</view>
+        <view class="{{type==1?'chpa_active':'chpa_one'}} box_twelve" bindtap="lifeClick">生活色</view>
+        <view class="{{type==2?'chpa_active':'chpa_one'}} box_twelve" bindtap="dampClick">潮 色</view>
+    </view>
 </view>
 <!-- 功能按钮 -->
 <view class="function box_twelve">

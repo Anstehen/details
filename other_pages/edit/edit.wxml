@@ -82,7 +82,7 @@
         <image class="model_img" src="{{serviceIcon}}"></image>
         <text  class="model_text">发型推荐</text>
     </view>
-    <view class="recommend box_eight" wx:if="{{editObject.orderRecommends.length!=0}}">
+    <view class="recommend box_eight" wx:if="{{editObject.colorArr.length!=0}}">
         <view class="recommend_model box_eight">
             <view class="remo_title box_three">
                 <image class="remo_title_img" src="{{flowerIcon}}"></image>
@@ -157,7 +157,7 @@
         </view>
     </view>
     <view class="recommend_none box_twelve" wx:if="{{editObject.orderRecommends.length<3}}">
-        <view class="recommend_none_page box_eleven">
+        <view class="recommend_none_page box_eleven" bindtap="addRecommedClick">
             <image class="renopa_img" src="{{addIcon}}"></image>
             <text class="renopa_text">添加发型</text>
         </view>
@@ -168,9 +168,14 @@
         <text  class="model_text">发色推荐</text>
     </view>
     <view class="hairColor box_five">
-        <view class="hairColor_content box_one" wx:if="{{gloval.judgeValue(editObject.hairColor)}}">
-            <view class="hairColor_page box_twelve">
-                <image class="hairColor_img" src="{{}}" mode="widthFix"></image>
+        <view class="hairColor_content box_five" wx:if="{{colorArr.length!=0}}">
+            <view class="hairColor_model box_three">
+                <view class="hairColor_page box_twelve" wx:for="{{colorArr}}" wx:key="*this">
+                    <image class="hairColor_img" src="{{item}}" mode="widthFix" data-info="{{item}}" catchtap="colorPreviewClick"></image>
+                    <view class="hair_delete box_twelve" data-info="{{item}}" bindtap="colorDeleteClick">
+                        <image class="hair_delete_img" src="{{deleteIcon}}"></image>
+                    </view>
+                </view>
             </view>
         </view>
         <view class="hairColor_page box_twelve" wx:else>
@@ -180,7 +185,7 @@
     <view class="edit box_twelve">
         <view class="edit_page box_five" bindtap="colorClick">
             <image class="edit_page_img" src="{{editIcon}}"></image>
-            <text class="edit_page_text">修改编辑</text>
+            <text class="edit_page_text">添加发色</text>
         </view>
     </view>
     <view class="message"></view>

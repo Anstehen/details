@@ -13,7 +13,7 @@
                   <block wx:for="{{pictureArr}}" wx:key="*this">
                       <swiper-item>
                           <view class="swiper_item box_twelve">
-                              <image class="swiper_item_img" src="{{}}" mode="widthFix"></image>
+                              <image class="swiper_item_img" src="{{item}}" mode="widthFix" data-info="{{item}}" bindtap="previewClick"></image>
                           </view>
                       </swiper-item>
                   </block>
@@ -24,14 +24,31 @@
     <view class="price box_twelve">
         <view class="price_page box_eight">
             <text class="price_page_text">店铺名称：</text>
-            <text class="price_page_textOne">菠萝菠萝蜜</text>
+            <text class="price_page_textOne">{{dataObject.shopName}}</text>
+        </view>
+    </view>
+    <view class="price box_twelve">
+        <view class="price_page box_eight">
+            <text class="price_page_text">店铺地址：</text>
+            <text class="price_page_textOne">{{dataObject.shopAddress}}</text>
         </view>
     </view>
     <view class="price box_twelve">
         <view class="price_page box_eight">
             <text class="price_page_text">店铺范围价：</text>
-            <text class="price_page_textOne">剪发：38-66元</text>
-            <text class="price_page_textOne">烫染：36-66-86</text>
+            <text class="price_page_textOne">价格：{{dataObject.haircutPrice}}-{{dataObject.ironingPrice}}元</text>
+        </view>
+    </view>
+    <view class="price box_twelve">
+        <view class="price_page box_eight">
+            <text class="price_page_text">去店前的准备：</text>
+            <text class="price_page_textOne">{{dataObject.shopBefore}}</text>
+        </view>
+    </view>
+    <view class="price box_twelve">
+        <view class="price_page box_eight">
+            <text class="price_page_text">到店后的准备：</text>
+            <text class="price_page_textOne">{{dataObject.shopAfter}}</text>
         </view>
     </view>
 </view>

@@ -87,5 +87,17 @@ var config = {
   // 订单详情（设计师报告编辑）---下庭查询所有
   editLower: `${master}/lowerCourt/selectAll`,
   editLowerTitle: `下庭查询所有出错`,
+  // 订单详情（设计师报告编辑）---根据性别获取发色
+  selectHairColorByHairGender: `${master}/haircolor/selectHairColorByHairGender`,
+  selectHairColorByHairGenderTitle: `根据性别获取发色出错`,
+  // 订单详情（设计师报告编辑）---根据类型获取发色
+  selectHairColorByHairType: `${master}/haircolor/selectHairColorByHairType`,
+  selectHairColorByHairTypeTitle: `根据类型获取发色出错`,
+  // 订单详情（设计师报告编辑）---查询所有店铺信息
+  editShop: `${master}/shop/selectAll`,
+  editShopTitle: `查询所有店铺信息出错`,
+  // 订单详情（设计师报告编辑）---根据shopId查询店铺信息
+  editShopDetail: `${master}/shop/select`,
+  editShopDetailTitle: `根据shopId查询店铺信息出错`,
 }
 module.exports = config;

@@ -1,6 +1,8 @@
 const app = getApp();
 import { ask, askError } from '../../utils/demand.js';
-import { edition, version, platform, smallRoutione, selectOrder, selectOrderTitle, selectOrderDetailByOrderId, selectOrderDetailByOrderIdTitle } from '../../config.js';
+import { existence } from '../../utils/tools.js';
+import { random } from '../../utils/random.js';
+import { edition, version, platform, smallRoutione, selectOrder, selectOrderTitle, selectOrderDetailByOrderId, selectOrderDetailByOrderIdTitle, orderUpdate, orderUpdateTitle } from '../../config.js';
 let refreshJudge = false;
 Page({
 
@@ -25,7 +27,8 @@ Page({
     materialShow:false,
     acceptOrderId:"",
     userDataObject:null,
-    editObject:null
+    editObject:null,
+    colorArr:[]
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -86,15 +89,124 @@ Page({
   // 发行推荐---修改编辑
   hairstyleEidtClick:function(e){
     let _this = this;
+    refreshJudge = true;
+    app.globalData.hairstyleObject = {
+      random: random(),
+      swiperArr: [],
+      storeObject: {
+        creatTime: null,
+        haircutPrice: null,
+        ironingPrice: null,
+        mobilePhone: null,
+        shopAddress: null,
+        shopAddressphoto: null,
+        shopAfter: null,
+        shopBefore: null,
+        shopCity: null,
+        shopId: null,
+        shopImgs: null,
+        shopName: null,
+        shopPhoto: null,
+        shopTitle: null,
+      },
+    }
     wx.navigateTo({
-      url: '../../library_pages/hairstyle/hairstyle',
+      url: `../../library_pages/hairstyle/hairstyle?disitinguish=1`,
+    })
+  },
+  // 发行推荐---添加
+  addRecommedClick:function(e){
+    let _this = this;
+    refreshJudge = true;
+    app.globalData.hairstyleObject = {
+      random: random(),
+      swiperArr:[],
+      storeObject:{
+        creatTime:null,
+        haircutPrice:null,
+        ironingPrice:null,
+        mobilePhone: null,
+        shopAddress:null,
+        shopAddressphoto:null,
+        shopAfter:null,
+        shopBefore:null,
+        shopCity:null,
+        shopId:null,
+        shopImgs:null,
+        shopName:null,
+        shopPhoto:null,
+        shopTitle:null,
+      },
+    }
+    wx.navigateTo({
+      url: `../../library_pages/hairstyle/hairstyle?disitinguish=0`,
     })
   },
   // 发色推荐---修改编辑
   colorClick:function(e){
     let _this = this;
+    refreshJudge = true;
+    app.globalData.compileObject = _this.data.editObject;
     wx.navigateTo({
-      url: '../../library_pages/color/color',
+      url: `../../library_pages/color/color?transsex=${_this.data.userDataObject.sex}`,
+    })
+  },
+  // 发色---预览
+  colorPreviewClick: function (e) {
+    let _this = this;
+    // console.log(e.currentTarget.dataset.info);
+    wx.previewImage({
+      current: e.currentTarget.dataset.info, // 当前显示图片的http链接
+      urls: _this.data.colorArr // 需要预览的图片http链接列表
+    })
+  },
+  // 发色---删除
+  colorDeleteClick:function(e){
+    let _this = this;
+    // console.log(e);
+    // console.log(e.currentTarget.dataset.info);
+    wx.showModal({
+      title: '提示',
+      content: '您确定要删除此款发色么？',
+      success(res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          let strOne = "";
+          if (_this.data.colorArr.length == 1){
+            strOne = null;
+          }else{
+            for (let i in _this.data.colorArr){
+              if (_this.data.colorArr[i] != e.currentTarget.dataset.info){
+                strOne = strOne + "," + _this.data.colorArr[i];
+              }
+            }
+          }
+          strOne = strOne.substr(1);
+          let para = {
+            id: _this.data.editObject.id,
+            hairColor: strOne
+          }
+          //发送code，encryptedData，iv到后台解码，获取用户信息
+          ask("get", `${orderUpdate}`, para).then(res => {
+            // console.log(res);
+            if (res.status == 200) {
+              _this.initialData();//页面初始数据
+              wx.showToast({
+                icon: "none",
+                title: '已删除！',
+              })
+            } else {
+              wx.hideLoading();
+              askError("", orderUpdateTitle, '数据请求出错');
+            }
+          }).catch(error => {
+            wx.hideLoading();
+            askError("", orderUpdateTitle, '数据处理出错');
+          })
+        } else if (res.cancel) {
+          // console.log('用户点击取消')
+        }
+      }
     })
   },
   // 页面初始数据
@@ -104,7 +216,6 @@ Page({
     let para = {
       orderId: _this.data.acceptOrderId
     }
-    //发送code，encryptedData，iv到后台解码，获取用户信息
     ask("get", `${selectOrder}`, para).then(res => {
       // console.log(res);
       _this.setData({
@@ -121,11 +232,20 @@ Page({
       askError("", selectOrderTitle, '数据处理出错');
     })
     // 查询订单
-    //发送code，encryptedData，iv到后台解码，获取用户信息
     ask("get", `${selectOrderDetailByOrderId}`, para).then(res1 => {
       // console.log(res1);
+      let beatingObject = res1[0];
+      let emptyArr = [];
+      if (existence(beatingObject.hairColor)){
+        if (beatingObject.hairColor.indexOf(",") == -1){
+          emptyArr = [beatingObject.hairColor];
+        }else{
+          emptyArr = beatingObject.hairColor.split(",");
+        }
+      }
       _this.setData({
-        editObject: res1[0]
+        editObject: beatingObject,
+        colorArr: emptyArr
       })
       // if (res1.code == 0) {
 

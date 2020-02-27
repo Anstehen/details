@@ -1,6 +1,7 @@
 const app = getApp();
-import { currentTime, existence, pagesPath, request, requestError } from '../../utils/util.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { ask, askError } from '../../utils/demand.js';
+import { existence } from '../../utils/tools.js';
+import { edition, version, platform, smallRoutione, editShopDetail, editShopDetailTitle } from '../../config.js';
 Page({
 
   /**
@@ -12,7 +13,9 @@ Page({
     dots:true,
     autoplay:true,
     interval:5000,
-    pictureArr:[{},{}]
+    pictureArr:[],
+    dataObject:null,
+    acceptShopid:""
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -21,11 +24,57 @@ Page({
       delta: 1
     })
   },
+  // 图片预览
+  previewClick:function(e){
+    let _this = this;
+    // console.log(e.currentTarget.dataset.info);
+    wx.previewImage({
+      current: e.currentTarget.dataset.info, // 当前显示图片的http链接
+      urls: _this.data.pictureArr // 需要预览的图片http链接列表
+    })
+  },
+  // 页面初始数据
+  initialData: function (e) {
+    let _this = this;
+    let para = {
+      shopId: _this.data.acceptShopid
+    }
+    ask("get", `${editShopDetail}`, para).then(res => {
+      // console.log(res);
+      let emptyArr = [];
+      if (existence(res.shopPhoto)){
+        if (res.shopPhoto.indexOf(",") == -1){
+          emptyArr = [res.shopPhoto];
+        }else{
+          emptyArr = res.shopPhoto.split(",")
+        }
+      }
+      emptyArr = emptyArr.concat(res.shopAddressphoto);
+      _this.setData({
+        pictureArr: emptyArr,
+        dataObject:res,
+      })
+      // if (res.code == 0) {
+
+      // } else {
+      //   wx.hideLoading();
+      //   askError("", editShopDetailTitle, '数据请求出错');
+      // }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", editShopDetailTitle, '数据处理出错');
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _this = this;
+    // console.log(options);
+    _this.setData({
+      acceptShopid: options.transshopid
+    })
+    _this.initialData();//页面初始数据
   },
 
   /**

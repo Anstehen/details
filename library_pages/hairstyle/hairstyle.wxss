@@ -160,6 +160,23 @@ page{
 .remo_careful{
   margin-top: 46rpx;
 }
+.nothing{
+  width: 100%;
+  height: 366rpx;
+  margin-top: 36rpx;
+  border: 2rpx dotted rgba(204, 204, 204, 1);
+}
+.nothing_img{
+  width: 88rpx;
+  height: 88rpx;
+}
+.nothing_text{
+  font-size:27rpx;
+  font-weight:500;
+  color:rgba(195,195,195,1);
+  line-height:38rpx;
+  margin-top: 18rpx
+}
 .remo_edit{
   width: 100%;
   height: 106rpx;

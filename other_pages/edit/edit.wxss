@@ -284,15 +284,34 @@ page{
   width: 100%;
   height: auto;
 }
+.hairColor_model{
+  width: 91.47%;
+  height: auto;
+  margin-left: 4.27%;
+}
 .hairColor_page{
   width:220rpx;
-  height:564rpx;
+  height:285rpx;
   border-radius: 8rpx;
   overflow: hidden;
+  margin-left: 12rpx;
+  position: relative;
 }
 .hairColor_img{
   width: 220rpx;
   height: auto;
+}
+.hair_delete{
+  width: 66rpx;
+  height: 66rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 12;
+}
+.hair_delete_img{
+  width: 36rpx;
+  height: 36rpx;
 }
 .hairColor_page_text{
   font-size:28rpx;

@@ -5,14 +5,15 @@
 <view class="store box_seven" style="margin-top:{{statusBarHeight+44}}px">
     <view class="store_model box_eight" wx:for="{{storeArr}}" wx:for-item="item" wx:key="*this">
         <view class="store_model_top box_twelve">
-            <image class="smt_img" src="{{}}" mode="widthFix"></image>
+            <image class="smt_img" src="{{item.shopAddressphoto}}" mode="widthFix"></image>
         </view>
         <view class="store_model_center">
-            <text class="smc_text spill_over">菠萝菠萝蜜</text>
+            <text class="smc_text spill_over">{{item.shopName}}</text>
         </view>
         <view class="store_model_bot box_six">
-            <view class="stm_detail box_twelve" bindtap="detailClick">查看详情</view>
-            <view class="stm_define box_twelve" bindtap="defineClick">确 定</view>
+            <view class="stm_detail box_twelve" data-info="{{item}}" bindtap="detailClick">查看详情</view>
+            <view class="stm_define box_twelve" data-info="{{item}}" bindtap="defineClick">确 定</view>
         </view>
     </view>
+    <view class="message"></view>
 </view>

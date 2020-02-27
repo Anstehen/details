@@ -57,5 +57,7 @@ App({
     systemInfo: null,//客户端设备信息
     pictureObj:null,//用户资料上传的上传照片
     compileObject:null,//编辑资料
+    hairstyleObject:null,//发行推荐
+    storeObject:null,//店铺内容
   }
 })
