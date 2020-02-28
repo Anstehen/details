@@ -8,12 +8,13 @@
             <view class="remo_picture box_twelve" wx:if="{{dataObject.swiperArr.length!=0}}">
                 <swiper class="swiper"
                         indicator-dots="{{dots}}"
+                        circular="{{circular}}"
                         autoplay="{{autoplay}}"
                         interval="{{interval}}">
                     <block wx:for="{{dataObject.swiperArr}}" wx:key="*this">
-                        <swiper-item>
+                        <swiper-item wx:if="{{item.type==1}}">
                             <view class="swiper_item box_twelve">
-                                <image class="swiper_item_img" src="{{}}" mode="widthFix"></image>
+                                <image class="swiper_item_img" src="{{item.picture}}" mode="widthFix"></image>
                             </view>
                         </swiper-item>
                     </block>
@@ -27,8 +28,10 @@
                 <view class="remo_edit_local box_five" bindtap="cleanClick">
                     <text class="remo_edit_local_text">清 空</text>
                 </view>
-                <view class="remo_edit_hair box_five" bindtap="localClick">
-                    <text class="remo_edit_hair_text">本地库选择</text>
+                <view class="remo_edit_hair box_five">
+                  <picker bindchange="bindPickerChange" value="{{index}}" range="{{typeArr}}">
+                    <view class="remo_edit_hair_text">本地库选择</view>
+                  </picker>  
                 </view>
             </view>
             <view class="remo_store" wx:if="{{gloval.judgeValue(dataObject.storeObject.shopName)}}">

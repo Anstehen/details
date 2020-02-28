@@ -2,7 +2,7 @@
 <!-- 顶部导航栏 -->
 <import src="../../component/template/template.wxml"/>
 <template is="exist" data="{{title:'店铺选择',topHeight:statusBarHeight}}"/>
-<view class="store box_seven" style="margin-top:{{statusBarHeight+44}}px">
+<view class="store box_seven" style="margin-top:{{statusBarHeight+130}}px">
     <view class="store_model box_eight" wx:for="{{storeArr}}" wx:for-item="item" wx:key="*this">
         <view class="store_model_top box_twelve">
             <image class="smt_img" src="{{item.shopAddressphoto}}" mode="widthFix"></image>
@@ -17,3 +17,4 @@
     </view>
     <view class="message"></view>
 </view>
+<view class="search" style="top:{{statusBarHeight+43}}px"></view>

@@ -1,7 +1,8 @@
 const app = getApp();
 import { ask, askError } from '../../utils/demand.js';
 import { existence } from '../../utils/tools.js';
-import { edition, version, platform, smallRoutione } from '../../config.js';
+import { pictureUpload } from '../../utils/picture.js';
+import { edition, version, platform, smallRoutione, orderUpdate, orderUpdateTitle } from '../../config.js';
 let refreshJudge = false;
 Page({
 
@@ -15,11 +16,16 @@ Page({
     deleteIcon: `${app.globalData.pictureUrl}/icon/delete.png`,
     editIcon: `${app.globalData.pictureUrl}/icon/edit.png`,
     addIcon: `${app.globalData.pictureUrl}/icon/202002241817add.png`,
-    phoneValues:"12345678900",
-    readyValues:"1、我是学生，发量适中，发质属于比较细软，对长度的要求是好看就行，对刘海的要求是都可以，对烫染的要求是只要好看都能接受，头发打理的时间是没时间打理，穿着风格是潮男,型男,文艺,轻奢，日常喜欢户外运动，对于造型只要适合我，非常接受改变，关于美，我的态度是适可而止，理性对待。\n2、根据您的整体脸型,可以选择两侧较长,头顶偏平的发型;切记,不要让两侧剪的太短,不要做头顶太高的造型,这样的话会显得脸更宽、更长。",
-    carefulValues:"1、我是学生，发量适中，发质属于比较细软，对长度的要求是好看就行，对刘海的要求是都可以，对烫染的要求是只要好看都能接受，头发打理的时间是没时间打理，穿着风格是潮男,型男,文艺,轻奢，日常喜欢户外运动，对于造型只要适合我，非常接受改变，关于美，我的态度是适可而止，理性对待。\n2、根据您的整体脸型,可以选择两侧较长,头顶偏平的发型;切记,不要让两侧剪的太短,不要做头顶太高的造型,这样的话会显得脸更宽、更长。",
+    phoneValues:"",
+    readyValues:"",
+    carefulValues:"",
+    dots:true,
+    circular:true,
+    autoplay:true,
+    interval:3500,
     pageDifferent:0,//0是添加，1是修改
     dataObject:null,
+    typeArr:['照片','视频','取消']
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -27,6 +33,66 @@ Page({
     wx.navigateBack({
       delta: 1
     })
+  },
+  // 本地库选择
+  bindPickerChange: function (e) {
+    // console.log('picker发送选择改变，携带值为', e.detail.value);
+    let _this = this;
+    let bearingObject = _this.data.dataObject;
+    _this.setData({
+      index: e.detail.value
+    })
+    if (e.detail.value == 0){//图片
+      wx.chooseImage({
+        count: 1,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album'],
+        success: function (res) {
+          // console.log(res.tempFilePaths[0]);
+          wx.showLoading({
+            mask: true,
+            title: '图片上传中...',
+          })
+          // console.log(pictureUpload(res.tempFilePaths[0]));
+          pictureUpload(res.tempFilePaths[0], function (res2) {
+            // console.log(res2);
+            wx.showToast({
+              icon: 'none',
+              title: '添加成功!',
+            })
+            let newObject = {
+              type:1,
+              picture: res2
+            }
+            bearingObject.swiperArr = bearingObject.swiperArr.concat(newObject);
+            _this.setData({
+              dataObject: bearingObject
+            })
+          });
+        }
+      })
+    } else if (e.detail.value == 1){//视频
+      wx.chooseVideo({
+        sourceType: ['album', 'camera'],
+        maxDuration: 60,
+        camera: 'back',
+        success(res) {
+          // console.log(res.tempFilePath);
+          wx.showLoading({
+            mask: true,
+            title: '图片上传中...',
+          })
+          // console.log(pictureUpload(res.tempFilePaths[0]));
+          pictureUpload(res.tempFilePath, function (res2) {
+            console.log(res2);
+            wx.showToast({
+              icon: 'none',
+              title: '添加成功!',
+            })
+          });
+        }
+      })
+    }
   },
   // 清空
   cleanClick:function(e){
@@ -37,17 +103,16 @@ Page({
       success(res) {
         if (res.confirm) {
           // console.log('用户点击确定');
-          publicFunction();
+          let bearingObject = _this.data.dataObject;
+          bearingObject.swiperArr = [];
+          _this.setData({
+            dataObject: bearingObject
+          })
         } else if (res.cancel) {
           // console.log('用户点击取消');
         }
       }
     })
-  },
-  // 本地库选择
-  localClick:function(e){
-    let _this = this;
-    
   },
   // 设计师联系方式
   phoneInput:function(e){
@@ -72,9 +137,29 @@ Page({
       content: '您确定要删除该推荐的商店么?',
       success (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          // console.log('用户点击确定');
+          let bearingObject = _this.data.dataObject;
+          bearingObject.storeObject = {
+            creatTime: null,
+            haircutPrice: null,
+            ironingPrice: null,
+            mobilePhone: null,
+            shopAddress: null,
+            shopAddressphoto: null,
+            shopAfter: null,
+            shopBefore: null,
+            shopCity: null,
+            shopId: null,
+            shopImgs: null,
+            shopName: null,
+            shopPhoto: null,
+            shopTitle: null,
+          }
+          _this.setData({
+            dataObject: bearingObject
+          })
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消');
         }
       }
     })
@@ -106,7 +191,73 @@ Page({
   // 确定点击
   determineClick:function(e){
     let _this = this;
-
+    if (_this.data.dataObject.swiperArr.length == 0){
+      wx.showToast({
+        icon:'none',
+        title: '请上传发型图片或视频!',
+      })
+      return
+    }
+    if (!existence(_this.data.dataObject.storeObject.shopName)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请选择店铺!',
+      })
+      return
+    }
+    if (!existence(_this.data.dataObject.storeObject.shopBefore)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入到店前的准备!',
+      })
+      return
+    }
+    if (!existence(_this.data.dataObject.storeObject.shopAfter)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入到店后的准备!',
+      })
+      return
+    }
+    let para = {
+      id: app.globalData.compileObject.id,
+    }
+    let uploadObject = _this.data.dataObject;
+    let allData = app.globalData.compileObject.orderRecommends;
+    // console.log(uploadObject);
+    if (_this.data.pageDifferent == 0){//修改
+      let emptyArr = [];
+      for (let i in allData){
+        if (_this.data.dataObject.random == allData[i].random){
+          allData[i] = _this.data.dataObject;
+        }
+        emptyArr = emptyArr.concat(allData[i]);
+      }
+      para['orderRecommends'] = emptyArr;
+    }else{//添加
+      para['orderRecommends'] = allData.concat(uploadObject);
+    }
+    console.log(para);
+    ask("get", `${orderUpdate}`, para).then(res => {
+      // console.log(res);
+      if (res.status == 200) {
+        wx.showToast({
+          icon: "none",
+          title: '修改成功！',
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500)
+      } else {
+        wx.hideLoading();
+        askError("", orderUpdateTitle, '数据请求出错');
+      }
+    }).catch(error => {
+      wx.hideLoading();
+      askError("", orderUpdateTitle, '数据处理出错');
+    })
   },
   /**
    * 生命周期函数--监听页面加载

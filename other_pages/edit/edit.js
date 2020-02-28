@@ -90,6 +90,7 @@ Page({
   hairstyleEidtClick:function(e){
     let _this = this;
     refreshJudge = true;
+    app.globalData.compileObject = _this.data.editObject;
     app.globalData.hairstyleObject = {
       random: random(),
       swiperArr: [],
@@ -118,6 +119,7 @@ Page({
   addRecommedClick:function(e){
     let _this = this;
     refreshJudge = true;
+    app.globalData.compileObject = _this.data.editObject;
     app.globalData.hairstyleObject = {
       random: random(),
       swiperArr:[],
