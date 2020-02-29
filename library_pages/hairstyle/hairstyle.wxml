@@ -17,6 +17,11 @@
                                 <image class="swiper_item_img" src="{{item.picture}}" mode="widthFix"></image>
                             </view>
                         </swiper-item>
+                        <swiper-item wx:if="{{item.type==2}}">
+                            <view class="swiper_item box_twelve">
+                                <video class="swiper_item_video" object-fit="contain" src="{{item.picture}}"></video>
+                            </view>
+                        </swiper-item>
                     </block>
                 </swiper>
             </view>

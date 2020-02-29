@@ -99,5 +99,8 @@ var config = {
   // 订单详情（设计师报告编辑）---根据shopId查询店铺信息
   editShopDetail: `${master}/shop/select`,
   editShopDetailTitle: `根据shopId查询店铺信息出错`,
+  // 订单详情（设计师报告编辑）---添加发型
+  editInsertHairstyle: `${master}/orderRecommend/insert`,
+  editInsertHairstyleTitle: `添加发型出错`,
 }
 module.exports = config;

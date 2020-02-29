@@ -4,6 +4,8 @@ import { existence } from '../../utils/tools.js';
 import { random } from '../../utils/random.js';
 import { edition, version, platform, smallRoutione, selectOrder, selectOrderTitle, selectOrderDetailByOrderId, selectOrderDetailByOrderIdTitle, orderUpdate, orderUpdateTitle } from '../../config.js';
 let refreshJudge = false;
+// 数组、对象转换为JSON字符串:JSON.stringify(object或arr).toString()
+// JSON字符串转换为数组、对象:JSON.parse(object或arr)
 Page({
 
   /**

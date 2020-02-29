@@ -2,8 +2,10 @@ const app = getApp();
 import { ask, askError } from '../../utils/demand.js';
 import { existence } from '../../utils/tools.js';
 import { pictureUpload } from '../../utils/picture.js';
-import { edition, version, platform, smallRoutione, orderUpdate, orderUpdateTitle } from '../../config.js';
+import { edition, version, platform, smallRoutione, editInsertHairstyle, editInsertHairstyleTitle } from '../../config.js';
 let refreshJudge = false;
+// 数组、对象转换为JSON字符串:JSON.stringify(object或arr).toString()
+// JSON字符串转换为数组、对象:JSON.parse(object或arr)
 Page({
 
   /**
@@ -80,14 +82,22 @@ Page({
           // console.log(res.tempFilePath);
           wx.showLoading({
             mask: true,
-            title: '图片上传中...',
+            title: '视频上传中...',
           })
           // console.log(pictureUpload(res.tempFilePaths[0]));
-          pictureUpload(res.tempFilePath, function (res2) {
-            console.log(res2);
+          pictureUpload(res.tempFilePath, function (res3) {
+            console.log(res3);
             wx.showToast({
               icon: 'none',
               title: '添加成功!',
+            })
+            let newObject = {
+              type: 2,
+              picture: res3
+            }
+            bearingObject.swiperArr = bearingObject.swiperArr.concat(newObject);
+            _this.setData({
+              dataObject: bearingObject
             })
           });
         }
@@ -220,31 +230,30 @@ Page({
       return
     }
     let para = {
-      id: app.globalData.compileObject.id,
+      orderDetailId: app.globalData.compileObject.id,
+      recommend: JSON.stringify(_this.data.dataObject.swiperArr).toString(),
+      shop: JSON.stringify(_this.data.dataObject.storeObject).toString(),
+      shopNumber: _this.data.dataObject.storeObject.mobilePhone,
+      shopPrice: _this.data.dataObject.storeObject.ironingPrice,
+      shopBefore: _this.data.dataObject.storeObject.shopBefore,
+      shopAfter: _this.data.dataObject.storeObject.shopAfter,
     }
     let uploadObject = _this.data.dataObject;
     let allData = app.globalData.compileObject.orderRecommends;
-    // console.log(uploadObject);
-    if (_this.data.pageDifferent == 0){//修改
-      let emptyArr = [];
-      for (let i in allData){
-        if (_this.data.dataObject.random == allData[i].random){
-          allData[i] = _this.data.dataObject;
-        }
-        emptyArr = emptyArr.concat(allData[i]);
-      }
-      para['orderRecommends'] = emptyArr;
-    }else{//添加
-      para['orderRecommends'] = allData.concat(uploadObject);
-    }
-    console.log(para);
-    ask("get", `${orderUpdate}`, para).then(res => {
+    ask("post", `${editInsertHairstyle}`, para).then(res => {
       // console.log(res);
       if (res.status == 200) {
-        wx.showToast({
-          icon: "none",
-          title: '修改成功！',
-        })
+        if (_this.data.pageDifferent == 0){
+          wx.showToast({
+            icon: "none",
+            title: '修改成功！',
+          })
+        }else{
+          wx.showToast({
+            icon: "none",
+            title: '添加成功！',
+          })
+        }
         setTimeout(function () {
           wx.navigateBack({
             delta: 1
@@ -252,11 +261,11 @@ Page({
         }, 1500)
       } else {
         wx.hideLoading();
-        askError("", orderUpdateTitle, '数据请求出错');
+        askError("", editInsertHairstyleTitle, '数据请求出错');
       }
     }).catch(error => {
       wx.hideLoading();
-      askError("", orderUpdateTitle, '数据处理出错');
+      askError("", editInsertHairstyleTitle, '数据处理出错');
     })
   },
   /**
