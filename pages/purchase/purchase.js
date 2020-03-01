@@ -2,7 +2,7 @@ const app = getApp();
 import { existence,symbolArr } from '../../utils/tools.js';
 import { ask, askError } from '../../utils/demand.js';
 import { placeAnOrder } from '../../utils/order.js';
-import { getMobile } from '../../utils/authorize.js';
+import { getMobile, lookempower, dataGet } from '../../utils/authorize.js';
 import { edition, version, platform, smallRoutione, selectByIdentity, selectByIdentityTitle, selectAllService, selectAllServiceTitle, selectPrice, selectPriceTitle } from '../../config.js';
 Page({
 
@@ -69,7 +69,11 @@ Page({
         phonePopupShow:false
       })
       getMobile(e.detail.detail, function (res) {
-        console.log(res);
+        // console.log(res);
+        // console.log("1111111111111")
+        dataGet(function(res){
+          wx.hideLoading();
+        })
       });
     }
   },
@@ -106,7 +110,12 @@ Page({
       // console.log(res);
       let objectOne = null;
       if(res && existence(res) && res.length != 0){
-        objectOne = res[0];
+        for(let i in res){
+          if (res[i].openid == "oeR1e5bCm02p6g4HruDOYN-siTGk"){
+            objectOne = res[i];
+          }
+        }
+        // objectOne = res[0];
       }
       _this.setData({
         designerObject:objectOne

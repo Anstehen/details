@@ -33,8 +33,7 @@ const getMobile = function(val,calback){
             }
             ask("get", `${updateUserByOpenid}`, paraOne).then(res4 => {
               // console.log(res4);
-              wx.hideLoading();
-              callback(res4);
+              calback(res4);
               // if (res4.code == 0) {
               //   calback(res4);
               // } else {

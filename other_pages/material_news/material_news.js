@@ -74,7 +74,7 @@ Page({
     let _this = this;
     // console.log(e.detail.value);
     _this.setData({
-      indexSex: e.detail.value
+      selecSex: e.detail.value
     })
     if(e.detail.value == "男"){
       upstream.sex = 1;
@@ -237,7 +237,7 @@ Page({
     //发送code，encryptedData，iv到后台解码，获取用户信息
     ask("post", `${updateOrder}`, para).then(res => {
       // console.log(res);
-      if (res1.status == 200) {
+      if (res.status == 200) {
         wx.hideLoading();
         wx.navigateTo({
           url: '../material_success/material_success',

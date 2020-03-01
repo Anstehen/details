@@ -2,7 +2,7 @@
     <view class="material_one" bindtap="shoutDownClick"></view>
     <view class="material_two box_eight">
         <view class="words box_five">
-            <image class="words_img" src="../../image/201911230100problem.png"></image>
+            <image class="words_img" src="{{problemIcon}}"></image>
             <text class="words_text">提 示</text>
         </view>
         <view class="content box_twelve">

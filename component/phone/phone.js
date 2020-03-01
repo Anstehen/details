@@ -9,8 +9,9 @@ Component({
         }
     },
     data:{
-        //组件内部数 
-        screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+      //组件内部数 
+      screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+      problemIcon: `${app.globalData.pictureUrl}/icon/201911230100problem.png`,
     },
     methods:{
         // 确定点击
