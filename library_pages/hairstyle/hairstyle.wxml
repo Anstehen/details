@@ -5,13 +5,13 @@
 <view class="haidstyle box_eight" style="margin-top:{{statusBarHeight+44}}px">
       <view class="recommend box_eight">
         <view class="recommend_model box_eight">
-            <view class="remo_picture box_twelve" wx:if="{{dataObject.swiperArr.length!=0}}">
+            <view class="remo_picture box_twelve" wx:if="{{dataObject.recommend.length!=0}}">
                 <swiper class="swiper"
                         indicator-dots="{{dots}}"
                         circular="{{circular}}"
                         autoplay="{{autoplay}}"
                         interval="{{interval}}">
-                    <block wx:for="{{dataObject.swiperArr}}" wx:key="*this">
+                    <block wx:for="{{dataObject.recommend}}" wx:key="*this">
                         <swiper-item wx:if="{{item.type==1}}">
                             <view class="swiper_item box_twelve">
                                 <image class="swiper_item_img" src="{{item.picture}}" mode="widthFix"></image>
@@ -39,32 +39,32 @@
                   </picker>  
                 </view>
             </view>
-            <view class="remo_store" wx:if="{{gloval.judgeValue(dataObject.storeObject.shopName)}}">
+            <view class="remo_store" wx:if="{{gloval.judgeValue(dataObject.shop.shopName)}}">
                 <view class="remo_store_words">店铺选择</view>
                 <view class="remo_store_count box_two">
                     <view class="remosc_left box_twelve">
-                        <image class="remosc_left_img" src="{{dataObject.storeObject.shopAddressphoto}}" mode="widthFix"></image>
+                        <image class="remosc_left_img" src="{{dataObject.shop.shopAddressphoto}}" mode="widthFix"></image>
                     </view>
                     <view class="remosc_right">
-                        <text class="remosc_right_title spill_over">{{dataObject.storeObject.shopName}}</text>
+                        <text class="remosc_right_title spill_over">{{dataObject.shop.shopName}}</text>
                         <view class="remosc_right_address box_one">
                             <view class="remoscra_one box_twelve">
                                 <image class="remoscra_one_img" src="{{addressIcon}}"></image>
                             </view>
-                            <view class="remoscra_two">{{dataObject.storeObject.shopAddress}}</view>
+                            <view class="remoscra_two">{{dataObject.shop.shopAddress}}</view>
                         </view>
                     </view>
                 </view>
             </view>
-            <view class="remo_phone" wx:if="{{gloval.judgeValue(dataObject.storeObject.shopAddress)}}">
+            <view class="remo_phone" wx:if="{{gloval.judgeValue(dataObject.shop.shopAddress)}}">
                 <view class="remo_store_words">设计师联系方式</view>
                 <view class="remo_phone_words">电话:<input class="remopw_input" placeholder-class="remopw_place" value="{{phoneValues}}" bindinput="phoneInput" placeholder-class="remorm_words_pace" placeholder="请输入联系方式"></input></view>
             </view>
-            <view class="remo_price" wx:if="{{gloval.judgeValue(dataObject.storeObject.shopAddress)}}">
+            <view class="remo_price" wx:if="{{gloval.judgeValue(dataObject.shop.shopAddress)}}">
                 <view class="remo_store_words">店铺价位范围:</view>
-                <view class="remo_phone_words">价格：{{dataObject.storeObject.haircutPrice}}-{{dataObject.storeObject.ironingPrice}}元</view>
+                <view class="remo_phone_words">价格：{{dataObject.shop.haircutPrice}}-{{dataObject.shop.ironingPrice}}元</view>
             </view>
-            <view class="remo_ready" wx:if="{{gloval.judgeValue(dataObject.storeObject.shopBefore)}}">
+            <view class="remo_ready" wx:if="{{gloval.judgeValue(dataObject.shop.shopBefore)}}">
                 <view class="remo_store_words">去店前的准备</view>
                 <view class="remo_ready_modle box_twelve">
                     <view class="remorm_words box_eight">
@@ -72,14 +72,14 @@
                     </view>
                 </view>
             </view>
-            <view class="remo_careful" wx:if="{{gloval.judgeValue(dataObject.storeObject.shopAfter)}}">
+            <view class="remo_careful" wx:if="{{gloval.judgeValue(dataObject.shop.shopAfter)}}">
                 <view class="remo_store_words">到店后您需要注意:</view>
                 <view class="remorm_words box_eight">
                     <textarea class="remorm_words_text" placeholder-class="remorm_words_pace" placeholder="请输入店铺前的准备" value="{{carefulValues}}" maxlength="366" bindinput="carefulInput"></textarea>
                 </view>
             </view>
         </view>
-        <view class="nothing box_eleven"  wx:if="{{!gloval.judgeValue(dataObject.storeObject.shopName)}}">
+        <view class="nothing box_eleven"  wx:if="{{!gloval.judgeValue(dataObject.shop.shopName)}}">
           <image class="nothing_img" src="{{addIcon}}"></image>  
           <text class="nothing_text">请选择店铺~</text>
         </view>

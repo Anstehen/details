@@ -6,7 +6,7 @@
 <view class="desigener box_eight" style="margin-top:{{statusBarHeight+44}}px">
     <view class="card box_five">
       <view class="card_picture box_twelve" bindtap="{{!loginWhether?'onGotUserInfo':''}}">
-          <image class="card_picture_img" src="{{!loginWhether?'../../image/default.png':personInfo.userImage}}" mode="widthFix"></image>
+          <image class="card_picture_img" src="{{!loginWhether?defaultIcon:personInfo.userImage}}" mode="widthFix"></image>
       </view>
       <view class="card_words box_eight" bindtap="{{!loginWhether?'onGotUserInfo':''}}">
           <text class="card_words_textOne">{{!loginWhether?defaultNeme:personInfo.userName}}</text>
@@ -17,21 +17,21 @@
         <view class="count_setting box_twelve">
             <view class="cose box_six" bindtap="settingClick">
                 <view class="cose_left box_two">
-                  <image class="cose_left_img" src="../../image/setting.png"></image>
+                  <image class="cose_left_img" src="{{settingIcon}}"></image>
                   <text class="cose_right_text">设 置</text>
                 </view>
-                <image class="cose_right_img" src="../../image/enter.png"></image>
+                <image class="cose_right_img" src="{{enterIcon}}"></image>
             </view>
         </view>
-        <view class="count_setting box_twelve">
+        <!-- <view class="count_setting box_twelve">
             <view class="cose box_six" bindtap="serviceClick">
                 <view class="cose_left box_two">
-                  <image class="cose_left_img" src="../../image/service.png"></image>
+                  <image class="cose_left_img" src="{{serviceIcon}}"></image>
                   <text class="cose_right_text">我服务过的用户</text>
                 </view>
-                <image class="cose_right_img" src="../../image/enter.png"></image>
+                <image class="cose_right_img" src="{{enterIcon}}"></image>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>
 <!-- 底部导航栏 -->

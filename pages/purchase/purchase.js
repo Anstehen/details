@@ -258,6 +258,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "您的专属发型师为您提供方案",
+      path: "/pages/transition/transition",
+      imageUrl: "https://hzweirui.oss-cn-hangzhou.aliyuncs.com/smallProgram/homePage/202002191115picture.jpg",
+      success: (res) => {
+      }
+    }
   }
 })

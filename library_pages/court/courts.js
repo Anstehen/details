@@ -221,11 +221,11 @@ Page({
         }, 1500)
       } else {
         wx.hideLoading();
-        askError("", orderUpdateTitle, '数据请求出错');
+        askError(wx.getStorageSync('userInformation').userId, orderUpdateTitle, '数据请求出错');
       }
     }).catch(error => {
       wx.hideLoading();
-      askError("", orderUpdateTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, orderUpdateTitle, '数据处理出错');
     })
   },
   // 页面初始数据
@@ -250,11 +250,11 @@ Page({
 
       // } else {
       //   wx.hideLoading();
-      //   askError("", editUpperTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, editUpperTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError("", editUpperTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, editUpperTitle, '数据处理出错');
       })
     // 中庭
     //发送code，encryptedData，iv到后台解码，获取用户信息
@@ -274,11 +274,11 @@ Page({
 
       // } else {
       //   wx.hideLoading();
-      //   askError("", editStallsTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, editStallsTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError("", editStallsTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, editStallsTitle, '数据处理出错');
       })
     // 下庭
     //发送code，encryptedData，iv到后台解码，获取用户信息
@@ -298,11 +298,11 @@ Page({
 
       // } else {
       //   wx.hideLoading();
-      //   askError("", editLowerTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, editLowerTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError("", editLowerTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, editLowerTitle, '数据处理出错');
     })
   },
   /**
@@ -359,6 +359,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "您的专属发型师为您提供方案",
+      path: "/pages/transition/transition",
+      imageUrl: "https://hzweirui.oss-cn-hangzhou.aliyuncs.com/smallProgram/homePage/202002191115picture.jpg",
+      success: (res) => {
+      }
+    }
   }
 })

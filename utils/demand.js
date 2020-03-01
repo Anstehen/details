@@ -51,11 +51,20 @@ const ask = (val1, val2, val3) => {
 // 上传错误请求封装
 const askError = (val1, val2, val3) => {
   let userid = "";
-  (val1 && existence(val1)) ? (userid = val1) : (userid = '');
+  if (val1 && existence(val1)){
+    userid = val1;
+  }
+  // (val1 && existence(val1)) ? (userid = val1) : (userid = '');
   let describe = "";
-  (val2 && existence(val2)) ? (describe = val2) : (describe = '');
+  if (val2 && existence(val2)){
+    describe = val2
+  }
+  // (val2 && existence(val2)) ? (describe = val2) : (describe = '');
   let errorInfo = "";
-  (val3 && existence(val3)) ? (errorInfo = val3) : (errorInfo = '');
+  if (val3 && existence(val3)){
+    errorInfo = val3;
+  }
+  // (val3 && existence(val3)) ? (errorInfo = val3) : (errorInfo = '');
   wx.request({
     url: uploadErrorInfo,
     data: {

@@ -10,6 +10,10 @@ Page({
   data: {
     statusBarHeight: app.globalData.systemInfo.statusBarHeight,//状态栏高度
     screenHeight: app.globalData.systemInfo.screenHeight,//屏幕高度
+    defaultIcon: `${app.globalData.pictureUrl}/icon/default.png`,
+    settingIcon: `${app.globalData.pictureUrl}/icon/setting.png`,
+    enterIcon: `${app.globalData.pictureUrl}/icon/enter.png`,
+    serviceIcon: `${app.globalData.pictureUrl}/icon/service.png`,
     defaultNeme: '昵称~',
     defaultLevel: '登录',
     identity: '官方认证设计师',
@@ -107,6 +111,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "您的专属发型师为您提供方案",
+      path: "/pages/transition/transition",
+      imageUrl: "https://hzweirui.oss-cn-hangzhou.aliyuncs.com/smallProgram/homePage/202002191115picture.jpg",
+      success: (res) => {
+      }
+    }
   }
 })

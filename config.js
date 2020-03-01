@@ -99,8 +99,23 @@ var config = {
   // 订单详情（设计师报告编辑）---根据shopId查询店铺信息
   editShopDetail: `${master}/shop/select`,
   editShopDetailTitle: `根据shopId查询店铺信息出错`,
+  // 订单详情（设计师报告编辑）---看用户下单选择的省市区来选择对应省市区下的店铺信息
+  selectAllShopCity: `${master}/shop/selectAllShopCity`,
+  selectAllShopCityTitle: `看用户下单选择的省市区来选择对应省市区下的店铺信息出错`,
   // 订单详情（设计师报告编辑）---添加发型
   editInsertHairstyle: `${master}/orderRecommend/insert`,
   editInsertHairstyleTitle: `添加发型出错`,
+  // 订单详情（设计师报告编辑）---删除发型
+  editDeleteHairstyle: `${master}/orderRecommend/delete`,
+  editDeleteHairstyleTitle: `根据id删除发型出错`,
+  // 订单详情（设计师报告编辑）---修改发型
+  editUpdateHairstyle: `${master}/orderRecommend/update`,
+  editUpdateHairstyleTitle: `根据id修改发型出错`,
+  // 订单详情（设计师报告编辑）---报告发送
+  updateOrderByOrderId: `${master}/order/updateOrderByOrderId`,
+  updateOrderByOrderIdTitle: `报告发送出错`,
+  // 查看报告---这个接口是用户端报告展示点击查看报告的接口，点击哪个订单就将哪个订单的orderId传过来
+  selectOrderDetailByOrderId: `${master}/orderDetail/selectOrderDetailByOrderId`,
+  selectOrderDetailByOrderIdTitle: `这个接口是用户端报告展示点击查看报告的接口，点击哪个订单就将哪个订单的orderId传过来出错`,
 }
 module.exports = config;

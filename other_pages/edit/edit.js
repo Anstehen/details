@@ -2,7 +2,7 @@ const app = getApp();
 import { ask, askError } from '../../utils/demand.js';
 import { existence } from '../../utils/tools.js';
 import { random } from '../../utils/random.js';
-import { edition, version, platform, smallRoutione, selectOrder, selectOrderTitle, selectOrderDetailByOrderId, selectOrderDetailByOrderIdTitle, orderUpdate, orderUpdateTitle } from '../../config.js';
+import { edition, version, platform, smallRoutione, selectOrder, selectOrderTitle, selectOrderDetailByOrderId, selectOrderDetailByOrderIdTitle, orderUpdate, orderUpdateTitle, editDeleteHairstyle, editDeleteHairstyleTitle, updateOrder, updateOrderTitle, updateOrderByOrderId, updateOrderByOrderIdTitle } from '../../config.js';
 let refreshJudge = false;
 // 数组、对象转换为JSON字符串:JSON.stringify(object或arr).toString()
 // JSON字符串转换为数组、对象:JSON.parse(object或arr)
@@ -73,15 +73,50 @@ Page({
       url: '../../library_pages/court/courts',
     })
   },
+  // 发型推荐---图片预览
+  recommednPreviewPicure:function(e){
+    let _this = this;
+    // console.log(e.currentTarget.dataset);
+    let bearingStr = e.currentTarget.dataset.one;
+    let bearingArr = e.currentTarget.dataset.two;
+    let emptyArr = [];
+    for (let i in bearingArr){
+      if (bearingArr[i].type == 1){
+        emptyArr = emptyArr.concat(bearingArr[i].picture);
+      }
+    }
+    wx.previewImage({
+      current: bearingStr, // 当前显示图片的http链接
+      urls: emptyArr // 需要预览的图片http链接列表
+    })
+
+  },
   // 发行推荐---删除
   hairstyleClick:function(e){
     let _this = this;
+    // console.log(e.currentTarget.dataset.info);
     wx.showModal({
       title: '提示',
       content: '您确定要删除该款发型么?',
       success (res) {
         if (res.confirm) {
           // console.log('用户点击确定');
+          let para = {
+            id: e.currentTarget.dataset.info.id
+          }
+          ask("get", `${editDeleteHairstyle}`, para).then(res => {
+            // console.log(res);
+            _this.initialData();//页面初始数据
+            // if (res.code == 0) {
+
+            // } else {
+            //   wx.hideLoading();
+            //   askError("", editDeleteHairstyleTitle, '数据请求出错');
+            // }
+          }).catch(error => {
+            wx.hideLoading();
+            askError("", editDeleteHairstyleTitle, '数据处理出错');
+          })
         } else if (res.cancel) {
           // console.log('用户点击取消');
         }
@@ -91,28 +126,11 @@ Page({
   // 发行推荐---修改编辑
   hairstyleEidtClick:function(e){
     let _this = this;
+    // console.log(e.currentTarget.dataset.info);
     refreshJudge = true;
     app.globalData.compileObject = _this.data.editObject;
-    app.globalData.hairstyleObject = {
-      random: random(),
-      swiperArr: [],
-      storeObject: {
-        creatTime: null,
-        haircutPrice: null,
-        ironingPrice: null,
-        mobilePhone: null,
-        shopAddress: null,
-        shopAddressphoto: null,
-        shopAfter: null,
-        shopBefore: null,
-        shopCity: null,
-        shopId: null,
-        shopImgs: null,
-        shopName: null,
-        shopPhoto: null,
-        shopTitle: null,
-      },
-    }
+    app.globalData.userMaterialObject = _this.data.userDataObject;
+    app.globalData.hairstyleObject = e.currentTarget.dataset.info;
     wx.navigateTo({
       url: `../../library_pages/hairstyle/hairstyle?disitinguish=1`,
     })
@@ -122,10 +140,11 @@ Page({
     let _this = this;
     refreshJudge = true;
     app.globalData.compileObject = _this.data.editObject;
+    app.globalData.userMaterialObject = _this.data.userDataObject;
     app.globalData.hairstyleObject = {
       random: random(),
-      swiperArr:[],
-      storeObject:{
+      recommend:[],
+      shop:{
         creatTime:null,
         haircutPrice:null,
         ironingPrice:null,
@@ -213,6 +232,34 @@ Page({
       }
     })
   },
+  // 发送
+  sendClick:function(e){
+    let _this = this;
+    let para = {
+      orderId: _this.data.acceptOrderId,
+      orderStatus: 3
+    }
+    //发送code，encryptedData，iv到后台解码，获取用户信息
+    ask("get", `${updateOrderByOrderId}`, para).then(res => {
+      // console.log(res);
+      if (res.status == 200) {
+        wx.showToast({
+          icon: "none",
+          title: '发送成功！',
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 2
+          })
+        }, 1500)
+      } else {
+        askError(wx.getStorageSync('userInformation').userId, updateOrderByOrderIdTitle, '数据请求出错');
+      }
+    }).catch(error => {
+      wx.hideLoading();
+      askError(wx.getStorageSync('userInformation').userId, updateOrderByOrderIdTitle, '数据处理出错');
+    })
+  },
   // 页面初始数据
   initialData: function (e) {
     let _this = this;
@@ -229,11 +276,11 @@ Page({
 
       // } else {
       //   wx.hideLoading();
-      //   askError("", selectOrderTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, selectOrderTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError("", selectOrderTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, selectOrderTitle, '数据处理出错');
     })
     // 查询订单
     ask("get", `${selectOrderDetailByOrderId}`, para).then(res1 => {
@@ -247,19 +294,28 @@ Page({
           emptyArr = beatingObject.hairColor.split(",");
         }
       }
+      let arrOne = [];
+      if (existence(beatingObject.orderRecommends) && beatingObject.orderRecommends.length != 0){
+        for (let i in beatingObject.orderRecommends){
+          beatingObject.orderRecommends[i].recommend = JSON.parse(beatingObject.orderRecommends[i].recommend);
+          beatingObject.orderRecommends[i].shop = JSON.parse(beatingObject.orderRecommends[i].shop);
+          arrOne = arrOne.concat(beatingObject.orderRecommends[i]);
+        }
+      }
+      beatingObject.orderRecommends = arrOne;
       _this.setData({
         editObject: beatingObject,
-        colorArr: emptyArr
+        colorArr: emptyArr,
       })
       // if (res1.code == 0) {
 
       // } else {
       //   wx.hideLoading();
-      //   askError("", selectOrderDetailByOrderIdTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, selectOrderDetailByOrderIdTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError("", selectOrderDetailByOrderIdTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, selectOrderDetailByOrderIdTitle, '数据处理出错');
     })
   },
   /**
@@ -324,6 +380,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "您的专属发型师为您提供方案",
+      path: "/pages/transition/transition",
+      imageUrl: "https://hzweirui.oss-cn-hangzhou.aliyuncs.com/smallProgram/homePage/202002191115picture.jpg",
+      success: (res) => {
+      }
+    }
   }
 })

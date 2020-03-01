@@ -3,7 +3,7 @@
 <import src="../../component/template/template.wxml"/>
 <template is="exist" data="{{title:'店铺选择',topHeight:statusBarHeight}}"/>
 <view class="store box_seven" style="margin-top:{{statusBarHeight+130}}px">
-    <view class="store_model box_eight" wx:for="{{storeArr}}" wx:for-item="item" wx:key="*this">
+    <view class="store_model box_eight" wx:for="{{storeArr}}" wx:for-item="item" wx:key="*this" wx:if="{{storeArr.length!=0}}">
         <view class="store_model_top box_twelve">
             <image class="smt_img" src="{{item.shopAddressphoto}}" mode="widthFix"></image>
         </view>
@@ -15,6 +15,21 @@
             <view class="stm_define box_twelve" data-info="{{item}}" bindtap="defineClick">确 定</view>
         </view>
     </view>
+    <view class="store_none box_twelve" wx:if="{{storeArr.length==0}}">暂无店铺信息~</view>
     <view class="message"></view>
 </view>
-<view class="search" style="top:{{statusBarHeight+43}}px"></view>
+<view class="search" style="top:{{statusBarHeight+43}}px">
+    <view class="search_page box_eleven">
+        <view class="sepa_one box_three">
+            <text class="sepa_one_textOne">用户地址：</text>
+            <text class="sepa_one_textTwo">{{userObject.city}}</text>
+        </view>
+        <view class="sepa_two box_three">
+            <view class="sepa_two_frame box_three">
+              <image class="sepatwfr_img" src="{{searchIcon}}"></image>
+              <input class="sepatwfr_ipt" placeholder="请输入地址" value="{{addressVlue}}" bindinput="addressInput"></input>
+            </view>
+            <view class="sepa_two_btn box_twelve" bindtap="searchClick">搜索</view>
+        </view>
+    </view>
+</view>

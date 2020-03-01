@@ -67,6 +67,11 @@ page{
   color:rgba(254, 74, 82, 1);
   line-height:34rpx;
 }
+.cpon_lright_textTwo{
+  font-size:24rpx;
+  color:rgba(255, 165, 16, 1);
+  line-height:34rpx;
+}
 .cpon_lright_img{
   width: 32rpx;
   height: 32rpx;

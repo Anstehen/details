@@ -136,11 +136,11 @@ Page({
           }, 1500)
         } else {
           wx.hideLoading();
-          askError("", orderUpdateTitle, '数据请求出错');
+          askError(wx.getStorageSync('userInformation').userId, orderUpdateTitle, '数据请求出错');
         }
       }).catch(error => {
         wx.hideLoading();
-        askError("", orderUpdateTitle, '数据处理出错');
+        askError(wx.getStorageSync('userInformation').userId, orderUpdateTitle, '数据处理出错');
       })
     }
   },
@@ -166,11 +166,11 @@ Page({
 
       // } else {
       //   wx.hideLoading();
-      //   askError("", selectHairColorByHairTypeTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, selectHairColorByHairTypeTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError("", selectHairColorByHairTypeTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, selectHairColorByHairTypeTitle, '数据处理出错');
     })
   },
   // 根据性别请求
@@ -195,11 +195,11 @@ Page({
 
       // } else {
       //   wx.hideLoading();
-      //   askError("", selectHairColorByHairGenderTitle, '数据请求出错');
+      //   askError(wx.getStorageSync('userInformation').userId, selectHairColorByHairGenderTitle, '数据请求出错');
       // }
     }).catch(error => {
       wx.hideLoading();
-      askError("", selectHairColorByHairGenderTitle, '数据处理出错');
+      askError(wx.getStorageSync('userInformation').userId, selectHairColorByHairGenderTitle, '数据处理出错');
     })
   },
   /**
@@ -280,6 +280,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "您的专属发型师为您提供方案",
+      path: "/pages/transition/transition",
+      imageUrl: "https://hzweirui.oss-cn-hangzhou.aliyuncs.com/smallProgram/homePage/202002191115picture.jpg",
+      success: (res) => {
+      }
+    }
   }
 })

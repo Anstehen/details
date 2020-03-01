@@ -12,14 +12,15 @@
                   <text class="cpon_left_textTwo">{{item.orderNumber}}</text>
               </view>
               <view class="cpon_lright box_five">
-                  <text class="cpon_lright_text" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}">查看报告</text>
-                  <text class="cpon_lright_textOne" wx:else>资料未上传</text>
-                  <image class="cpon_lright_img" src="{{triangleRightIcon}}" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}"></image>
+                  <text class="cpon_lright_text" wx:if="{{item.orderStatus==3||item.orderStatus=='3'}}">查看报告</text>
+                  <text class="cpon_lright_textTwo" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}">报告未编辑</text>
+                  <text class="cpon_lright_textOne" wx:if="{{item.orderStatus==1||item.orderStatus=='1'}}">资料未上传</text>
+                  <image class="cpon_lright_img" src="{{triangleRightIcon}}" wx:if="{{item.orderStatus==3||item.orderStatus=='3'}}"></image>
               </view>
             </view>
             <view class="cards_page_two box_three">
                 <view class="cptw_left box_twelve">
-                    <image class="cptw_left_img" mode="widthFix" src="{{item.fullFacePhoto}}" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}"></image>
+                    <image class="cptw_left_img" mode="widthFix" src="{{item.fullFacePhoto}}" wx:if="{{item.orderStatus==2||item.orderStatus=='2'||item.orderStatus==3||item.orderStatus=='3'}}"></image>
                     <image class="cptw_left_imgOne" mode="widthFix" src="{{defaultIcon}}" wx:else></image>
                 </view>
                 <view class="cptw_right box_ten">
@@ -30,7 +31,7 @@
             <view class="cards_page_three box_fifteen">
                 <view class="cpth_concat box_twelve" data-info="{{item}}" catchtap="phoneClick">联系设计师</view>
                 <view class="cpth_unload box_twelve" data-info="{{item}}" catchtap="uploadClick" wx:if="{{item.orderStatus==1||item.orderStatus=='1'}}">去上传</view>
-                <view class="cpth_look box_twelve" data-info="{{item}}" catchtap="lookReportClick" wx:if="{{item.orderStatus==2||item.orderStatus=='2'}}">查看报告</view>
+                <view class="cpth_look box_twelve" data-info="{{item}}" catchtap="lookReportClick" wx:if="{{item.orderStatus==3||item.orderStatus=='3'}}">查看报告</view>
             </view>
         </view>  
     </view>

@@ -2,7 +2,7 @@ const app = getApp();
 import { ask, askError } from '../../utils/demand.js';
 import { existence } from '../../utils/tools.js';
 import { pictureUpload } from '../../utils/picture.js';
-import { edition, version, platform, smallRoutione, editInsertHairstyle, editInsertHairstyleTitle } from '../../config.js';
+import { edition, version, platform, smallRoutione, editInsertHairstyle, editInsertHairstyleTitle, editUpdateHairstyle, editUpdateHairstyleTitle } from '../../config.js';
 let refreshJudge = false;
 // 数组、对象转换为JSON字符串:JSON.stringify(object或arr).toString()
 // JSON字符串转换为数组、对象:JSON.parse(object或arr)
@@ -66,7 +66,7 @@ Page({
               type:1,
               picture: res2
             }
-            bearingObject.swiperArr = bearingObject.swiperArr.concat(newObject);
+            bearingObject.recommend = bearingObject.recommend.concat(newObject);
             _this.setData({
               dataObject: bearingObject
             })
@@ -95,7 +95,7 @@ Page({
               type: 2,
               picture: res3
             }
-            bearingObject.swiperArr = bearingObject.swiperArr.concat(newObject);
+            bearingObject.recommend = bearingObject.recommend.concat(newObject);
             _this.setData({
               dataObject: bearingObject
             })
@@ -114,7 +114,7 @@ Page({
         if (res.confirm) {
           // console.log('用户点击确定');
           let bearingObject = _this.data.dataObject;
-          bearingObject.swiperArr = [];
+          bearingObject.recommend = [];
           _this.setData({
             dataObject: bearingObject
           })
@@ -128,14 +128,18 @@ Page({
   phoneInput:function(e){
     let _this = this;
     // console.log(e.detail.value);
+    let bearingObject = _this.data.dataObject;
+    bearingObject.shop.mobilePhone = e.detail.value;
+    bearingObject.shopNumber = e.detail.value;
     _this.setData({
-      phoneValues:e.detail.value
+      phoneValues:e.detail.value,
+      dataObject: bearingObject
     })
   },
   // 店铺---删除
   storeDeleteClick:function(e){
     let _this = this;
-    if (!existence(_this.data.dataObject.storeObject.shopName)){
+    if (!existence(_this.data.dataObject.shop.shopName)){
       wx.showToast({
         icon:'none',
         title: '您还没有选择店铺，请先选择!',
@@ -149,7 +153,7 @@ Page({
         if (res.confirm) {
           // console.log('用户点击确定');
           let bearingObject = _this.data.dataObject;
-          bearingObject.storeObject = {
+          bearingObject.shop = {
             creatTime: null,
             haircutPrice: null,
             ironingPrice: null,
@@ -186,87 +190,130 @@ Page({
   readyInput:function(e){
     let _this = this;
     // console.log(e.detail.value);
+    let bearingObject = _this.data.dataObject;
+    bearingObject.shop.shopBefore = e.detail.value;
+    bearingObject.shopBefore = e.detail.value;
     _this.setData({
-      readyValues:e.detail.value
+      readyValues:e.detail.value,
+      dataObject: bearingObject
     })
   },
   // 到店后需要注意
   carefulInput:function(e){
     let _this = this;
     // console.log(e.detail.value);
+    let bearingObject = _this.data.dataObject;
+    bearingObject.shop.shopAfter = e.detail.value;
+    bearingObject.shopAfter = e.detail.value;
     _this.setData({
-      carefulValues:e.detail.value
+      carefulValues:e.detail.value,
+      dataObject: bearingObject
     })
   },
   // 确定点击
   determineClick:function(e){
     let _this = this;
-    if (_this.data.dataObject.swiperArr.length == 0){
+    if (_this.data.dataObject.recommend.length == 0){
       wx.showToast({
         icon:'none',
         title: '请上传发型图片或视频!',
       })
       return
     }
-    if (!existence(_this.data.dataObject.storeObject.shopName)) {
+    if (!existence(_this.data.dataObject.shop.shopName)) {
       wx.showToast({
         icon: 'none',
         title: '请选择店铺!',
       })
       return
     }
-    if (!existence(_this.data.dataObject.storeObject.shopBefore)) {
+    if (!existence(_this.data.dataObject.shop.shopBefore)) {
       wx.showToast({
         icon: 'none',
         title: '请输入到店前的准备!',
       })
       return
     }
-    if (!existence(_this.data.dataObject.storeObject.shopAfter)) {
+    if (!existence(_this.data.dataObject.shop.shopAfter)) {
       wx.showToast({
         icon: 'none',
         title: '请输入到店后的准备!',
       })
       return
     }
-    let para = {
-      orderDetailId: app.globalData.compileObject.id,
-      recommend: JSON.stringify(_this.data.dataObject.swiperArr).toString(),
-      shop: JSON.stringify(_this.data.dataObject.storeObject).toString(),
-      shopNumber: _this.data.dataObject.storeObject.mobilePhone,
-      shopPrice: _this.data.dataObject.storeObject.ironingPrice,
-      shopBefore: _this.data.dataObject.storeObject.shopBefore,
-      shopAfter: _this.data.dataObject.storeObject.shopAfter,
-    }
-    let uploadObject = _this.data.dataObject;
-    let allData = app.globalData.compileObject.orderRecommends;
-    ask("post", `${editInsertHairstyle}`, para).then(res => {
-      // console.log(res);
-      if (res.status == 200) {
-        if (_this.data.pageDifferent == 0){
-          wx.showToast({
-            icon: "none",
-            title: '修改成功！',
-          })
-        }else{
+    if (_this.data.pageDifferent == 0) {
+      let para = {
+        orderDetailId: app.globalData.compileObject.id,
+        recommend: JSON.stringify(_this.data.dataObject.recommend).toString(),
+        shop: JSON.stringify(_this.data.dataObject.shop).toString(),
+        shopNumber: _this.data.dataObject.shop.mobilePhone,
+        shopPrice: _this.data.dataObject.shop.ironingPrice,
+        shopBefore: _this.data.dataObject.shop.shopBefore,
+        shopAfter: _this.data.dataObject.shop.shopAfter,
+      }
+      let uploadObject = _this.data.dataObject;
+      let allData = app.globalData.compileObject.orderRecommends;
+      ask("post", `${editInsertHairstyle}`, para).then(res => {
+        // console.log(res);
+        if (res.status == 200) {
           wx.showToast({
             icon: "none",
             title: '添加成功！',
           })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1500)
+        } else {
+          wx.hideLoading();
+          askError(wx.getStorageSync('userInformation').userId, editInsertHairstyleTitle, '数据请求出错');
         }
+      }).catch(error => {
+        wx.hideLoading();
+        askError(wx.getStorageSync('userInformation').userId, editInsertHairstyleTitle, '数据处理出错');
+      })
+    } else {
+      let para = {
+        id: _this.data.dataObject.id,
+        orderDetailId: app.globalData.compileObject.id,
+        recommend: JSON.stringify(_this.data.dataObject.recommend).toString(),
+        shop: JSON.stringify(_this.data.dataObject.shop).toString(),
+        shopNumber: _this.data.dataObject.shop.mobilePhone,
+        shopPrice: _this.data.dataObject.shop.ironingPrice,
+        shopBefore: _this.data.dataObject.shop.shopBefore,
+        shopAfter: _this.data.dataObject.shop.shopAfter,
+      }
+      ask("get", `${editUpdateHairstyle}`, para).then(res => {
+        // console.log(res);
+        wx.showToast({
+          icon: "none",
+          title: '修改成功！',
+        })
         setTimeout(function () {
           wx.navigateBack({
             delta: 1
           })
         }, 1500)
-      } else {
+        // if (res.status == 200) {
+        //   wx.showToast({
+        //     icon: "none",
+        //     title: '修改成功！',
+        //   })
+        //   setTimeout(function () {
+        //     wx.navigateBack({
+        //       delta: 1
+        //     })
+        //   }, 1500)
+        // } else {
+        //   wx.hideLoading();
+        //   askError(wx.getStorageSync('userInformation').userId, editUpdateHairstyleTitle, '数据请求出错');
+        // }
+      }).catch(error => {
         wx.hideLoading();
-        askError("", editInsertHairstyleTitle, '数据请求出错');
-      }
-    }).catch(error => {
-      wx.hideLoading();
-      askError("", editInsertHairstyleTitle, '数据处理出错');
-    })
+        askError(wx.getStorageSync('userInformation').userId, editUpdateHairstyleTitle, '数据处理出错');
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -281,16 +328,16 @@ Page({
       numberOne = 1;
     }
     let strOne = "";
-    if (existence(app.globalData.hairstyleObject.storeObject.mobilePhone)){
-      strOne = app.globalData.hairstyleObject.storeObject.mobilePhone;
+    if (existence(app.globalData.hairstyleObject.shop.mobilePhone)){
+      strOne = app.globalData.hairstyleObject.shop.mobilePhone;
     }
     let strTwo = "";
-    if (existence(app.globalData.hairstyleObject.storeObject.shopBefore)) {
-      strTwo = app.globalData.hairstyleObject.storeObject.shopBefore;
+    if (existence(app.globalData.hairstyleObject.shop.shopBefore)) {
+      strTwo = app.globalData.hairstyleObject.shop.shopBefore;
     }
     let strThree = "";
-    if (existence(app.globalData.hairstyleObject.storeObject.shopAfter)) {
-      strThree = app.globalData.hairstyleObject.storeObject.shopAfter;
+    if (existence(app.globalData.hairstyleObject.shop.shopAfter)) {
+      strThree = app.globalData.hairstyleObject.shop.shopAfter;
     }
     _this.setData({
       pageDifferent: numberOne,
@@ -316,18 +363,18 @@ Page({
     if (refreshJudge){
       refreshJudge = false;
       let bearingObject = _this.data.dataObject;
-      bearingObject.storeObject = app.globalData.storeObject;
+      bearingObject.shop = app.globalData.shop;
       let strOne = "";
-      if (existence(app.globalData.storeObject.mobilePhone)) {
-        strOne = app.globalData.storeObject.mobilePhone;
+      if (existence(app.globalData.shop.mobilePhone)) {
+        strOne = app.globalData.shop.mobilePhone;
       }
       let strTwo = "";
-      if (existence(app.globalData.storeObject.shopBefore)) {
-        strTwo = app.globalData.storeObject.shopBefore;
+      if (existence(app.globalData.shop.shopBefore)) {
+        strTwo = app.globalData.shop.shopBefore;
       }
       let strThree = "";
-      if (existence(app.globalData.storeObject.shopAfter)) {
-        strThree = app.globalData.storeObject.shopAfter;
+      if (existence(app.globalData.shop.shopAfter)) {
+        strThree = app.globalData.shop.shopAfter;
       }
       _this.setData({
         dataObject: bearingObject,
@@ -370,6 +417,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "您的专属发型师为您提供方案",
+      path: "/pages/transition/transition",
+      imageUrl: "https://hzweirui.oss-cn-hangzhou.aliyuncs.com/smallProgram/homePage/202002191115picture.jpg",
+      success: (res) => {
+      }
+    }
   }
 })

@@ -59,5 +59,6 @@ App({
     compileObject:null,//编辑资料
     hairstyleObject:null,//发行推荐
     storeObject:null,//店铺内容
+    userMaterialObject:null,//用户资料
   }
 })

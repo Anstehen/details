@@ -13,7 +13,7 @@ page{
   margin-top: 32rpx;
 }
 .portrait_img{
-  width: 66%;
+  width: 91.47%;
   height: auto;
 }
 .model{
@@ -95,6 +95,10 @@ page{
 .swiper_item_img{
   width: 100%;
   height: auto;
+}
+.swiper_item_video{
+  width: 100%;
+  height: 100%;
 }
 .remo_store{
   margin-top: 46rpx;
@@ -195,11 +199,11 @@ page{
 .hairColor{
   margin-top: 32rpx;
   width: 100%;
-  height: 546rpx;
+  height: 280rpx;
 }
 .hairColor_page{
   width:220rpx;
-  height:564rpx;
+  height:280rpx;
   border-radius: 8rpx;
   overflow: hidden;
 }

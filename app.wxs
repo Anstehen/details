@@ -46,9 +46,28 @@ var stateChange = function(str){
   }
   return ruturnStr
 }
+// 根据数字转化为中文数字
+var numberChangeChinaese = function(str){
+  var returnStr = "";
+  if (str == 0){
+    returnStr = "一";
+  } else if (str == 1){
+    returnStr = "二";
+  } else if (str == 2) {
+    returnStr = "三";
+  } else if (str == 3) {
+    returnStr = "四";
+  } else if (str == 4) {
+    returnStr = "五";
+  } else if (str == 5) {
+    returnStr = "六";
+  }
+  return returnStr
+}
 module.exports = {
   processingValue: processingValue,
   judgeValue:judgeValue,
   genderChange: genderChange,
-  stateChange: stateChange
+  stateChange: stateChange,
+  numberChangeChinaese: numberChangeChinaese
 }
