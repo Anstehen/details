@@ -34,7 +34,7 @@ Page({
     let bearingArr = _this.data.askArr;
     let strOne = "";
     let strTwo = "";
-    if (_this.data.gender == 0 || _this.data.gender == '0') {
+    if (_this.data.gender == 1 || _this.data.gender == '1') {
       strOne = bearingArr[e.detail.value].shapeCharacter.split("&")[0];
       strTwo = bearingArr[e.detail.value].shapeSummary.split("&")[0];
     } else {
@@ -149,7 +149,7 @@ Page({
         let strFour = "";
         strOne = res[0].faceShape;
         strTwo = res[0].shapeContent;
-        if (_this.data.gender == 0 || _this.data.gender == '0'){
+        if (_this.data.gender == 1 || _this.data.gender == '1'){
           strThree = res[0].shapeCharacter.split("&")[0];
           strFour = res[0].shapeSummary.split("&")[0];
         }else{

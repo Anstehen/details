@@ -1,4 +1,4 @@
-const edition = 0;
+const edition = 1;
 let master = 'https://www.hzweirui.com/hairstyle';//环境配置
 if (edition == 1){
   master = 'https://www.hzweirui.com/hairstyle';
