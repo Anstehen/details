@@ -59,6 +59,14 @@ Page({
       url: `../../other_pages/order/order?orderid=${e.currentTarget.dataset.info.orderId}`,
     })
   },
+  // 查看报告
+  lookClick: function (e) {
+    let _this = this;
+    // console.log(e.currentTarget.dataset.info.orderId);
+    wx.navigateTo({
+      url: `../../other_pages/presentation/presentation?transorderid=${e.currentTarget.dataset.info.orderId}`,
+    })
+  },
   // 联系用户
   phoneClick: function (e) {
     let _this = this;

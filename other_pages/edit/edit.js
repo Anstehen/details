@@ -235,6 +235,62 @@ Page({
   // 发送
   sendClick:function(e){
     let _this = this;
+    if (!existence(_this.data.editObject.faceShapeDetail)){
+      wx.showToast({
+        icon:'none',
+        title: '请编辑脸型',
+      })
+      return
+    }
+    if (!existence(_this.data.editObject.faceShapeCharacter)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请编辑性格描述',
+      })
+      return
+    }
+    if (!existence(_this.data.editObject.faceSummary)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请编辑脸型总结',
+      })
+      return
+    }
+    if (!existence(_this.data.editObject.uppercourtDetail)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请编辑上庭',
+      })
+      return
+    }
+    if (!existence(_this.data.editObject.stallsDetail)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请编辑中庭',
+      })
+      return
+    }
+    if (!existence(_this.data.editObject.lowerCourtDetail)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请编辑下庭',
+      })
+      return
+    }
+    if (!existence(_this.data.editObject.orderRecommends) || _this.data.editObject.orderRecommends.length == 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '请推荐发型',
+      })
+      return
+    }
+    if (!existence(_this.data.editObject.orderRecommends) || _this.data.editObject.orderRecommends.length == 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '请推荐发色',
+      })
+      return
+    }
     let para = {
       orderId: _this.data.acceptOrderId,
       orderStatus: 3

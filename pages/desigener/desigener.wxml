@@ -47,14 +47,19 @@
                         <text class="ctr_model_one">支付时间：</text>
                         <text class="ctr_model_two">{{item.payTime}}</text>
                     </view>
+                    <view class="ctr_modelOne box_three">
+                        <text class="camo_three_left_one">付款：</text>
+                        <text class="camo_three_left_two">￥{{item.payMoney}}</text>
+                    </view>
                 </view>
             </view>
             <view class="camo_three box_six">
                 <view class="camo_three_left box_three">
-                    <text class="camo_three_left_one">付款：</text>
-                    <text class="camo_three_left_two">￥{{item.payMoney}}</text>
+                    <!-- <text class="camo_three_left_one">付款：</text>
+                    <text class="camo_three_left_two">￥{{item.payMoney}}</text> -->
                 </view>
                 <view class="camo_three_right box_three">
+                     <view class="camotr_look box_twelve" data-info="{{item}}" wx:if="{{item.orderStatus==3}}" catchtap="lookClick">查看报告</view>
                      <view class="camotr_contact box_twelve" data-info="{{item}}" catchtap="phoneClick">联系用户</view>
                      <view class="camotr_delete box_twelve" data-info="{{item}}" wx:if="{{item.orderStatus!=1}}" catchtap="deleteClick">删 除</view>
                 </view>

@@ -40,7 +40,7 @@ Page({
     selecSex:0,
     sexArr:[],
     selectAge:"1996-08",
-    selecheight:10,
+    selecheight:58,
     heightArr: [],
     selecweight: 10,
     weightArr: [],
@@ -60,7 +60,9 @@ Page({
     stylechange:0,
     takeArr:[],
     takechange:0,
-    acceptOrderId:"",
+    acceptOrderId: "",
+    manStyleArr: [],
+    womanStyleArr: []
   },
   // 顶部返回按钮点击
   goBackClick: function (e) {
@@ -73,14 +75,19 @@ Page({
   sexChange:function(e){
     let _this = this;
     // console.log(e.detail.value);
-    _this.setData({
-      selecSex: e.detail.value
-    })
-    if(e.detail.value == "男"){
+    let emptyArr = [];
+    if (e.detail.value == 1 || e.detail.value == 1){
       upstream.sex = 1;
+      emptyArr = _this.data.manStyleArr;
     }else{
       upstream.sex = 0;
+      emptyArr = _this.data.womanStyleArr;
     }
+    // console.log(emptyArr)
+    _this.setData({
+      selecSex: e.detail.value,
+      styleArr: emptyArr
+    })
   },
   // 年龄选择
   ageChange:function(e){
@@ -98,7 +105,7 @@ Page({
     _this.setData({
       selecheight: e.detail.value
     })
-    upstream.height = e.detail.value;
+    upstream.height = _this.data.heightArr[e.detail.value];
   },
   // 体重选择
   weightChange: function (e) {
@@ -234,7 +241,8 @@ Page({
       title: '资料上传中...',
     })
     var para = upstream;
-    //发送code，encryptedData，iv到后台解码，获取用户信息
+    // console.log(para);
+    // return
     ask("post", `${updateOrder}`, para).then(res => {
       // console.log(res);
       if (res.status == 200) {
@@ -264,6 +272,7 @@ Page({
       let arrFour = [];
       let arrFive = [];
       let arrSix = [];
+      let arrSeven = [];
       if(res && existence(res)){
         for(let i in res){
           // 改变
@@ -279,14 +288,22 @@ Page({
             arrThree = arrThree.concat(res[i].context);
           }
           // 着装
-          if(wx.getStorageSync('userInformation').sex == 1 || wx.getStorageSync('userInformation').sex == '1'){//男
-            if(res[i].category == 4 || res[i].category == '4'){
-              arrFour = arrFour.concat(res[i].context);
-            }
-          }else{
-            if(res[i].category == 5 || res[i].category == '5'){
-              arrFour = arrFour.concat(res[i].context);
-            }
+          // if(wx.getStorageSync('userInformation').sex == 1 || wx.getStorageSync('userInformation').sex == '1'){//男
+          //   if(res[i].category == 4 || res[i].category == '4'){
+          //     arrFour = arrFour.concat(res[i].context);
+          //   }
+          // }else{
+          //   if(res[i].category == 5 || res[i].category == '5'){
+          //     arrFour = arrFour.concat(res[i].context);
+          //   }
+          // }
+          // 着装---女
+          if (res[i].category == 5 || res[i].category == '5') {
+            arrFour = arrFour.concat(res[i].context);
+          }
+          // 着装---男
+          if (res[i].category == 4 || res[i].category == '4') {
+            arrSeven = arrSeven.concat(res[i].context);
           }
           // 打理
           if(res[i].category == 6 || res[i].category == '6'){
@@ -310,7 +327,9 @@ Page({
         lengthArr:arrTwo,
         permArr:arrThree,
         styleArr:arrFour,
-        takeArr:arrFive,
+        takeArr: arrFive,
+        manStyleArr: arrSeven,
+        womanStyleArr: arrFour
       })
       // if (res.code == 0) {
         

@@ -6,14 +6,14 @@
             <view class="primary box_eight">
                 <view class="primary_words">主头像</view>
                 <view class="primary_page box_twelve">
-                    <image class="primary_page_img" src="{{mainPicture}}" mode="widthFix"></image>
+                    <image class="primary_page_img" src="{{mainPicture}}" mode="widthFix" bindtap="mainPreviewClick"></image>
                 </view>
             </view>
             <view class="othres">
                 <view class="primary_words">其它头像</view>
                 <view class="primary_total box_one">
                   <view class="primary_page box_twelve" wx:for="{{othersArr}}" wx:key="*this">
-                    <image class="primary_page_img" src="{{item}}" mode="widthFix"></image>
+                    <image class="primary_page_img" src="{{item}}" mode="widthFix" data-info="{{item}}" bindtap="otherPreviewClick"></image>
                   </view>
                 </view>
             </view>

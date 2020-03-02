@@ -15,7 +15,7 @@
 </view>
 <!-- 顶部功能按钮 -->
 <view class="choice" style="top:{{statusBarHeight+43}}px">
-    <view class="choice_page box_two" wx:if="{{gender==0||gender=='0'}}">
+    <view class="choice_page box_two" wx:if="{{gender==1||gender=='1'}}">
         <view class="chpa_active box_twelve">男 生</view>
     </view>
     <view class="choice_page box_two" wx:else>

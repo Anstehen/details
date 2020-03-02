@@ -17,11 +17,28 @@ Component({
       ageStr:0,
     },
     methods:{
-        // 更多信息点击
-        shoutDownClick: function(e) {
-            let _this = this;
-            this.triggerEvent("close", "弹框关闭")
-        }
+      // 更多信息点击
+      shoutDownClick: function(e) {
+          let _this = this;
+          this.triggerEvent("close", "弹框关闭")
+      },
+      // 主头像预览
+      mainPreviewClick:function(e){
+        let _this = this;
+        wx.previewImage({
+          current: _this.data.mainPicture, // 当前显示图片的http链接
+          urls: [_this.data.mainPicture] // 需要预览的图片http链接列表
+        })
+      },
+      // 其他像预览
+      otherPreviewClick: function (e) {
+        let _this = this;
+        // console.log(e.currentTarget.dataset.info);
+        wx.previewImage({
+          current: e.currentTarget.dataset.info, // 当前显示图片的http链接
+          urls: _this.data.othersArr // 需要预览的图片http链接列表
+        })
+      }
     },
     
     
@@ -37,7 +54,7 @@ Component({
       // 性别
       let strOne = "";
       if (existence(bearingObject.sex)){
-        if (bearingObject.sex == 0 || bearingObject.sex == '0'){
+        if (bearingObject.sex == 1 || bearingObject.sex == '1'){
           strOne = "男";
         }else{
           strOne = "女";

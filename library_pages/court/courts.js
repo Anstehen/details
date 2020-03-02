@@ -106,7 +106,7 @@ Page({
     let _this = this;
     // console.log(e.detail.value);
     _this.setData({
-      upperValue:e.detail.value
+      stallsValue:e.detail.value
     })
   },
   // 下庭选择
@@ -142,7 +142,7 @@ Page({
     let _this = this;
     // console.log(e.detail.value);
     _this.setData({
-      upperValue:e.detail.value
+      lowerValue:e.detail.value
     })
   },
   // 上中下庭---关闭
@@ -237,14 +237,25 @@ Page({
     ask("get", `${editUpper}`, para).then(res => {
       // console.log(res);
       let strOne = "";
+      let numberOne = 0;
       if (existence(app.globalData.compileObject.uppercourtDetail)){
         strOne = app.globalData.compileObject.uppercourtDetail;
       }else{
         strOne = res[0].uppercourtDesc;
       }
+      if (existence(app.globalData.compileObject.uppercourt)) {
+        for (let i in _this.data.upperArray){
+          if (_this.data.upperArray[i] == app.globalData.compileObject.uppercourt){
+            numberOne = i;
+          }
+        }
+      } else {
+        numberOne = 0;
+      }
       _this.setData({
         shangtingArr:res,
-        upperValue: strOne
+        upperValue: strOne,
+        upperIndex: numberOne
       })
       // if (res.code == 0) {
 
@@ -261,14 +272,25 @@ Page({
     ask("get", `${editStalls}`, para).then(res => {
       // console.log(res);
       let strOne = "";
+      let numberOne = 0;
       if (existence(app.globalData.compileObject.stallsDetail)) {
         strOne = app.globalData.compileObject.stallsDetail;
       } else {
         strOne = res[0].stallsDesc;
       }
+      if (existence(app.globalData.compileObject.stalls)) {
+        for (let i in _this.data.stallsArray){
+          if (_this.data.stallsArray[i] == app.globalData.compileObject.stalls){
+            numberOne = i;
+          }
+        }
+      } else {
+        numberOne = 0;
+      }
       _this.setData({
         zhongtingArr: res,
-        stallsValue: strOne
+        stallsValue: strOne,
+        stallsIndex: numberOne
       })
       // if (res.code == 0) {
 
@@ -285,14 +307,25 @@ Page({
     ask("get", `${editLower}`, para).then(res => {
       // console.log(res);
       let strOne = "";
+      let numberOne = 0;
       if (existence(app.globalData.compileObject.lowerCourtDetail)) {
         strOne = app.globalData.compileObject.lowerCourtDetail;
       } else {
         strOne = res[0].lowerCourtDesc;
       }
+      if (existence(app.globalData.compileObject.lowerCourt)) {
+        for (let i in _this.data.lowerArray){
+          if (_this.data.lowerArray[i] == app.globalData.compileObject.lowerCourt){
+            numberOne = i;
+          }
+        }
+      } else {
+        numberOne = 0;
+      }
       _this.setData({
         xiatingArr: res,
-        lowerValue: strOne
+        lowerValue: strOne,
+        lowerIndex: numberOne
       })
       // if (res.code == 0) {
 

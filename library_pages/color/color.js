@@ -225,7 +225,7 @@ Page({
         numberOne = 0;
       }
     } else {
-      numberOne = 0;
+      numberOne = 3;
     }
     _this.setData({
       gender: options.transsex,
